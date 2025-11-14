@@ -13,7 +13,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-24 border-b border-[#D2D2D2]">
       <nav className="container mx-auto flex items-center justify-between px-4 md:px-6 h-full">
         <Link href="/" className="flex items-center">
-          <Image src="/ANDINOH.svg" alt="Andinoh" width={100} height={35} priority className="md:w-[120px] md:h-[40px]" />
+          <Image src="/logos/ANDINOH.svg" alt="Andinoh" width={100} height={35} priority className="md:w-[120px] md:h-[40px]" />
         </Link>
 
         {/* Desktop Navigation */}

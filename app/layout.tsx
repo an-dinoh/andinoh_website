@@ -71,9 +71,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/ANDINOH-FAV.jpg" },
+      { url: "/logos/ANDINOH-FAV.jpg" },
     ],
-    apple: [{ url: "/ANDINOH-FAV.jpg" }],
+    apple: [{ url: "/logos/ANDINOH-FAV.jpg" }],
   },
 };
 
@@ -85,8 +85,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-white">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/logos/favicon.ico" />
+        <link rel="shortcut icon" href="/logos/favicon.ico" />
       </head>
       <body className={`${montserrat.className} antialiased bg-white`}>
         <Header />

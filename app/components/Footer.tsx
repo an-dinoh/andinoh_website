@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex-shrink-0 md:w-64">
             <div className="mb-6">
               <Image
-                src="/ANDINOH BLACK.svg"
+                src="/logos/ANDINOH BLACK.svg"
                 alt="Andinoh"
                 width={150}
                 height={70}
@@ -70,21 +70,21 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6">Get in Touch</h3>
             <ul className="space-y-6 text-xs">
               <li className="flex items-center gap-2">
-                <Image src="/clock.svg" alt="Time" width={16} height={16} className="brightness-0 invert" />
+                <Image src="/icons/clock.svg" alt="Time" width={16} height={16} className="brightness-0 invert" />
                 Sun-Fri: 8:00 AM-9:00 PM
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/sms.svg" alt="Email" width={16} height={16} className="brightness-0 invert" />
+                <Image src="/icons/sms.svg" alt="Email" width={16} height={16} className="brightness-0 invert" />
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info.andinoh@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E3F2FD] transition-colors">
                   info.andinoh@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/call.svg" alt="Phone" width={16} height={16} className="brightness-0 invert" />
+                <Image src="/icons/call.svg" alt="Phone" width={16} height={16} className="brightness-0 invert" />
                 (+234) 818 2367 679
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/location.svg" alt="Location" width={16} height={16} className="brightness-0 invert" />
+                <Image src="/icons/location.svg" alt="Location" width={16} height={16} className="brightness-0 invert" />
                 Lagos, Nigeria
               </li>
             </ul>
@@ -106,7 +106,7 @@ export default function Footer() {
                     "
               >
                 <Image
-                  src="/google-play.svg"
+                  src="/icons/google-play.svg"
                   alt="Google Play"
                   width={16}
                   height={16}
@@ -129,7 +129,7 @@ export default function Footer() {
               >
                 {" "}
                 <Image
-                  src="/apple.svg"
+                  src="/icons/apple.svg"
                   alt="App Store"
                   width={16}
                   height={16}
@@ -155,7 +155,7 @@ export default function Footer() {
               className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
             >
               <Image
-                src="/linkedin.svg"
+                src="/icons/linkedin.svg"
                 alt="LinkedIn"
                 width={16}
                 height={16}
@@ -170,7 +170,7 @@ export default function Footer() {
               className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
             >
               <Image
-                src="/facebook.svg"
+                src="/icons/facebook.svg"
                 alt="Facebook"
                 width={16}
                 height={16}
@@ -185,7 +185,7 @@ export default function Footer() {
               className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
             >
               <Image
-                src="/twitter.svg"
+                src="/icons/twitter.svg"
                 alt="Twitter/X"
                 width={16}
                 height={16}
@@ -200,7 +200,7 @@ export default function Footer() {
               className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
             >
               <Image
-                src="/instagram.svg"
+                src="/icons/instagram.svg"
                 alt="Instagram"
                 width={16}
                 height={16}
@@ -212,7 +212,7 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <span className="text-xs text-[#E3F2FD]">© 2025</span>
             <Image
-              src="/ANDINOH.svg"
+              src="/logos/ANDINOH.svg"
               alt="Andinoh"
               width={68}
               height={20}

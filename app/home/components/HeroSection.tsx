@@ -9,10 +9,10 @@ export default function HeroSection() {
             <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-xs px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4 font-semibold">
               ✨ COMING SOON
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 leading-tight">
+            <h1 className="text-3xl md:text-3xl font-bold mb-3 md:mb-4 leading-tight">
               Modern Hotel Management Made Simple
             </h1>
-            <p className="text-base md:text-xl text-white mb-6 md:mb-8 leading-relaxed font-medium">
+            <p className="text-sm md:text-sm text-white mb-6 md:mb-8 leading-relaxed font-regular">
               Streamline your hotel operations with intelligent booking, guest management, and staff workflows. Join the waitlist for early access.
             </p>
 

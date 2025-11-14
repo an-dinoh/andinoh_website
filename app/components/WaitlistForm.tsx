@@ -32,7 +32,7 @@ export default function WaitlistForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <input
           type="text"
           placeholder="Your name"
