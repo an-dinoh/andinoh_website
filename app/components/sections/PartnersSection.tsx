@@ -2,10 +2,10 @@ import SectionContainer from "../ui/SectionContainer";
 
 export default function PartnersSection() {
   const partners = [
-    { name: "contentful", color: "text-gray-700" },
-    { name: "Google", color: "text-blue-600" },
-    { name: "asana", color: "text-red-600" },
-    { name: "monday.com", color: "text-purple-600" },
+    { name: "contentful", color: "text-[#616161]" },
+    { name: "Google", color: "text-[#0F75BD]" },
+    { name: "asana", color: "text-[#0F75BD]" },
+    { name: "monday.com", color: "text-[#AB47BC]" },
     { name: "grammarly", color: "text-green-600" },
   ];
 

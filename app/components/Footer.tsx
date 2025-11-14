@@ -1,40 +1,64 @@
 import Link from "next/link";
-import { FaLinkedin, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-red-900 text-white py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer className="bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white py-12 w-full">
+      <div className="w-full max-w-[1400px] mx-auto pt-16 px-6 md:px-12 lg:px-26">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap">
           {/* Logo and Description */}
-          <div>
-            <h2 className="text-3xl font-bold mb-4">LOGO</h2>
-            <p className="text-sm text-red-100 leading-relaxed">
-              Empowering students to achieve their academic goals through personalized schedules, AI-driven insights, and tools designed to simplify learning and boost productivity.
+          <div className="flex-shrink-0 md:w-64">
+            <div className="mb-6">
+              <Image
+                src="/ANDINOH BLACK.svg"
+                alt="Andinoh"
+                width={150}
+                height={70}
+              />
+            </div>
+            <p className="text-xs text-[#E3F2FD] leading-relaxed">
+              Modern hotel management system designed for both hotel staff and
+              customers. Streamlining bookings, guest management, and
+              operational workflows.
             </p>
           </div>
 
+          {/* Spacer */}
+          <div className="flex-1"></div>
+
           {/* About Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">About Company</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-lg font-semibold mb-6">About Company</h3>
+             <ul className="space-y-6 text-xs">
               <li>
-                <Link href="/about" className="hover:text-red-200 transition-colors">
+                <Link
+                  href="/about"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-red-200 transition-colors">
+                <Link
+                  href="#"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
                   Cookies Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-red-200 transition-colors">
+                <Link
+                  href="#"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-red-200 transition-colors">
+                <Link
+                  href="#"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </li>
@@ -43,31 +67,24 @@ export default function Footer() {
 
           {/* Get in Touch */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-lg font-semibold mb-6">Get in Touch</h3>
+            <ul className="space-y-6 text-xs">
               <li className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Sun-Fri: 9:00-5:00
+                <Image src="/clock.svg" alt="Time" width={16} height={16} className="brightness-0 invert" />
+                Sun-Fri: 8:00 AM-9:00 PM
               </li>
               <li className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                info@example.com
+                <Image src="/sms.svg" alt="Email" width={16} height={16} className="brightness-0 invert" />
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info.andinoh@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E3F2FD] transition-colors">
+                  info.andinoh@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
+                <Image src="/call.svg" alt="Phone" width={16} height={16} className="brightness-0 invert" />
                 (+234) 818 2367 679
               </li>
               <li className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                <Image src="/location.svg" alt="Location" width={16} height={16} className="brightness-0 invert" />
                 Lagos, Nigeria
               </li>
             </ul>
@@ -75,47 +92,134 @@ export default function Footer() {
 
           {/* Download App */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Download App</h3>
-            <div className="space-y-3">
-              <button className="flex items-center gap-3 bg-red-800 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors w-full">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                </svg>
+            <h3 className="text-lg font-semibold mb-6">Download App</h3>
+            <div className="space-y-6">
+              <button
+                className="
+                      flex items-center gap-3 
+                      hover:border-[0.5px] border-[#D2D2D2]
+                      bg-[#1A1A1A] 
+                      px-5 py-3.5 
+                      h-auto md:h-12 
+                      rounded-2xl 
+                      transition-colors
+                    "
+              >
+                <Image
+                  src="/google-play.svg"
+                  alt="Google Play"
+                  width={16}
+                  height={16}
+                  className=""
+                />
                 <div className="text-left">
-                  <div className="text-xs">GET IT ON</div>
-                  <div className="text-sm font-semibold">Google Play</div>
+                  <div className="text-xs font-semibold">Google Play</div>
                 </div>
               </button>
-              <button className="flex items-center gap-3 bg-red-800 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors w-full">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                </svg>
+              <button
+                className="
+                    flex items-center gap-3 
+                    hover:border-[0.5px] border-[#D2D2D2]
+                    bg-[#1A1A1A] 
+                    px-5 py-3.5 
+                    h-auto md:h-12 
+                    rounded-2xl 
+                    transition-colors
+                  "
+              >
+                {" "}
+                <Image
+                  src="/apple.svg"
+                  alt="App Store"
+                  width={16}
+                  height={16}
+                  className=""
+                />
                 <div className="text-left">
-                  <div className="text-xs">Download on the</div>
-                  <div className="text-sm font-semibold">App Store</div>
+                  <div className="text-xs font-semibold">App Store</div>
                 </div>
               </button>
             </div>
           </div>
         </div>
 
+         <div className="w-full h-px bg-[#E8E8E8] mt-20"></div>
+
         {/* Social Icons and Copyright */}
-        <div className="mt-12 pt-8 border-t border-red-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-red-200 transition-colors">
-              <FaLinkedin size={20} />
+        <div className="mt-4 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex gap-6 items-center">
+            <a
+              href="https://www.linkedin.com/company/109459638/admin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
+            >
+              <Image
+                src="/linkedin.svg"
+                alt="LinkedIn"
+                width={16}
+                height={16}
+                className="brightness-0 invert h-full w-full object-contain"
+              />
             </a>
-            <a href="#" className="hover:text-red-200 transition-colors">
-              <FaFacebook size={20} />
+
+            <a
+              href="https://www.facebook.com/people/Andinoh/61582401149207/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
+            >
+              <Image
+                src="/facebook.svg"
+                alt="Facebook"
+                width={16}
+                height={16}
+                className="brightness-0 invert h-full w-full object-contain"
+              />
             </a>
-            <a href="#" className="hover:text-red-200 transition-colors">
-              <FaTwitter size={20} />
+
+            <a
+              href="https://x.com/Andinoh_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
+            >
+              <Image
+                src="/twitter.svg"
+                alt="Twitter/X"
+                width={16}
+                height={16}
+                className="brightness-0 invert h-full w-full object-contain"
+              />
             </a>
-            <a href="#" className="hover:text-red-200 transition-colors">
-              <FaInstagram size={20} />
+
+            <a
+              href="https://www.instagram.com/andinoh_/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
+            >
+              <Image
+                src="/instagram.svg"
+                alt="Instagram"
+                width={16}
+                height={16}
+                className="brightness-0 invert h-full w-full object-contain"
+              />
             </a>
           </div>
-          <p className="text-sm text-red-100">© 2024 LOGO. All rights reserved</p>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-[#E3F2FD]">© 2025</span>
+            <Image
+              src="/ANDINOH.svg"
+              alt="Andinoh"
+              width={68}
+              height={20}
+              className="brightness-0 invert"
+            />
+            <span className="text-xs text-[#E3F2FD]"> All rights reserved</span>
+          </div>
         </div>
       </div>
     </footer>

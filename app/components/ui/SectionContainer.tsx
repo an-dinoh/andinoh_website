@@ -13,9 +13,9 @@ export default function SectionContainer({
 }: SectionContainerProps) {
   const backgrounds = {
     white: "bg-white",
-    gray: "bg-gray-50",
-    red: "bg-red-50",
-    pink: "bg-pink-50",
+    gray: "bg-[#FAFAFA]",
+    red: "bg-[#F0F8FF]",
+    pink: "bg-[#FCE4EC]",
   };
 
   return (

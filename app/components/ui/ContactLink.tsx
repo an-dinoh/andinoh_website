@@ -10,7 +10,7 @@ export default function ContactLink({ href, icon, children }: ContactLinkProps) 
   return (
     <a
       href={href}
-      className="flex items-center gap-3 text-red-700 hover:text-red-800 transition-colors"
+      className="flex items-center gap-3 text-[#0F75BD] hover:text-[#0050C8] transition-colors"
     >
       {icon}
       <span className="font-medium">{children}</span>

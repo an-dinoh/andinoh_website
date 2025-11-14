@@ -1,168 +1,102 @@
-import HeroSection from "../components/sections/HeroSection";
-import StatsSection from "../components/sections/StatsSection";
-import CTASection from "../components/sections/CTASection";
-import PartnersSection from "../components/sections/PartnersSection";
-import SectionContainer from "../components/ui/SectionContainer";
-import Badge from "../components/ui/Badge";
-import Button from "../components/ui/Button";
-import ImagePlaceholder from "../components/ui/ImagePlaceholder";
-import { CheckIcon } from "../components/ui/icons";
+import PageTransition from "../components/PageTransition";
+import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white pt-20">
-      <HeroSection
-        badge="★ WE ARE HERE TO HELP!"
-        title="About Us"
-        subtitle="Empowering students to study smarter, not harder"
-      />
-
-      {/* Mission Section */}
-      <SectionContainer>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <ImagePlaceholder emoji="👍" label="Student with laptop" />
-          <div>
-            <Badge variant="secondary">OUR MISSION</Badge>
-            <h2 className="text-4xl font-bold mb-6 mt-4">
-              Empowering Students to Study Smarter, Not Harder.
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              At [LOGO], we believe the key to academic success lies in optimizing the way you
-              study. Our platform uses cutting-edge technology to create personalized, optimized
-              study schedules tailored content, and actionable insights, helping students achieve
-              their dreams with less stress and more efficiency.
+    <PageTransition>
+      <div className="min-h-screen bg-white pt-20 md:pt-24">
+        {/* Hero Section */}
+        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16">
+          <div className="container mx-auto text-center">
+            <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1.5 rounded-full mb-4 font-semibold">
+              ABOUT ANDINOH
+            </span>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+              Modern Hotel Management for the Digital Age
+            </h1>
+            <p className="text-base md:text-xl text-[#757575] max-w-3xl mx-auto leading-relaxed">
+              Andinoh transforms how hotels operate by providing intelligent solutions for bookings, guest management, and staff workflows.
             </p>
           </div>
-        </div>
-      </SectionContainer>
+        </section>
 
-      {/* Trust Section */}
-      <SectionContainer background="gray">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <Badge variant="secondary">OUR PROMISE</Badge>
-            <h2 className="text-4xl font-bold mb-6 mt-4">
-              We Treat Our Users Friendly with An Unparalleled Level of Service.
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              We prioritize our users-always by cutting excellent customer support and actionable
-              insights that empower them to reach their goals. Our support is more...
-            </p>
-          </div>
-          <ImagePlaceholder emoji="🧘‍♀️" label="Student relaxing" bgColor="bg-purple-200" />
-        </div>
-      </SectionContainer>
-
-      <StatsSection />
-
-      {/* Vision & Mission */}
-      <SectionContainer background="red">
-        <div className="text-center mb-12">
-          <Badge variant="primary">OUR CORE FOUNDATION</Badge>
-          <h2 className="text-4xl font-bold mt-4">
-            Our Vision and Mission: Driving Purpose, Inspiring Success
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <ImagePlaceholder emoji="📚" label="Student studying" bgColor="bg-purple-100" />
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">
-                We Are on the Mission to Optimize Your Study Plan
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Founded to address poor-nation and bad study practices that hinder student success,
-                [APP NAME] was created to enhance study habits. We help students discover strategies
-                for better understanding, retention, and overall achievement.
-              </p>
+        {/* Mission Section */}
+        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16 bg-[#FAFAFA]">
+          <div className="container mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div>
+                <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1 rounded-full mb-4 font-semibold">
+                  OUR MISSION
+                </span>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+                  Empowering Hotels to Deliver Exceptional Experiences
+                </h2>
+                <p className="text-sm md:text-base text-[#757575] leading-relaxed mb-4">
+                  At Andinoh, we believe that hotel management should be simple, efficient, and guest-focused. Our platform combines cutting-edge technology with intuitive design to help hotels of all sizes streamline operations and enhance guest satisfaction.
+                </p>
+                <p className="text-sm md:text-base text-[#757575] leading-relaxed">
+                  From automated bookings to real-time analytics, we provide the tools modern hotels need to thrive in a competitive market.
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-[#0F75BD] to-[#49A2E0] rounded-2xl md:rounded-3xl p-8 md:p-12 text-white h-64 md:h-80 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-5xl md:text-7xl mb-4">🏨</div>
+                  <p className="text-lg md:text-xl font-semibold">Built for Hotels</p>
+                </div>
+              </div>
             </div>
-            <ImagePlaceholder
-              emoji="🎯"
-              label="Student celebrating"
-              bgColor="bg-cyan-100"
-              aspectRatio="video"
-            />
           </div>
-        </div>
-      </SectionContainer>
+        </section>
 
-      {/* Why We Do This */}
-      <SectionContainer>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div>
-            <h3 className="text-3xl font-bold mb-6">We Are Doing this Because;</h3>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              We strongly believe that to transform education process we must leverage the power of
-              technology to assist students in optimal study experiences. We plan to partner with
-              top education experts to assist in studying to excel rather in their field of
-              interest.
+        {/* Why Choose Us */}
+        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16">
+          <div className="container mx-auto">
+            <div className="text-center mb-8 md:mb-12">
+              <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1 rounded-full mb-4 font-semibold">
+                WHY ANDINOH
+              </span>
+              <h2 className="text-2xl md:text-4xl font-bold mb-4">
+                Everything Your Hotel Needs in One Platform
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
+                <div className="text-3xl md:text-4xl mb-3 md:mb-4">📅</div>
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Smart Booking Management</h3>
+                <p className="text-sm md:text-base text-[#757575]">Automated booking system with real-time availability and instant confirmations</p>
+              </div>
+              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
+                <div className="text-3xl md:text-4xl mb-3 md:mb-4">👥</div>
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Guest Experience</h3>
+                <p className="text-sm md:text-base text-[#757575]">Personalized guest profiles, preferences, and seamless check-in/check-out</p>
+              </div>
+              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
+                <div className="text-3xl md:text-4xl mb-3 md:mb-4">📊</div>
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Analytics & Insights</h3>
+                <p className="text-sm md:text-base text-[#757575]">Real-time dashboards and reports to make data-driven decisions</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16 mx-6 md:mx-12 lg:mx-16 my-12 bg-gradient-to-br from-[#0F75BD] via-[#0F75BD] to-[#0F75BD] text-white rounded-2xl md:rounded-3xl">
+          <div className="container mx-auto text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+              Ready to Transform Your Hotel Operations?
+            </h2>
+            <p className="text-base md:text-xl text-[#E3F2FD] mb-6 md:mb-8 max-w-2xl mx-auto">
+              Join the waitlist and be among the first to experience the future of hotel management
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              We truly aim to reach about 1 million of students.
-            </p>
+            <Link href="/waitlist">
+              <button className="px-6 md:px-8 py-3 bg-white text-[#0F75BD] rounded-full font-semibold hover:bg-[#FAFAFA] transition-colors">
+                Join Waitlist
+              </button>
+            </Link>
           </div>
-          <ImagePlaceholder emoji="✌️" label="Students together" bgColor="bg-pink-100" />
-        </div>
-      </SectionContainer>
-
-      <PartnersSection />
-
-      <CTASection title="Simplify Your Study Journey with [APP NAME]" />
-
-      {/* Final CTA */}
-      <SectionContainer background="pink">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <ImagePlaceholder
-            emoji="🤝"
-            label="Students studying together"
-            bgColor="bg-pink-200"
-          />
-          <div>
-            <h2 className="text-4xl font-bold mb-6">We're simply studying to succeed</h2>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              At [LOGO], we understand students with some truth made clear. Every mind is unique
-              and standard one-size-fit all approach will not work. Our AI-powered platform brings:
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "A study study schedule tailored uniquely to you",
-                "Performance analysis that reveal what should your strength and weak...",
-                "Gamified stop-assessment designed to make learning engaging fun.",
-                "Learning tips and resource designed to keep study efficient.",
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span className="text-gray-600">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </SectionContainer>
-
-      {/* Join Journey CTA */}
-      <SectionContainer>
-        <div className="text-center">
-          <Badge variant="secondary">JOIN US</Badge>
-          <h2 className="text-4xl font-bold mb-6 mt-4">
-            Be a Part of Our Journey to Improve Students Studying Plans
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Whether you're student looking for direction in understanding any concept, or
-            institution focused on improving learning outcomes, we'll work together to make it
-            happen. Join thousands of happy learners experiencing [LOGO] difference.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Button variant="outline" size="lg">
-              Learn
-            </Button>
-            <Button variant="primary" size="lg">
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </SectionContainer>
-    </div>
+        </section>
+      </div>
+    </PageTransition>
   );
 }

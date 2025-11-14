@@ -8,7 +8,7 @@ interface ImagePlaceholderProps {
 export default function ImagePlaceholder({
   emoji,
   label,
-  bgColor = "bg-gray-200",
+  bgColor = "bg-[#EEEEEE]",
   aspectRatio = "square",
 }: ImagePlaceholderProps) {
   const aspectClasses = {
@@ -22,7 +22,7 @@ export default function ImagePlaceholder({
     >
       <div className="text-center">
         <div className="text-6xl mb-4">{emoji}</div>
-        <p className="text-gray-600">{label}</p>
+        <p className="text-[#757575]">{label}</p>
       </div>
     </div>
   );
