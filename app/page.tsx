@@ -11,7 +11,9 @@ export default function Home() {
         <HeroSection />
         <PhoneHeroSection />
         <FeaturesSection />
-        <CTASection />
+        <PhoneHeroSection />
+        <div className="pb-20"></div>
+        {/* <CTASection /> */}
       </div>
     </PageTransition>
   );
