@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white py-12 w-full">
-      <div className="w-full max-w-[1400px] mx-auto pt-16 px-6 md:px-12 lg:px-26">
+      <div className="w-full max-w-[1400px] mx-auto pt-16 px-app">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap">
           {/* Logo and Description */}
           <div className="flex-shrink-0 md:w-64">

@@ -25,21 +25,41 @@ export default function WaitlistForm() {
   };
 
   return (
-    <div className="relative">
+    <>
+      {/* Success Dialog Modal */}
       {submitted && (
-        <div className="absolute -top-16 left-0 right-0 bg-white text-[#0F75BD] px-6 py-3 rounded-2xl animate-[slideDown_0.3s_ease-out] z-10">
-          <p className="text-center font-semibold">🎉 You're on the list! We'll be in touch soon.</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-[fadeIn_0.3s_ease-out]">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-[slideDown_0.3s_ease-out] relative">
+            <div className="text-center">
+              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-4xl">🎉</span>
+              </div>
+              <h3 className="text-2xl font-bold text-[#0F75BD] mb-2">
+                You're on the list!
+              </h3>
+              <p className="text-gray-600 mb-6">
+                We'll be in touch soon with exclusive early access updates.
+              </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className="px-6 py-3 bg-[#0F75BD] text-white rounded-full font-semibold hover:bg-[#0050C8] transition-colors"
+              >
+                Got it!
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <div className="relative">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <input
           type="text"
           placeholder="Your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="flex-1 px-6 py-4 rounded-full text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
+          className="flex-1 px-6 py-4 rounded-3xl text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
         />
         <input
           type="email"
@@ -47,20 +67,21 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="flex-1 px-6 py-4 rounded-full text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
+          className="flex-1 px-6 py-4 rounded-3xl text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
         />
         <button
           type="submit"
           disabled={loading}
-          className="px-8 py-4 bg-white text-[#0F75BD] rounded-full font-bold hover:bg-[#0050C8] hover:text-white hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="px-8 py-4 bg-white text-[#0F75BD] rounded-3xl font-bold border border-transparent hover:bg-[#0050C8] hover:text-white hover:scale-105 hover:border-[#FBB81F] transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {loading ? "Joining..." : "Join Waitlist"}
         </button>
       </form>
 
-      <p className="text-white text-sm mt-4 text-center font-medium opacity-90">
-        🔒 We respect your privacy. No spam, ever.
-      </p>
-    </div>
+        <p className="text-white text-sm mt-4 text-center font-regular opacity-90">
+          🔒 We respect your privacy. No spam, ever.
+        </p>
+      </div>
+    </>
   );
 }

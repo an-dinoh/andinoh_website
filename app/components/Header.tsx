@@ -10,14 +10,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-24 border-b border-[#D2D2D2]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-22 border-b border-[#D2D2D2]">
       <nav className="container mx-auto flex items-center justify-between px-4 md:px-6 h-full">
         <Link href="/" className="flex items-center">
           <Image src="/logos/ANDINOH.svg" alt="Andinoh" width={100} height={35} priority className="md:w-[120px] md:h-[40px]" />
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-[#424242]">
+        <ul className="hidden md:flex items-center gap-8 text-xs font-semibold text-[#424242]">
           <li>
             <Link
               href="/"
@@ -56,7 +56,7 @@ export default function Header() {
         {/* Desktop Join Button */}
         <div className="hidden md:flex items-center gap-4">
           <Link href="/waitlist">
-            <button className="px-6 py-4 text-sm font-medium text-white bg-[#0F75BD] rounded-full hover:bg-[#0050C8] transition-colors">
+            <button className="px-5 py-3 text-xs font-semibold text-white bg-[#0F75BD] rounded-[18px] hover:bg-[#0050C8] transition-colors">
               JOIN THE WAIT LIST
             </button>
           </Link>
@@ -65,7 +65,7 @@ export default function Header() {
         {/* Mobile: Join Button + Menu Button */}
         <div className="md:hidden flex items-center gap-2">
           <Link href="/waitlist">
-            <button className="px-3 py-2 text-[10px] font-semibold text-white bg-[#0F75BD] rounded-full hover:bg-[#0050C8] transition-colors whitespace-nowrap">
+            <button className="px-3 py-2 text-[10px] font-semibold text-white bg-[#0F75BD] rounded-3xl hover:bg-[#0050C8] transition-colors whitespace-nowrap">
               JOIN WAITLIST
             </button>
           </Link>

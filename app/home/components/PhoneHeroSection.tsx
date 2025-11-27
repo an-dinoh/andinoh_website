@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function PhoneHeroSection() {
   return (
     <section
-      className="h-[350px] py-12 md:py-20 pl-6 md:pl-12 lg:pl-16 pr-0 mx-6 md:mx-12 lg:mx-26 my-12
+      className="h-[350px] py-12 md:py-20 pl-app pr-0 mx-app my-12
       bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white
       rounded-[40px] md:rounded-[48px] overflow-hidden flex items-center"
     >

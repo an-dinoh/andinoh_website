@@ -1,6 +1,6 @@
 export default function FeaturesSection() {
   return (
-    <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16 min-h-screen">
+       <section className="h-[40vh] md:h-[40vh] bg-white flex items-center justify-center px-app py-6">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1 rounded-full mb-3 md:mb-4">

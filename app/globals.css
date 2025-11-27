@@ -5,6 +5,11 @@
   --foreground: #171717;
   --primary: #0F75BD;
   --primary-hover: #0050C8;
+
+  /* Horizontal Padding */
+  --padding-x-mobile: 1.5rem;    /* 24px */
+  --padding-x-medium: 3rem;      /* 48px */
+  --padding-x-large: 7.5rem;     /* 120px */
 }
 
 @theme inline {
@@ -51,5 +56,69 @@ body {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Global Padding Utilities */
+.px-app {
+  padding-left: var(--padding-x-mobile);
+  padding-right: var(--padding-x-mobile);
+}
+
+@media (min-width: 768px) {
+  .px-app {
+    padding-left: var(--padding-x-medium);
+    padding-right: var(--padding-x-medium);
+  }
+}
+
+@media (min-width: 1024px) {
+  .px-app {
+    padding-left: var(--padding-x-large);
+    padding-right: var(--padding-x-large);
+  }
+}
+
+.pl-app {
+  padding-left: var(--padding-x-mobile);
+}
+
+@media (min-width: 768px) {
+  .pl-app {
+    padding-left: var(--padding-x-medium);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pl-app {
+    padding-left: var(--padding-x-large);
+  }
+}
+
+.mx-app {
+  margin-left: var(--padding-x-mobile);
+  margin-right: var(--padding-x-mobile);
+}
+
+@media (min-width: 768px) {
+  .mx-app {
+    margin-left: var(--padding-x-medium);
+    margin-right: var(--padding-x-medium);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mx-app {
+    margin-left: var(--padding-x-large);
+    margin-right: var(--padding-x-large);
   }
 }
