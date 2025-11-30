@@ -3,7 +3,7 @@ import WaitlistForm from "../../components/WaitlistForm";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[75vh] md:h-[85vh] bg-gradient-to-b from-white via-[#E3F2FD] to-[#BBDEFB] flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden">
+    <section id="waitlist" className="relative h-[75vh] md:h-[85vh] bg-gradient-to-b from-white via-[#E3F2FD] to-[#BBDEFB] flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden">
 
       {/* Top fade overlay */}
       <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>

@@ -11,7 +11,7 @@ export default function LargeHeroSection() {
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0F75BD] via-[#FBB81F] to-[#0F75BD] animate-spin-slow"></div>
           <span className="relative inline-flex items-center gap-1.5 bg-white text-[#0F75BD] text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1 border-[#0F75BD]">
             Introducing Andinoh
-            <FiCircle className="w-3 h-3 fill-current" />
+            <FiCircle className="w-2 h-2 fill-current" />
           </span>
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight text-[#0F75BD]">
@@ -26,7 +26,7 @@ export default function LargeHeroSection() {
         </p>
         
         <div className="flex flex-col items-start gap-4">
-           <Link href="/waitlist">
+           <Link href="/#waitlist">
              <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">   JOIN THE WAIT LIST
               </button>
             </Link>

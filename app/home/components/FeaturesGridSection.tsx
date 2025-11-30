@@ -94,7 +94,7 @@ export default function FeaturesGridSection() {
   };
 
   return (
-    <section className="bg-white py-8 md:py-12 overflow-hidden">
+    <section className="bg-white py-8 md:py-12 overflow-hidden mt-20">
       <div className="max-w-7xl mx-auto px-app">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 text-[#0F75BD]">
