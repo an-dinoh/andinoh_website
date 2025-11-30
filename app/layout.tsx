@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./context/ThemeContext";
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -83,15 +84,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white">
+    <html lang="en" className="bg-white overflow-x-hidden">
       <head>
         <link rel="icon" href="/logos/favicon.ico" />
         <link rel="shortcut icon" href="/logos/favicon.ico" />
       </head>
-      <body className={`${montserrat.className} antialiased bg-white`}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`}>
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

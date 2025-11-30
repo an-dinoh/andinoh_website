@@ -1,97 +1,134 @@
+"use client";
+
+import { FiCircle } from "react-icons/fi";
 import PageTransition from "../components/PageTransition";
 import Link from "next/link";
+import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function About() {
+  const { primaryColor } = useTheme();
+
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white pt-20 md:pt-24">
+      <div className="min-h-screen bg-white overflow-x-hidden">
         {/* Hero Section */}
-        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16">
-          <div className="container mx-auto text-center">
-            <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1.5 rounded-full mb-4 font-semibold">
-              ABOUT ANDINOH
-            </span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              Modern Hotel Management for the Digital Age
+        <section className="min-h-[85vh] bg-white flex items-center px-app pt-28 md:pt-32">
+          <div className="max-w-4xl">
+            <div className="inline-block relative mb-4 md:mb-6">
+              <span className="inline-flex items-center gap-1.5 text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor, borderColor: primaryColor }}>
+                Our Andinoh
+                <FiCircle className="w-2 h-2 fill-current" />
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight" style={{ color: primaryColor }}>
+             About Andinoh
             </h1>
-            <p className="text-base md:text-xl text-[#757575] max-w-3xl mx-auto leading-relaxed">
-              Andinoh transforms how hotels operate by providing intelligent solutions for bookings, guest management, and staff workflows.
+            <p className="text-sm md:text-lg lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
+              We're building Africa's most trusted platform for<br />hotels, flights, events, and authentic local experiences, <br />empowering travelers and local businesses across<br />the continent.
             </p>
           </div>
         </section>
 
-        {/* Mission Section */}
-        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16 bg-[#FAFAFA]">
-          <div className="container mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div>
-                <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1 rounded-full mb-4 font-semibold">
-                  OUR MISSION
-                </span>
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
-                  Empowering Hotels to Deliver Exceptional Experiences
-                </h2>
-                <p className="text-sm md:text-base text-[#757575] leading-relaxed mb-4">
-                  At Andinoh, we believe that hotel management should be simple, efficient, and guest-focused. Our platform combines cutting-edge technology with intuitive design to help hotels of all sizes streamline operations and enhance guest satisfaction.
-                </p>
-                <p className="text-sm md:text-base text-[#757575] leading-relaxed">
-                  From automated bookings to real-time analytics, we provide the tools modern hotels need to thrive in a competitive market.
-                </p>
-              </div>
-              <div className="bg-gradient-to-br from-[#0F75BD] to-[#49A2E0] rounded-2xl md:rounded-3xl p-8 md:p-12 text-white h-64 md:h-80 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-5xl md:text-7xl mb-4">🏨</div>
-                  <p className="text-lg md:text-xl font-semibold">Built for Hotels</p>
+        {/* Vision & Mission Section */}
+        <section className="bg-white py-16 md:py-20">
+          {/* Vision */}
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 px-app mb-16 md:mb-24">
+            <div className="flex-1 text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+                Our Vision
+              </h2>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                To become Africa's most trusted and comprehensive hotel, event, and flight booking platform by connecting the world to the continent's authentic destinations while empowering local travel businesses to thrive in the digital economy.
+              </p>
+            </div>
+            <div className="flex-1"></div>
+            <div className="flex-shrink-0">
+              <div className="relative w-96 h-96">
+                <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#80D4FF' }}></div>
+                <div className="absolute -inset-8 flex items-center justify-center">
+                  <Image
+                    src="/images/blue-africa.png"
+                    alt="Africa map"
+                    width={350}
+                    height={350}
+                    className="object-contain relative z-10"
+                  />
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Mission */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 px-app">
+            <div className="flex-1 text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+                Our Mission
+              </h2>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                To simplify and enhance travel experiences across Africa by providing a seamless, mobile-first platform that integrates accommodations, flights, events, and authentic cultural experiences, supported by localized payment solutions and verified, reliable services.
+              </p>
+            </div>
+            <div className="flex-1"></div>
+            <div className="flex-shrink-0">
+              <div className="w-96 h-96 rounded-full" style={{ backgroundColor: '#FDD87F' }}></div>
+            </div>
+          </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16">
-          <div className="container mx-auto">
-            <div className="text-center mb-8 md:mb-12">
-              <span className="inline-block bg-[#E3F2FD] text-[#0F75BD] text-xs px-4 py-1 rounded-full mb-4 font-semibold">
-                WHY ANDINOH
-              </span>
-              <h2 className="text-2xl md:text-4xl font-bold mb-4">
-                Everything Your Hotel Needs in One Platform
+        {/* Why We're Different */}
+        <section className="py-30 px-app mt-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+                Why We're Different
               </h2>
+              <p className="text-sm md:text-base text-gray-600 font-regular">
+                Built for Africa, by Africans
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
-                <div className="text-3xl md:text-4xl mb-3 md:mb-4">📅</div>
-                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Smart Booking Management</h3>
-                <p className="text-sm md:text-base text-[#757575]">Automated booking system with real-time availability and instant confirmations</p>
+              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
+                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
+                  Africa-First Approach
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Comprehensive coverage including rural and underserved destinations that global platforms overlook
+                </p>
               </div>
-              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
-                <div className="text-3xl md:text-4xl mb-3 md:mb-4">👥</div>
-                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Guest Experience</h3>
-                <p className="text-sm md:text-base text-[#757575]">Personalized guest profiles, preferences, and seamless check-in/check-out</p>
+              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
+                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
+                  Localized Payments
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Mobile money integration (M-Pesa, MTN MoMo, Airtel Money) alongside traditional payment methods
+                </p>
               </div>
-              <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-[#FAFAFA] border-2 border-transparent hover:border-[#0F75BD] transition-colors">
-                <div className="text-3xl md:text-4xl mb-3 md:mb-4">📊</div>
-                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">Analytics & Insights</h3>
-                <p className="text-sm md:text-base text-[#757575]">Real-time dashboards and reports to make data-driven decisions</p>
+              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
+                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
+                  Authentic Experiences
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Curated local tours and cultural experiences that showcase the real Africa beyond tourist spots
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 md:py-20 px-6 md:px-12 lg:px-16 mx-6 md:mx-12 lg:mx-16 my-12 bg-gradient-to-br from-[#0F75BD] via-[#0F75BD] to-[#0F75BD] text-white rounded-2xl md:rounded-3xl">
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
-              Ready to Transform Your Hotel Operations?
+        <section className="py-16 px-app mt-20 mb-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-6 md:mb-8" style={{ color: primaryColor }}>
+              Join Us on This Journey
             </h2>
-            <p className="text-base md:text-xl text-[#E3F2FD] mb-6 md:mb-8 max-w-2xl mx-auto">
-              Join the waitlist and be among the first to experience the future of hotel management
+            <p className="text-sm md:text-base text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Be among the first to experience the future of African travel when we launch
             </p>
-            <Link href="/waitlist">
-              <button className="px-6 md:px-8 py-3 bg-white text-[#0F75BD] rounded-full font-semibold hover:bg-[#FAFAFA] transition-colors">
-                Join Waitlist
+            <Link href="/#waitlist">
+              <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">
+                Join the Waitlist
               </button>
             </Link>
           </div>

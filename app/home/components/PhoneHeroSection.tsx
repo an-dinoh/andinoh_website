@@ -1,12 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function PhoneHeroSection() {
+  const { primaryColor } = useTheme();
+
+  const darkerColor = primaryColor === "#0F75BD" ? "#0A5A94" :
+                     primaryColor === "#0050C8" ? "#003A8C" :
+                     "#001D4A";
+
   return (
     <section
-      className="h-[350px] py-12 md:py-20 pl-6 md:pl-12 lg:pl-16 pr-0 mx-6 md:mx-12 lg:mx-26 my-12
-      bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white
+      className="h-[380px] py-12 md:py-20 pl-8 md:pl-12 lg:pl-16 pr-0 mx-app mb-12
+      text-white
       rounded-[40px] md:rounded-[48px] overflow-hidden flex items-center"
+      style={{ background: `linear-gradient(to top, ${darkerColor}, ${primaryColor})` }}
     >
       <div className="flex items-center justify-between gap-8 w-full">
         <div className="max-w-2xl text-left flex-1">
@@ -14,7 +24,7 @@ export default function PhoneHeroSection() {
           ✦ Hotel Search
         </span>
 
-        <h1 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 leading-tight">
+        <h1 className="text-3xl md:text-3xl font-medium mb-3 md:mb-4 leading-tight">
           Modern Hotel Management
           <br />
         Made Simple

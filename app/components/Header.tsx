@@ -4,13 +4,31 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { primaryColor } = useTheme();
+
+  const scrollToWaitlist = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const waitlistSection = document.getElementById("waitlist");
+      if (waitlistSection) {
+        const elementPosition = waitlistSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 148;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-24 border-b border-[#D2D2D2]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-22 border-b border-[#D2D2D2]">
       <nav className="container mx-auto flex items-center justify-between px-4 md:px-6 h-full">
         <Link href="/" className="flex items-center">
           <Image src="/logos/ANDINOH.svg" alt="Andinoh" width={100} height={35} priority className="md:w-[120px] md:h-[40px]" />
@@ -21,33 +39,39 @@ export default function Header() {
           <li>
             <Link
               href="/"
-              className="hover:text-[#0F75BD] transition-colors relative inline-block pb-2"
+              className="transition-colors relative inline-block pb-2"
+              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
             >
               Home
               {pathname === "/" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-[#0F75BD] animate-[slideIn_0.3s_ease-in-out]"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
               )}
             </Link>
           </li>
           <li>
             <Link
               href="/about"
-              className="hover:text-[#0F75BD] transition-colors relative inline-block pb-2"
+              className="transition-colors relative inline-block pb-2"
+              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
             >
               About
               {pathname === "/about" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-[#0F75BD] animate-[slideIn_0.3s_ease-in-out]"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
               )}
             </Link>
           </li>
           <li>
             <Link
               href="/contact"
-              className="hover:text-[#0F75BD] transition-colors relative inline-block pb-2"
+              className="transition-colors relative inline-block pb-2"
+              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
             >
               Contact
               {pathname === "/contact" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-[#0F75BD] animate-[slideIn_0.3s_ease-in-out]"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
               )}
             </Link>
           </li>
@@ -55,8 +79,8 @@ export default function Header() {
 
         {/* Desktop Join Button */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/waitlist">
-            <button className="px-6 py-4 text-sm font-medium text-white bg-[#0F75BD] rounded-full hover:bg-[#0050C8] transition-colors">
+          <Link href={pathname === "/" ? "/#waitlist" : "/waitlist"} onClick={scrollToWaitlist}>
+            <button className="px-5 py-3 text-xs font-semibold text-white rounded-[18px] transition-colors" style={{ backgroundColor: primaryColor }}>
               JOIN THE WAIT LIST
             </button>
           </Link>
@@ -64,8 +88,8 @@ export default function Header() {
 
         {/* Mobile: Join Button + Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <Link href="/waitlist">
-            <button className="px-3 py-2 text-[10px] font-semibold text-white bg-[#0F75BD] rounded-full hover:bg-[#0050C8] transition-colors whitespace-nowrap">
+          <Link href={pathname === "/" ? "/#waitlist" : "/waitlist"} onClick={scrollToWaitlist}>
+            <button className="px-3 py-2 text-[10px] font-semibold text-white rounded-3xl transition-colors whitespace-nowrap" style={{ backgroundColor: primaryColor }}>
               JOIN WAITLIST
             </button>
           </Link>
