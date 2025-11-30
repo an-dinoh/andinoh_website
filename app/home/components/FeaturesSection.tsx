@@ -49,11 +49,6 @@ export default function FeaturesSection() {
       </div>
       <div className="absolute inset-0 flex items-start justify-end overflow-visible pointer-events-none -mt-44">
         <svg width="600" height="750" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 -mr-32" style={{ transform: 'rotate(-135deg)' }}>
-          <path d="M60 0C50 10 30 30 25 60C20 90 30 120 60 150C90 120 100 90 95 60C90 30 70 10 60 0Z" stroke="#0F75BD" strokeWidth="1" fill="none"/>
-        </svg>
-      </div>
-      <div className="absolute inset-0 flex items-start justify-end overflow-visible pointer-events-none mt-44">
-        <svg width="600" height="750" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 -mr-88" style={{ transform: 'rotate(-120deg)' }}>
           <path d="M60 0C50 10 30 30 25 60C20 90 30 120 60 150C90 120 100 90 95 60C90 30 70 10 60 0Z" stroke="#FBB81F" strokeWidth="1" fill="none"/>
         </svg>
       </div>

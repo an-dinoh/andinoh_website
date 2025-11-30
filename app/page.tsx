@@ -2,7 +2,6 @@ import PageTransition from "./components/PageTransition";
 import LargeHeroSection from "./home/components/LargeHeroSection";
 import HeroSection from "./home/components/HeroSection";
 import FeaturesSection from "./home/components/FeaturesSection";
-import FourFeaturesSection from "./home/components/FourFeaturesSection";
 import CTASection from "./home/components/CTASection";
 import PhoneHeroSection from "./home/components/PhoneHeroSection";
 import UniqueSection from "./home/components/UniqueSection";
@@ -26,6 +25,13 @@ export default function Home() {
           <div className="text-center">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#0F75BD] mb-4">
               Coming Soon..
+            </h2>
+          </div>
+        </section>
+        <section className="w-full bg-gray-100 py-20">
+          <div className="text-center">
+            <h2 className="text-6xl md:text-7xl lg:text-[320px] font-extrabold text-[#0F75BD] mb-4">
+              Andinoh
             </h2>
           </div>
         </section>

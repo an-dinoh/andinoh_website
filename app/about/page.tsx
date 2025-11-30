@@ -1,6 +1,7 @@
 import { FiCircle } from "react-icons/fi";
 import PageTransition from "../components/PageTransition";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -38,7 +39,18 @@ export default function About() {
             </div>
             <div className="flex-1"></div>
             <div className="flex-shrink-0">
-              <div className="w-96 h-96 rounded-full" style={{ backgroundColor: '#4DB8FF' }}></div>
+              <div className="relative w-96 h-96">
+                <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#80D4FF' }}></div>
+                <div className="absolute -inset-8 flex items-center justify-center">
+                  <Image
+                    src="/images/blue-africa.png"
+                    alt="Africa map"
+                    width={350}
+                    height={350}
+                    className="object-contain relative z-10"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 

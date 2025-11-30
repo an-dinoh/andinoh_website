@@ -52,14 +52,14 @@ export default function WaitlistForm() {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-5">
         {/* Toggle */}
-        <div className="flex justify-center items-center bg-[#0F75BD]/10 backdrop-blur-sm rounded-2xl p-1 w-full max-w-xs mx-auto mb-4">
+        <div className="flex justify-center items-center bg-gray-100 rounded-2xl p-1 w-full max-w-xs mx-auto mb-4">
           <button
             type="button"
             onClick={() => setType("customer")}
             className={`flex-1 py-2 rounded-2xl transition-colors ${
               type === "customer"
-                ? "bg-[#0F75BD] text-white font-bold"
-                : "text-[#0F75BD]/80"
+                ? "bg-[#0F75BD] text-white font-medium"
+                : "text-gray-600"
             }`}
           >
             Customer
@@ -69,8 +69,8 @@ export default function WaitlistForm() {
             onClick={() => setType("hotel")}
             className={`flex-1 py-2 rounded-2xl transition-colors ${
               type === "hotel"
-                ? "bg-[#0F75BD] text-white font-bold"
-                : "text-[#0F75BD]/80"
+                ? "bg-[#0F75BD] text-white font-medium"
+                : "text-gray-600"
             }`}
           >
             Hotel Partner
@@ -84,7 +84,7 @@ export default function WaitlistForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="px-6 py-4 rounded-3xl bg-white/90 backdrop-blur-sm placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[#0F75BD]/30 transition-all font-medium text-gray-900"
+          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0F75BD] focus:border-transparent transition-all font-regular text-gray-900"
         />
 
         {/* Email Field */}
@@ -94,14 +94,14 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="px-6 py-4 rounded-3xl bg-white/90 backdrop-blur-sm placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[#0F75BD]/30 transition-all font-medium text-gray-900"
+          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0F75BD] focus:border-transparent transition-all font-regular text-gray-900"
         />
 
         {/* Submit */}
         <button
           type="submit"
           disabled={loading}
-          className="px-8 py-4 bg-gradient-to-r from-[#FBB81F] to-[#FF9800] text-white font-bold rounded-3xl hover:scale-105 transform transition-all disabled:opacity-50"
+          className="px-8 py-4 bg-[#FBB81F] text-white font-medium rounded-3xl hover:bg-[#E09A00] transition-colors disabled:opacity-50"
         >
           {loading
             ? "Joining..."
@@ -111,7 +111,7 @@ export default function WaitlistForm() {
         </button>
       </form>
 
-      <p className="text-[#0F75BD]/80 text-sm mt-4 text-center">
+      <p className="text-gray-600 text-sm mt-4 text-center">
         🔒 We respect your privacy. No spam, ever.
       </p>
     </>

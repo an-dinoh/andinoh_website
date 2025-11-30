@@ -28,17 +28,20 @@ export default function OfferSection({
 
   const visualSection = (
     <div className={`hidden lg:flex flex-1 ${startAlign === "left" ? "justify-end" : "justify-start"} items-center`}>
-      {image ? (
-        <Image
-          src={image}
-          alt="Decorative leaves"
-          width={400}
-          height={400}
-          className="object-contain"
-        />
-      ) : (
-        <div className="w-104 h-104 rounded-full" style={{ backgroundColor: circleColor }}></div>
-      )}
+      <div className="relative w-96 h-96">
+        <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: circleColor }}></div>
+        {image && (
+          <div className="absolute -inset-8 flex items-center justify-center">
+            <Image
+              src={image}
+              alt="Decorative illustration"
+              width={350}
+              height={350}
+              className="object-contain relative z-10"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 

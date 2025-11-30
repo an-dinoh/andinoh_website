@@ -24,6 +24,7 @@ export default function OffersSection() {
           </>
         }
         circleColor="#4DB8FF"
+        image="/images/hotel-booking.png"
       />
       <OfferSection
         startAlign="right"
@@ -46,6 +47,7 @@ export default function OffersSection() {
           </>
         }
         circleColor="#FDD87F"
+        image="/images/flight.png"
       />
       <OfferSection
         startAlign="left"
@@ -68,6 +70,7 @@ export default function OffersSection() {
           </>
         }
         circleColor="#80D4FF"
+        image="/images/travel-packing.png"
       />
     </>
   );

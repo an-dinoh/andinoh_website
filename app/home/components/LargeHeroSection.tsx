@@ -1,10 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FiCircle } from "react-icons/fi";
 
 export default function LargeHeroSection() {
+  const scrollToWaitlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const waitlistSection = document.getElementById("waitlist");
+    if (waitlistSection) {
+      const elementPosition = waitlistSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 148;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <section className="min-h-[85vh] md:min-h-[85vh] bg-white flex items-center px-app pt-28 md:pt-32">
+    <section className="min-h-[75vh] md:min-h-[80vh] bg-white flex items-center pl-app pr-4 pt-16 md:pt-20">
       <div className="max-w-4xl">
         {/* Introducing Badge */}
         <div className="inline-block relative mb-4 md:mb-6">
@@ -24,31 +40,23 @@ export default function LargeHeroSection() {
           <br />
           and authentic local experiences.
         </p>
-        
-        <div className="flex flex-col items-start gap-4">
-           <Link href="/#waitlist">
-             <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">   JOIN THE WAIT LIST
-              </button>
-            </Link>
-          {/* <div className="flex items-center gap-3">
-           
-            <span className="text-[#0F75BD] text-lg font-semibold tracking-wide">
-              Coming Soon
-            </span>
-          </div> */}
 
-          {/* <p className="text-base text-[#424242] leading-relaxed">
-            Be the first to join our waitlist for early access
-          </p> */}
+        <div className="flex flex-col items-start gap-4">
+          <Link href="/#waitlist" onClick={scrollToWaitlist}>
+            <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">
+              {" "}
+              JOIN THE WAIT LIST
+            </button>
+          </Link>
         </div>
       </div>
 
       <div className="hidden lg:flex flex-1 justify-end items-center">
         <Image
-          src="/images/leafs.png"
-          alt="Decorative leaves"
-          width={600}
-          height={600}
+          src="/images/world.png"
+          alt="World map illustration"
+          width={800}
+          height={800}
           className="object-contain"
         />
       </div>
