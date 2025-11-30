@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function PhoneHeroSection() {
   return (
     <section
-      className="h-[350px] py-12 md:py-20 pl-app pr-0 mx-app my-12
+      className="h-[380px] py-12 md:py-20 pl-8 md:pl-12 lg:pl-16 pr-0 mx-app mb-12
       bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white
       rounded-[40px] md:rounded-[48px] overflow-hidden flex items-center"
     >
@@ -14,7 +14,7 @@ export default function PhoneHeroSection() {
           ✦ Hotel Search
         </span>
 
-        <h1 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 leading-tight">
+        <h1 className="text-3xl md:text-3xl font-medium mb-3 md:mb-4 leading-tight">
           Modern Hotel Management
           <br />
         Made Simple

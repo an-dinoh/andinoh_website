@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function WaitlistForm() {
+  const [type, setType] = useState<"customer" | "hotel">("customer");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +13,6 @@ export default function WaitlistForm() {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     setSubmitted(true);
@@ -20,19 +20,18 @@ export default function WaitlistForm() {
     setName("");
     setEmail("");
 
-    // Reset success message after 5 seconds
     setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
     <>
-      {/* Success Dialog Modal */}
+      {/* Success Modal */}
       {submitted && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-[fadeIn_0.3s_ease-out]">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-[slideDown_0.3s_ease-out] relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-slideDown">
             <div className="text-center">
-              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-4xl">🎉</span>
+              <div className="mx-auto w-16 h-16 bg-green-100 rounded-3xl flex items-center justify-center mb-4">
+                <span className="text-4xl animate-bounce">🎉</span>
               </div>
               <h3 className="text-2xl font-bold text-[#0F75BD] mb-2">
                 You're on the list!
@@ -42,7 +41,7 @@ export default function WaitlistForm() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-[#0F75BD] text-white rounded-full font-semibold hover:bg-[#0050C8] transition-colors"
+                className="px-6 py-3 bg-[#0F75BD] text-white rounded-3xl font-semibold hover:bg-[#0050C8] transition-colors"
               >
                 Got it!
               </button>
@@ -51,37 +50,70 @@ export default function WaitlistForm() {
         </div>
       )}
 
-      <div className="relative">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-5">
+        {/* Toggle */}
+        <div className="flex justify-center items-center bg-[#0F75BD]/10 backdrop-blur-sm rounded-2xl p-1 w-full max-w-xs mx-auto mb-4">
+          <button
+            type="button"
+            onClick={() => setType("customer")}
+            className={`flex-1 py-2 rounded-2xl transition-colors ${
+              type === "customer"
+                ? "bg-[#0F75BD] text-white font-bold"
+                : "text-[#0F75BD]/80"
+            }`}
+          >
+            Customer
+          </button>
+          <button
+            type="button"
+            onClick={() => setType("hotel")}
+            className={`flex-1 py-2 rounded-2xl transition-colors ${
+              type === "hotel"
+                ? "bg-[#0F75BD] text-white font-bold"
+                : "text-[#0F75BD]/80"
+            }`}
+          >
+            Hotel Partner
+          </button>
+        </div>
+
+        {/* Name Field */}
         <input
           type="text"
-          placeholder="Your name"
+          placeholder={type === "customer" ? "Your Name" : "Hotel Name"}
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="flex-1 px-6 py-4 rounded-3xl text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
+          className="px-6 py-4 rounded-3xl bg-white/90 backdrop-blur-sm placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[#0F75BD]/30 transition-all font-medium text-gray-900"
         />
+
+        {/* Email Field */}
         <input
           type="email"
-          placeholder="Your email"
+          placeholder={type === "customer" ? "Your Email" : "Hotel Email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="flex-1 px-6 py-4 rounded-3xl text-[#212121] placeholder:text-[#616161] focus:outline-none focus:ring-4 focus:ring-white/30 transition-all bg-white font-medium"
+          className="px-6 py-4 rounded-3xl bg-white/90 backdrop-blur-sm placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[#0F75BD]/30 transition-all font-medium text-gray-900"
         />
+
+        {/* Submit */}
         <button
           type="submit"
           disabled={loading}
-          className="px-8 py-4 bg-white text-[#0F75BD] rounded-3xl font-bold border border-transparent hover:bg-[#0050C8] hover:text-white hover:scale-105 hover:border-[#FBB81F] transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="px-8 py-4 bg-gradient-to-r from-[#FBB81F] to-[#FF9800] text-white font-bold rounded-3xl hover:scale-105 transform transition-all disabled:opacity-50"
         >
-          {loading ? "Joining..." : "Join Waitlist"}
+          {loading
+            ? "Joining..."
+            : type === "customer"
+            ? "Join Waitlist"
+            : "Join Hotel Waitlist"}
         </button>
       </form>
 
-        <p className="text-white text-sm mt-4 text-center font-regular opacity-90">
-          🔒 We respect your privacy. No spam, ever.
-        </p>
-      </div>
+      <p className="text-[#0F75BD]/80 text-sm mt-4 text-center">
+        🔒 We respect your privacy. No spam, ever.
+      </p>
     </>
   );
 }

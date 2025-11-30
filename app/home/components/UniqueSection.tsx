@@ -1,8 +1,8 @@
 export default function UniqueSection() {
   return (
-    <section className="min-h-screen bg-white flex items-center justify-center px-app py-4 pt-28 md:pt-32">
+    <section className="min-h-screen bg-white flex items-center justify-center px-app py-4 pt-6 md:pt-6">
       <div className="relative w-full max-w-5xl bg-gradient-to-br from-[#0F75BD] via-[#0F75BD] to-[#0F75BD] rounded-2xl md:rounded-4xl overflow-hidden">
-        <div className="relative text-white py-8 md:py-16 px-4 md:px-12">
+        <div className="relative text-white py-8 md:py-6 px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-xs px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4 font-medium">
               OUR CORE VALUES
