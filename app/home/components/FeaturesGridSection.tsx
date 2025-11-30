@@ -1,3 +1,5 @@
+"use client";
+
 import {
   FiSearch,
   FiCalendar,
@@ -17,6 +19,7 @@ import {
   FiMessageCircle,
 } from "react-icons/fi";
 import { MdHotel, MdFlight, MdEvent, MdLocalOffer } from "react-icons/md";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const features = [
   // Row 1 - Empty top row
@@ -87,6 +90,8 @@ const features = [
 ];
 
 export default function FeaturesGridSection() {
+  const { primaryColor } = useTheme();
+
   const getOpacity = (col: number, totalCols: number) => {
     if (col === 0 || col === totalCols - 1) return "opacity-30";
     if (col === 1 || col === totalCols - 2) return "opacity-60";
@@ -97,7 +102,7 @@ export default function FeaturesGridSection() {
     <section className="bg-white py-8 md:py-12 overflow-hidden mt-20">
       <div className="max-w-7xl mx-auto px-app">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 text-[#0F75BD]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6" style={{ color: primaryColor }}>
             Your gateway to authentic
             <br />
             African travel.
@@ -125,10 +130,20 @@ export default function FeaturesGridSection() {
                   ${isLarge ? "col-span-2 row-span-2" : "col-span-1"}
                   ${
                     !isEmpty
-                      ? "cursor-pointer group hover:border-[#0F75BD] hover:border-2 hover:shadow-lg hover:z-10 hover:!opacity-100"
+                      ? "cursor-pointer group hover:border-2 hover:shadow-lg hover:z-10 hover:!opacity-100"
                       : ""
                   }`}
                 style={{ minHeight: "135px" }}
+                onMouseEnter={(e) => {
+                  if (!isEmpty) {
+                    e.currentTarget.style.borderColor = primaryColor;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isEmpty) {
+                    e.currentTarget.style.borderColor = '#E5E7EB';
+                  }
+                }}
               >
                 {!isEmpty && Icon && (
                   <>
@@ -137,7 +152,16 @@ export default function FeaturesGridSection() {
                         isLarge
                           ? "w-[24px] h-[24px] md:w-[48px] md:h-[48px]"
                           : "w-[18px] h-[18px] md:w-[28px] md:h-[28px]"
-                      } mb-3 md:mb-4 text-gray-700 group-hover:text-[#0F75BD] transition-colors duration-300`}
+                      } mb-3 md:mb-4 text-gray-700 transition-colors duration-300`}
+                      style={{
+                        color: undefined
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = primaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = '#374151';
+                      }}
                     />
 
                     <span
@@ -145,7 +169,16 @@ export default function FeaturesGridSection() {
                         isLarge ? "text-base md:text-xl" : "text-xs md:text-sm"
                       } ${
                         isLarge ? "font-medium" : "font-regular"
-                      } text-center text-gray-800 group-hover:text-[#0F75BD] transition-colors duration-300 px-3`}
+                      } text-center text-gray-800 transition-colors duration-300 px-3`}
+                      style={{
+                        color: undefined
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = primaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = '#1F2937';
+                      }}
                     >
                       {feature.name}
                     </span>

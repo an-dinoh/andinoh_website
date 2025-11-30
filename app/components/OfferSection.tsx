@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 interface OfferSectionProps {
   startAlign?: "left" | "right";
@@ -15,9 +18,11 @@ export default function OfferSection({
   image = null,
   circleColor = "#02A5E6",
 }: OfferSectionProps) {
+  const { primaryColor } = useTheme();
+
   const contentSection = (
     <div className="max-w-4xl flex-1">
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-3 md:mb-4 leading-tight text-[#0F75BD]">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-3 md:mb-4 leading-tight" style={{ color: primaryColor }}>
         {title}
       </h2>
       <p className="text-sm md:text-sm lg:text-base font-regular text-gray-500 leading-relaxed max-w-3xl">

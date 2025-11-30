@@ -1,9 +1,27 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function Footer() {
+  const { primaryColor } = useTheme();
+
+  // Create a darker version of the primary color for the gradient
+  const darkerColor =
+    primaryColor === "#0F75BD"
+      ? "#0A5A94"
+      : primaryColor === "#0050C8"
+      ? "#003A8C"
+      : "#001D4A";
+
   return (
-    <footer className="bg-gradient-to-t from-[#0A5A94] to-[#0F75BD] text-white py-12 w-full">
+    <footer
+      className="text-white py-12 w-full"
+      style={{
+        background: `linear-gradient(to top, ${darkerColor}, ${primaryColor})`,
+      }}
+    >
       <div className="w-full max-w-[1400px] mx-auto pt-16 px-app">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap">
           {/* Logo and Description */}
@@ -29,7 +47,7 @@ export default function Footer() {
           {/* About Company */}
           <div>
             <h3 className="text-lg font-semibold mb-6">About Company</h3>
-             <ul className="space-y-6 text-xs">
+            <ul className="space-y-6 text-xs">
               <li>
                 <Link
                   href="/about"
@@ -70,21 +88,50 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6">Get in Touch</h3>
             <ul className="space-y-6 text-xs">
               <li className="flex items-center gap-2">
-                <Image src="/icons/clock.svg" alt="Time" width={16} height={16} className="brightness-0 invert" />
+                <Image
+                  src="/icons/clock.svg"
+                  alt="Time"
+                  width={16}
+                  height={16}
+                  className="brightness-0 invert"
+                />
                 Sun-Fri: 8:00 AM-9:00 PM
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/icons/sms.svg" alt="Email" width={16} height={16} className="brightness-0 invert" />
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info.andinoh@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E3F2FD] transition-colors">
+                <Image
+                  src="/icons/sms.svg"
+                  alt="Email"
+                  width={16}
+                  height={16}
+                  className="brightness-0 invert"
+                />
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info.andinoh@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
                   info.andinoh@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/icons/call.svg" alt="Phone" width={16} height={16} className="brightness-0 invert" />
+                <Image
+                  src="/icons/call.svg"
+                  alt="Phone"
+                  width={16}
+                  height={16}
+                  className="brightness-0 invert"
+                />
                 (+234) 818 2367 679
               </li>
               <li className="flex items-center gap-2">
-                <Image src="/icons/location.svg" alt="Location" width={16} height={16} className="brightness-0 invert" />
+                <Image
+                  src="/icons/location.svg"
+                  alt="Location"
+                  width={16}
+                  height={16}
+                  className="brightness-0 invert"
+                />
                 Lagos, Nigeria
               </li>
             </ul>
@@ -143,7 +190,7 @@ export default function Footer() {
           </div>
         </div>
 
-         <div className="w-full h-px bg-[#E8E8E8] mt-20"></div>
+        <div className="w-full h-px bg-[#E8E8E8] mt-20"></div>
 
         {/* Social Icons and Copyright */}
         <div className="mt-4 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">

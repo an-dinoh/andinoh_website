@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -89,9 +90,11 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/logos/favicon.ico" />
       </head>
       <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`}>
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

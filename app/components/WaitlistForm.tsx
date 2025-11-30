@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function WaitlistForm() {
+  const { primaryColor } = useTheme();
   const [type, setType] = useState<"customer" | "hotel">("customer");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,7 +35,7 @@ export default function WaitlistForm() {
               <div className="mx-auto w-16 h-16 bg-green-100 rounded-3xl flex items-center justify-center mb-4">
                 <span className="text-4xl animate-bounce">🎉</span>
               </div>
-              <h3 className="text-2xl font-bold text-[#0F75BD] mb-2">
+              <h3 className="text-2xl font-bold mb-2" style={{ color: primaryColor }}>
                 You're on the list!
               </h3>
               <p className="text-gray-600 mb-6">
@@ -41,7 +43,8 @@ export default function WaitlistForm() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 bg-[#0F75BD] text-white rounded-3xl font-semibold hover:bg-[#0050C8] transition-colors"
+                className="px-6 py-3 text-white rounded-3xl font-semibold transition-colors"
+                style={{ backgroundColor: primaryColor }}
               >
                 Got it!
               </button>
@@ -56,22 +59,22 @@ export default function WaitlistForm() {
           <button
             type="button"
             onClick={() => setType("customer")}
-            className={`flex-1 py-2 rounded-2xl transition-colors ${
-              type === "customer"
-                ? "bg-[#0F75BD] text-white font-medium"
-                : "text-gray-600"
-            }`}
+            className="flex-1 py-2 rounded-2xl transition-colors text-white font-medium"
+            style={{
+              backgroundColor: type === "customer" ? primaryColor : "transparent",
+              color: type === "customer" ? "white" : "#6B7280"
+            }}
           >
             Customer
           </button>
           <button
             type="button"
             onClick={() => setType("hotel")}
-            className={`flex-1 py-2 rounded-2xl transition-colors ${
-              type === "hotel"
-                ? "bg-[#0F75BD] text-white font-medium"
-                : "text-gray-600"
-            }`}
+            className="flex-1 py-2 rounded-2xl transition-colors"
+            style={{
+              backgroundColor: type === "hotel" ? primaryColor : "transparent",
+              color: type === "hotel" ? "white" : "#6B7280"
+            }}
           >
             Hotel Partner
           </button>
@@ -84,7 +87,12 @@ export default function WaitlistForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0F75BD] focus:border-transparent transition-all font-regular text-gray-900"
+          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900"
+          style={{
+            '--tw-ring-color': primaryColor
+          } as React.CSSProperties}
+          onFocus={(e) => e.currentTarget.style.borderColor = primaryColor}
+          onBlur={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}
         />
 
         {/* Email Field */}
@@ -94,7 +102,12 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0F75BD] focus:border-transparent transition-all font-regular text-gray-900"
+          className="px-6 py-4 rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900"
+          style={{
+            '--tw-ring-color': primaryColor
+          } as React.CSSProperties}
+          onFocus={(e) => e.currentTarget.style.borderColor = primaryColor}
+          onBlur={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}
         />
 
         {/* Submit */}

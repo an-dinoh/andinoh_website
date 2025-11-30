@@ -3,8 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiCircle } from "react-icons/fi";
+import { useTheme } from "@/app/context/ThemeContext";
+import AnimatedGlobe from "@/app/components/AnimatedGlobe";
 
 export default function LargeHeroSection() {
+  const { primaryColor } = useTheme();
+
   const scrollToWaitlist = (e: React.MouseEvent) => {
     e.preventDefault();
     const waitlistSection = document.getElementById("waitlist");
@@ -20,17 +24,17 @@ export default function LargeHeroSection() {
   };
 
   return (
-    <section className="min-h-[75vh] md:min-h-[80vh] bg-white flex items-center pl-app pr-4 pt-16 md:pt-20">
+    <section className="min-h-[75vh] md:min-h-[80vh] bg-white flex items-center pl-app pr-4 pt-16 md:pt-20 mb-12">
       <div className="max-w-4xl">
         {/* Introducing Badge */}
         <div className="inline-block relative mb-4 md:mb-6">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0F75BD] via-[#FBB81F] to-[#0F75BD] animate-spin-slow"></div>
-          <span className="relative inline-flex items-center gap-1.5 bg-white text-[#0F75BD] text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1 border-[#0F75BD]">
+          <div className="absolute inset-0 rounded-full animate-spin-slow" style={{ background: `linear-gradient(to right, ${primaryColor}, #FBB81F, ${primaryColor})` }}></div>
+          <span className="relative inline-flex items-center gap-1.5 bg-white text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1" style={{ color: primaryColor, borderColor: primaryColor }}>
             Introducing Andinoh
             <FiCircle className="w-2 h-2 fill-current" />
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight text-[#0F75BD]">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight" style={{ color: primaryColor }}>
           Connecting Africa's
           <br />
           Hospitality Ecosystem
@@ -52,13 +56,7 @@ export default function LargeHeroSection() {
       </div>
 
       <div className="hidden lg:flex flex-1 justify-end items-center">
-        <Image
-          src="/images/world.png"
-          alt="World map illustration"
-          width={800}
-          height={800}
-          className="object-contain"
-        />
+        <AnimatedGlobe />
       </div>
     </section>
   );
