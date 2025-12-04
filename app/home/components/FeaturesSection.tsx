@@ -67,7 +67,7 @@ export default function FeaturesSection() {
       {/* Content on top */}
       <div className="max-w-7xl mx-auto px-6 md:px-app relative z-10">
         {/* Theme Toggle Button */}
-        <button
+        {/* <button
           onClick={cyclePrimaryColor}
           className="absolute top-0 right-4 md:right-0 z-20 px-3 py-1.5 md:px-4 md:py-2 bg-white border-2 text-[10px] md:text-xs font-medium rounded-full transition-colors"
           style={{
@@ -84,7 +84,7 @@ export default function FeaturesSection() {
           }}
         >
           {getColorName()}
-        </button>
+        </button> */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
             Why Choose
