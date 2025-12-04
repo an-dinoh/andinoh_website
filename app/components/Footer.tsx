@@ -95,7 +95,7 @@ export default function Footer() {
                   height={16}
                   className="brightness-0 invert"
                 />
-                Sun-Fri: 8:00 AM-9:00 PM
+                Sun-Sun: 8:00 AM-9:00 PM
               </li>
               <li className="flex items-center gap-2">
                 <Image
@@ -106,12 +106,12 @@ export default function Footer() {
                   className="brightness-0 invert"
                 />
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info.andinoh@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=support@andinoh.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#E3F2FD] transition-colors"
                 >
-                  info.andinoh@gmail.com
+                  support@andinoh.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
