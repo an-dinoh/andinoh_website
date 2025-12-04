@@ -34,7 +34,7 @@ export default function Contact() {
           <div className="flex lg:flex flex-1 justify-center lg:justify-end items-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80 xl:w-[600px] xl:h-[600px]">
               <Image
-                src="/images/Contact.png"
+                src="/images/contact.png"
                 alt="Contact illustration"
                 width={600}
                 height={600}
@@ -51,7 +51,7 @@ export default function Contact() {
               {/* Email Support */}
               <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors relative overflow-hidden" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
                 <div className="flex flex-col items-start text-left lg:block">
-                  <div className="relative mb-4 lg:absolute lg:top-0 lg:right-0 lg:mb-0">
+                  <div className="relative mb-4 lg:m-4 md:m-3 lg:absolute lg:top-0 lg:right-0 lg:mb-0">
                     <div className="relative w-20 h-20">
                       <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#4DB8FF' }}></div>
                       <div className="absolute -inset-2 flex items-center justify-center">
