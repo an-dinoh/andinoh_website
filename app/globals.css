@@ -7,7 +7,7 @@
   --primary-hover: #0050C8;
 
   /* Horizontal Padding */
-  --padding-x-mobile: 1.5rem;    /* 24px */
+  --padding-x-mobile: 2.5rem;    /* 40px */
   --padding-x-medium: 3rem;      /* 48px */
   --padding-x-large: 10rem;      /* 160px */
 }
@@ -61,14 +61,50 @@ body {
   width: 100%;
 }
 
+/* Maintain portrait-like view on mobile landscape */
+@media only screen and (max-width: 926px) and (orientation: landscape) {
+  html,
+  body {
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* Prevent viewport scaling on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
 
 html,
 body {
   scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Additional mobile-specific scrollbar hiding */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
 }
 
 body {

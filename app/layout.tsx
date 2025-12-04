@@ -89,7 +89,7 @@ export default function RootLayout({
         <link rel="icon" href="/logos/favicon.ico" />
         <link rel="shortcut icon" href="/logos/favicon.ico" />
       </head>
-      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`}>
+      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`} suppressHydrationWarning>
         <ThemeProvider>
           <Header />
           {children}

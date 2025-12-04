@@ -10,19 +10,43 @@ export default function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, user_type: type }),
+      });
 
-    setSubmitted(true);
-    setLoading(false);
-    setName("");
-    setEmail("");
+      const data = await response.json();
 
-    setTimeout(() => setSubmitted(false), 5000);
+      if (response.ok) {
+        setResponseMessage(data.message);
+        setSubmitted(true);
+        setName("");
+        setEmail("");
+      } else {
+        setResponseMessage(data.error || "Something went wrong");
+        setSubmitted(true);
+      }
+    } catch (error) {
+      setResponseMessage("Failed to join waitlist. Please try again.");
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setResponseMessage("");
+    }, 5000);
   };
 
   return (
@@ -36,10 +60,10 @@ export default function WaitlistForm() {
                 <span className="text-4xl animate-bounce">🎉</span>
               </div>
               <h3 className="text-2xl font-bold mb-2" style={{ color: primaryColor }}>
-                You're on the list!
+                {responseMessage.includes("already") ? "Already Registered!" : "You're on the list!"}
               </h3>
               <p className="text-gray-600 mb-6">
-                We'll be in touch soon with exclusive early access updates.
+                {responseMessage}
               </p>
               <button
                 onClick={() => setSubmitted(false)}

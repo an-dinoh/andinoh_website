@@ -51,7 +51,7 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section className="py-16 px-app mt-20 mb-50 relative">
+    <section className="py-16 px-app mt-20 mb-12 md:mb-20 relative">
       {/* Theme Toggle Button */}
       <button
         onClick={cyclePrimaryColor}
