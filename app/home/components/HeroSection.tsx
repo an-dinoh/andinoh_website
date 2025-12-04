@@ -26,12 +26,12 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="waitlist" className={`relative h-[75vh] md:h-[85vh] ${getBackgroundClass()} flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden`} style={getBackgroundStyle()}>
+    <section id="waitlist" className={`relative min-h-[85vh] h-auto md:h-[85vh] ${getBackgroundClass()} flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 py-12 md:py-0 overflow-hidden mt-12 md:mt-16 lg:mt-20 landscape:max-md:min-h-[100vh] landscape:max-md:py-8`} style={getBackgroundStyle()}>
 
       {/* Theme Toggle Button */}
       <button
         onClick={cycleTheme}
-        className="absolute top-4 right-4 z-20 px-4 py-2 bg-white border-2 rounded-full text-xs font-medium transition-colors"
+        className="absolute top-4 right-4 z-20 px-3 py-1.5 md:px-4 md:py-2 bg-white border-2 rounded-full text-[10px] md:text-xs font-medium transition-colors"
         style={{ borderColor: primaryColor, color: primaryColor }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = primaryColor;
@@ -66,19 +66,19 @@ export default function HeroSection() {
       )}
 
       {/* Headline & Subheadline */}
-      <div className="text-center mb-6 md:mb-10">
-       <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6" style={{ color: primaryColor }}>
+      <div className="text-center mb-6 md:mb-10 landscape:max-md:mb-4">
+       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-3 md:mb-6 landscape:max-md:text-xl landscape:max-md:mb-2" style={{ color: primaryColor }}>
           Be the First to Explore Andinoh
         </h1>
-        <p className="text-sm md:text-base text-gray-600 font-regular leading-relaxed drop-shadow-sm max-w-xl mx-auto">
-       Be among the first to discover Africa’s hotels, flights, events, and local experiences.   </p>
+        <p className="text-xs sm:text-sm md:text-base text-gray-600 font-regular leading-relaxed drop-shadow-sm max-w-xl mx-auto px-2 landscape:max-md:text-xs landscape:max-md:mb-2">
+       Be among the first to discover Africa's hotels, flights, events, and local experiences.   </p>
       </div>
 
       {/* Hero content card */}
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden p-6 md:p-10 flex flex-col items-center text-center border-2 border-gray-200">
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl md:rounded-3xl overflow-hidden p-4 sm:p-6 md:p-10 flex flex-col items-center text-center border-2 border-gray-200 landscape:max-md:p-4 landscape:max-md:max-w-3xl">
 
         {/* Badge */}
-        <span className="inline-block bg-[#0F75BD]/15 backdrop-blur-sm text-[#0F75BD] text-xs md:text-sm px-3 py-1 rounded-full mb-6 font-semibold animate-pulse">
+        <span className="inline-block bg-[#0F75BD]/15 backdrop-blur-sm text-[#0F75BD] text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 rounded-full mb-4 md:mb-6 font-semibold animate-pulse landscape:max-md:text-[10px] landscape:max-md:px-2.5 landscape:max-md:py-0.5 landscape:max-md:mb-3">
           ✨ COMING SOON
         </span>
 
