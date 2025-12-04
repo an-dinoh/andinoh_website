@@ -75,7 +75,7 @@ export default function HeroSection() {
       </div>
 
       {/* Hero content card */}
-      <div className="relative w-full max-w-2xl bg-white rounded-2xl md:rounded-3xl overflow-hidden p-4 sm:p-6 md:p-10 flex flex-col items-center text-center border-2 border-gray-200 landscape:max-md:p-4 landscape:max-md:max-w-3xl">
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl md:rounded-3xl overflow-hidden p-7 sm:p-7 md:p-10 flex flex-col items-center text-center border-2 border-gray-200 landscape:max-md:p-4 landscape:max-md:max-w-3xl">
 
         {/* Badge */}
         <span className="inline-block bg-[#0F75BD]/15 backdrop-blur-sm text-[#0F75BD] text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 rounded-full mb-4 md:mb-6 font-semibold animate-pulse landscape:max-md:text-[10px] landscape:max-md:px-2.5 landscape:max-md:py-0.5 landscape:max-md:mb-3">

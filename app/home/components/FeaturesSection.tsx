@@ -51,27 +51,7 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section className="py-16 px-app mt-20 mb-12 md:mb-20 relative">
-      {/* Theme Toggle Button */}
-      <button
-        onClick={cyclePrimaryColor}
-        className="absolute top-4 right-4 z-20 px-4 py-2 bg-white border-2 text-xs font-medium rounded-full transition-colors"
-        style={{
-          borderColor: primaryColor,
-          color: primaryColor
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = primaryColor;
-          e.currentTarget.style.color = 'white';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'white';
-          e.currentTarget.style.color = primaryColor;
-        }}
-      >
-        {getColorName()}
-      </button>
-
+    <section className="py-12 md:py-16 mt-12 md:mt-20 mb-12 md:mb-20 relative">
       {/* Leaf Shapes - Behind everything */}
       <div className="absolute inset-0 flex items-start justify-start overflow-visible pointer-events-none">
         <svg width="600" height="750" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 -ml-32" style={{ transform: 'rotate(45deg)' }}>
@@ -85,19 +65,38 @@ export default function FeaturesSection() {
       </div>
 
       {/* Content on top */}
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-app relative z-10">
+        {/* Theme Toggle Button */}
+        <button
+          onClick={cyclePrimaryColor}
+          className="absolute top-0 right-4 md:right-0 z-20 px-3 py-1.5 md:px-4 md:py-2 bg-white border-2 text-[10px] md:text-xs font-medium rounded-full transition-colors"
+          style={{
+            borderColor: primaryColor,
+            color: primaryColor
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = primaryColor;
+            e.currentTarget.style.color = 'white';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'white';
+            e.currentTarget.style.color = primaryColor;
+          }}
+        >
+          {getColorName()}
+        </button>
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
             Why Choose
             <br />
             Andinoh
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors w-full md:w-[calc(33.333%-1.67rem)] lg:w-[calc(33.333%-2.5rem)]"
+              className="p-5 sm:p-6 rounded-2xl md:rounded-3xl bg-white border border-gray-200 transition-colors w-full md:w-[calc(33.333%-1.67rem)] lg:w-[calc(33.333%-2.5rem)]"
               style={{
                 borderColor: undefined
               }}
@@ -108,13 +107,13 @@ export default function FeaturesSection() {
                 e.currentTarget.style.borderColor = '#E5E7EB';
               }}
             >
-              <div className="w-8 h-8 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: `${primaryColor}20` }}>
-                <feature.icon className="w-4 h-4" style={{ color: primaryColor }} />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center mb-3 sm:mb-4" style={{ backgroundColor: `${primaryColor}20` }}>
+                <feature.icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: primaryColor }} />
               </div>
-              <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
+              <h3 className="text-sm sm:text-base font-medium mb-2 sm:mb-3" style={{ color: primaryColor }}>
                 {feature.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
                 {feature.description}
               </p>
             </div>

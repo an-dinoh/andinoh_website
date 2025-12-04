@@ -14,7 +14,10 @@ export default function LargeHeroSection() {
     const waitlistSection = document.getElementById("waitlist");
     if (waitlistSection) {
       const elementPosition = waitlistSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - 148;
+      // Use different offset for mobile vs desktop
+      const isMobile = window.innerWidth < 1024;
+      const offset = isMobile ? 120 : 148;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
       window.scrollTo({
         top: offsetPosition,

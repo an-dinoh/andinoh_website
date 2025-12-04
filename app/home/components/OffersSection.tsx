@@ -2,7 +2,7 @@ import OfferSection from "@/app/components/OfferSection";
 
 export default function OffersSection() {
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-16 md:py-20 px-6 md:px-app">
       <div className="mb-32 md:mb-40">
         <OfferSection
           startAlign="left"

@@ -88,11 +88,11 @@ export default function WaitlistForm() {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4 md:gap-5 landscape:max-md:gap-2">
         {/* Toggle */}
-        <div className="flex justify-center items-center bg-gray-100 rounded-xl md:rounded-2xl p-0.5 sm:p-1 w-full max-w-xs mx-auto mb-2 sm:mb-4 landscape:max-md:mb-2 landscape:max-md:max-w-sm">
+        <div className="flex justify-center items-center bg-gray-100 rounded-xl md:rounded-2xl p-0.5 sm:p-1 w-[280px] sm:w-auto max-w-xs mx-auto mb-2 sm:mb-4 landscape:max-md:mb-2 landscape:max-md:w-[240px] landscape:max-md:max-w-sm">
           <button
             type="button"
             onClick={() => setType("customer")}
-            className="flex-1 py-1.5 sm:py-2 md:py-2 rounded-xl md:rounded-2xl transition-colors text-white font-medium text-xs sm:text-sm md:text-sm landscape:max-md:text-xs landscape:max-md:py-1.5"
+            className="flex-1 py-2 sm:py-2 md:py-2 rounded-xl md:rounded-2xl transition-colors text-white font-medium text-xs sm:text-sm md:text-sm landscape:max-md:text-xs landscape:max-md:py-1.5 whitespace-nowrap px-3"
             style={{
               backgroundColor: type === "customer" ? primaryColor : "transparent",
               color: type === "customer" ? "white" : "#6B7280"
@@ -103,7 +103,7 @@ export default function WaitlistForm() {
           <button
             type="button"
             onClick={() => setType("hotel")}
-            className="flex-1 py-1.5 sm:py-2 md:py-2 rounded-xl md:rounded-2xl transition-colors text-xs sm:text-sm md:text-sm landscape:max-md:text-xs landscape:max-md:py-1.5"
+            className="flex-1 py-2 sm:py-2 md:py-2 rounded-xl md:rounded-2xl transition-colors text-xs sm:text-sm md:text-sm landscape:max-md:text-xs landscape:max-md:py-1.5 whitespace-nowrap px-3"
             style={{
               backgroundColor: type === "hotel" ? primaryColor : "transparent",
               color: type === "hotel" ? "white" : "#6B7280"

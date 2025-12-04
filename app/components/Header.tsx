@@ -89,13 +89,13 @@ export default function Header() {
         {/* Mobile: Join Button + Menu Button */}
         <div className="md:hidden flex items-center gap-2">
           <Link href={pathname === "/" ? "/#waitlist" : "/waitlist"} onClick={scrollToWaitlist}>
-            <button className="px-3 py-2 text-[10px] font-semibold text-white rounded-3xl transition-colors whitespace-nowrap" style={{ backgroundColor: primaryColor }}>
+            <button className="px-3 py-2.5 text-[10px] font-semibold text-white rounded-2xl transition-colors whitespace-nowrap" style={{ backgroundColor: primaryColor }}>
               JOIN WAITLIST
             </button>
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex flex-col gap-1.5 w-8 h-8 items-center justify-center"
+            className="flex flex-col gap-1.5 w-7 h-7 items-center justify-center"
             aria-label="Toggle menu"
           >
             <span className={`w-6 h-0.5 bg-[#424242] transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -109,7 +109,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-[#D2D2D2] shadow-lg">
           <div className="container mx-auto px-4 py-6">
-            <ul className="flex flex-col gap-4 text-base font-medium text-[#424242]">
+            <ul className="flex flex-col gap-4 text-sm font-regular text-[#424242]">
               <li>
                 <Link
                   href="/"
