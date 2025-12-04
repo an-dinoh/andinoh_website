@@ -13,8 +13,8 @@ export default function Contact() {
     <PageTransition>
       <div className="min-h-screen bg-white overflow-x-hidden">
         {/* Hero Section */}
-        <section className="min-h-[85vh] bg-white flex items-center pl-app pr-4 pt-28 md:pt-32">
-          <div className="max-w-4xl">
+        <section className="min-h-[85vh] bg-white flex flex-col lg:flex-row items-center px-app lg:pl-app lg:pr-4 pt-28 md:pt-32 gap-8">
+          <div className="max-w-4xl text-center lg:text-left w-full lg:w-auto">
             <div className="inline-block relative mb-4 md:mb-6">
               <span className="inline-flex items-center gap-1.5 text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor, borderColor: primaryColor }}>
                 Get in Touch
@@ -31,14 +31,16 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="hidden lg:flex flex-1 justify-end items-center">
-            <Image
-              src="/images/Contact.png"
-              alt="Contact illustration"
-              width={600}
-              height={600}
-              className="object-contain"
-            />
+          <div className="flex lg:flex flex-1 justify-center lg:justify-end items-center">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 xl:w-[600px] xl:h-[600px]">
+              <Image
+                src="/images/Contact.png"
+                alt="Contact illustration"
+                width={600}
+                height={600}
+                className="object-contain"
+              />
+            </div>
           </div>
         </section>
 
@@ -48,29 +50,31 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {/* Email Support */}
               <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors relative overflow-hidden" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
-                <div className="absolute top-6 right-6">
-                  <div className="relative w-20 h-20">
-                    <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#4DB8FF' }}></div>
-                    <div className="absolute -inset-2 flex items-center justify-center">
-                      <Image
-                        src="/images/happy.png"
-                        alt="Happy"
-                        width={80}
-                        height={80}
-                        className="object-contain relative z-10"
-                      />
+                <div className="flex flex-col items-start text-left lg:block">
+                  <div className="relative mb-4 lg:absolute lg:top-0 lg:right-0 lg:mb-0">
+                    <div className="relative w-20 h-20">
+                      <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#4DB8FF' }}></div>
+                      <div className="absolute -inset-2 flex items-center justify-center">
+                        <Image
+                          src="/images/happy.png"
+                          alt="Happy"
+                          width={80}
+                          height={80}
+                          className="object-contain relative z-10"
+                        />
+                      </div>
                     </div>
                   </div>
+                  <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
+                    Email Support
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-3 leading-relaxed">
+                    Available Monday to Saturday, 9 AM – 5 PM
+                  </p>
+                  <a href="mailto:support@andinoh.com" className="text-sm font-medium hover:underline" style={{ color: primaryColor }}>
+                    support@andinoh.com
+                  </a>
                 </div>
-                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
-                  Email Support
-                </h3>
-                <p className="text-sm text-gray-500 mb-3 leading-relaxed">
-                  Available Monday to Saturday, 9 AM – 5 PM
-                </p>
-                <a href="mailto:support@andinoh.com" className="text-sm font-medium hover:underline" style={{ color: primaryColor }}>
-                  support@andinoh.com
-                </a>
               </div>
 
               {/* Phone Support */}

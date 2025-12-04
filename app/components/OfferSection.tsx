@@ -21,29 +21,33 @@ export default function OfferSection({
   const { primaryColor } = useTheme();
 
   const contentSection = (
-    <div className="max-w-4xl flex-1">
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-3 md:mb-4 leading-tight" style={{ color: primaryColor }}>
+    <div className="w-full lg:flex-1 text-center lg:text-left mb-8 lg:mb-0">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
         {title}
       </h2>
-      <p className="text-sm md:text-sm lg:text-base font-regular text-gray-500 leading-relaxed max-w-3xl">
+      <p className="text-sm md:text-base text-gray-600 leading-relaxed">
         {subtitle}
       </p>
     </div>
   );
 
   const visualSection = (
-    <div className={`hidden lg:flex flex-1 ${startAlign === "left" ? "justify-end" : "justify-start"} items-center`}>
-      <div className="relative w-96 h-96">
+    <div className={`flex flex-shrink-0 ${startAlign === "left" ? "justify-center lg:justify-end" : "justify-center lg:justify-start"} items-center`}>
+      <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex-shrink-0">
+        {/* Circle background */}
         <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: circleColor }}></div>
+
+        {/* Image with slight overflow */}
         {image && (
-          <div className="absolute -inset-8 flex items-center justify-center">
-            <Image
-              src={image}
-              alt="Decorative illustration"
-              width={350}
-              height={350}
-              className="object-contain relative z-10"
-            />
+          <div className="absolute inset-0 flex items-center justify-center overflow-visible">
+            <div className="relative w-[105%] h-[105%]">
+              <Image
+                src={image}
+                alt="Decorative illustration"
+                fill
+                className="object-contain relative z-10"
+              />
+            </div>
           </div>
         )}
       </div>
@@ -51,24 +55,32 @@ export default function OfferSection({
   );
 
   return (
-    <section className="bg-white py-8 px-app">
+    <div className="px-app">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center py-6 mb-6">
+        {/* Mobile: Always text first, then image (vertical) */}
+        <div className="flex lg:hidden flex-col items-center gap-12">
+          {contentSection}
+          {visualSection}
+        </div>
+
+        {/* Desktop: Text and image side by side (horizontal) */}
+        <div className="hidden lg:flex flex-row items-center gap-12">
+          
           {startAlign === "left" ? (
             <>
               {contentSection}
-              <div className="flex-1"></div>
+              <div className="flex-1 min-w-[80px]"></div>
               {visualSection}
             </>
           ) : (
             <>
               {visualSection}
-              <div className="flex-1"></div>
+              <div className="flex-1 min-w-[80px]"></div>
               {contentSection}
             </>
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

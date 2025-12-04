@@ -100,22 +100,19 @@ export default function FeaturesGridSection() {
 
   return (
     <section className="bg-white py-8 md:py-12 overflow-hidden mt-20">
-      <div className="max-w-7xl mx-auto px-app">
+      <div className="max-w-7xl mx-auto px-6 md:px-app">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6" style={{ color: primaryColor }}>
-            Your gateway to authentic
-            <br />
-            African travel.
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+            Your gateway to authentic African travel.
           </h2>
-          <p className="text-sm md:text-base text-gray-600 font-regular">
-            One platform for hotels, flights, events, and authentic African
-            experiences.{" "}
+          <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+            One platform for hotels, flights, events, and authentic African experiences.
           </p>
         </div>
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-8 gap-0 border-t border-b border-gray-200">
+        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-0 border-t border-b border-gray-200">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isLarge = feature.size === "large";
@@ -123,17 +120,21 @@ export default function FeaturesGridSection() {
             const opacity = getOpacity(col, 8);
             const isEmpty = feature.empty;
 
+            // Hide items on mobile: only show rows 3-5 (indices 16-47)
+            const hideOnMobile = index < 16 || index >= 48;
+
             return (
               <div
                 key={index}
                 className={`relative flex flex-col items-center justify-center border-[0.5px] border-gray-200 transition-all duration-300 aspect-square ${opacity}
                   ${isLarge ? "col-span-2 row-span-2" : "col-span-1"}
+                  ${hideOnMobile ? "hidden lg:flex" : ""}
                   ${
                     !isEmpty
                       ? "cursor-pointer group hover:border-2 hover:shadow-lg hover:z-10 hover:!opacity-100"
                       : ""
                   }`}
-                style={{ minHeight: "135px" }}
+                style={{ minHeight: "80px" }}
                 onMouseEnter={(e) => {
                   if (!isEmpty) {
                     e.currentTarget.style.borderColor = primaryColor;
@@ -150,9 +151,9 @@ export default function FeaturesGridSection() {
                     <Icon
                       className={`${
                         isLarge
-                          ? "w-[24px] h-[24px] md:w-[48px] md:h-[48px]"
-                          : "w-[18px] h-[18px] md:w-[28px] md:h-[28px]"
-                      } mb-3 md:mb-4 text-gray-700 transition-colors duration-300`}
+                          ? "w-[20px] h-[20px] sm:w-[24px] sm:h-[24px] md:w-[32px] md:h-[32px] lg:w-[48px] lg:h-[48px]"
+                          : "w-[14px] h-[14px] sm:w-[18px] sm:h-[18px] md:w-[22px] md:h-[22px] lg:w-[28px] lg:h-[28px]"
+                      } mb-2 sm:mb-3 md:mb-4 text-gray-700 transition-colors duration-300`}
                       style={{
                         color: undefined
                       }}
@@ -166,10 +167,10 @@ export default function FeaturesGridSection() {
 
                     <span
                       className={`${
-                        isLarge ? "text-base md:text-xl" : "text-xs md:text-sm"
+                        isLarge ? "text-sm md:text-base lg:text-xl" : "text-[10px] sm:text-xs md:text-sm"
                       } ${
                         isLarge ? "font-medium" : "font-regular"
-                      } text-center text-gray-800 transition-colors duration-300 px-3`}
+                      } text-center text-gray-800 transition-colors duration-300 px-2 sm:px-3`}
                       style={{
                         color: undefined
                       }}

@@ -23,9 +23,9 @@ export default function Footer() {
       }}
     >
       <div className="w-full max-w-[1400px] mx-auto pt-16 px-app">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap justify-between">
           {/* Logo and Description */}
-          <div className="flex-shrink-0 md:w-64">
+          <div className="flex-shrink-0 w-full md:w-64">
             <div className="mb-6">
               <Image
                 src="/logos/ANDINOH BLACK.svg"
@@ -42,11 +42,11 @@ export default function Footer() {
           </div>
 
           {/* Spacer */}
-          <div className="flex-1"></div>
+          <div className="hidden lg:flex flex-1"></div>
 
           {/* About Company */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">About Company</h3>
+          <div className="w-full sm:w-auto">
+            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">About Company</h3>
             <ul className="space-y-6 text-xs">
               <li>
                 <Link
@@ -84,8 +84,8 @@ export default function Footer() {
           </div>
 
           {/* Get in Touch */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Get in Touch</h3>
+          <div className="w-full sm:w-auto">
+            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">Get in Touch</h3>
             <ul className="space-y-6 text-xs">
               <li className="flex items-center gap-2">
                 <Image
@@ -138,8 +138,8 @@ export default function Footer() {
           </div>
 
           {/* Download App */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Download App</h3>
+          <div className="w-full sm:w-auto">
+            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">Download App</h3>
             <div className="space-y-6">
               <button
                 className="

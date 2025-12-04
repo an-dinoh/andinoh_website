@@ -86,10 +86,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-white overflow-x-hidden">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/logos/favicon.ico" />
         <link rel="shortcut icon" href="/logos/favicon.ico" />
       </head>
-      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`}>
+      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`} suppressHydrationWarning>
         <ThemeProvider>
           <Header />
           {children}
