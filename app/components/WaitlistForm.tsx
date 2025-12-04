@@ -62,21 +62,21 @@ export default function WaitlistForm() {
     <>
       {/* Success Modal */}
       {submitted && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-slideDown">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/50 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 animate-slideDown">
             <div className="text-center">
-              <div className="mx-auto w-16 h-16 bg-green-100 rounded-3xl flex items-center justify-center mb-4">
-                <span className="text-4xl animate-bounce">🎉</span>
+              <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-3 sm:mb-4">
+                <span className="text-3xl sm:text-4xl animate-bounce">🎉</span>
               </div>
-              <h3 className="text-2xl font-bold mb-2" style={{ color: primaryColor }}>
+              <h3 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-2" style={{ color: primaryColor }}>
                 {responseMessage.includes("already") ? "Already Registered!" : "You're on the list!"}
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-sm sm:text-base text-gray-600 mb-5 sm:mb-6">
                 {responseMessage}
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 text-white rounded-3xl font-semibold transition-colors"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 text-white rounded-2xl sm:rounded-3xl font-medium transition-colors text-sm sm:text-base"
                 style={{ backgroundColor: primaryColor }}
               >
                 Got it!
@@ -120,7 +120,7 @@ export default function WaitlistForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-xs sm:text-sm md:text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-xs landscape:max-md:rounded-xl"
+          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
           style={{
             '--tw-ring-color': primaryColor
           } as React.CSSProperties}
@@ -135,7 +135,7 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-xs sm:text-sm md:text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-xs landscape:max-md:rounded-xl"
+          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
           style={{
             '--tw-ring-color': primaryColor
           } as React.CSSProperties}

@@ -208,3 +208,18 @@ body {
     margin-right: var(--padding-x-large);
   }
 }
+
+/* Prevent mobile zoom on input focus */
+input, select, textarea {
+  font-size: 16px;
+}
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* Smaller placeholder text */
+input::placeholder, select::placeholder, textarea::placeholder {
+  font-size: 14px;
+}
