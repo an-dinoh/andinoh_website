@@ -9,7 +9,7 @@ export default function OffersSection() {
           title="Hotels & Stays Across Africa"
           subtitle="Browse and book from thousands of verified hotels, guesthouses, and lodges across the continent. From luxury resorts to cozy local stays."
           circleColor="#4DB8FF"
-          image="/images/hotel-booking.png"
+          image="/images/search-engines-cuate.png"
         />
       </div>
       <div className="mb-32 md:mb-40">
@@ -18,7 +18,7 @@ export default function OffersSection() {
           title="Flight Booking Made Easy"
           subtitle="Compare and book flights from major airlines and local carriers. Get the best deals for your African travel adventures in just a few clicks."
           circleColor="#FDD87F"
-          image="/images/flight.png"
+          image="/images/flight-booking-pana.png"
         />
       </div>
       <div>
@@ -27,7 +27,7 @@ export default function OffersSection() {
           title="Events & Experiences"
           subtitle="Book event venues, schedule conferences, and discover authentic local tours. Experience Africa's culture, cuisine, and unforgettable moments."
           circleColor="#80D4FF"
-          image="/images/travel-packing.png"
+          image="/images/carnival-cuate.png"
         />
       </div>
     </section>

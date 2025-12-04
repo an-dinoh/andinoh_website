@@ -55,13 +55,15 @@ export default function About() {
               </p>
             </div>
             <div className="hidden lg:flex flex-1"></div>
+
+            
             <div className="flex lg:flex flex-shrink-0 justify-center">
               <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
                 <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#80D4FF' }}></div>
                 <div className="absolute -inset-2 flex items-center justify-center">
                   <Image
-                    src="/images/blue-africa.png"
-                    alt="Africa map"
+                    src="/images/online-article-cuate.png"
+                    alt="Hotel Booking - Illustration by Storyset"
                     width={280}
                     height={280}
                     className="object-contain relative z-10"
@@ -83,7 +85,18 @@ export default function About() {
             </div>
             <div className="hidden lg:flex flex-1"></div>
             <div className="flex lg:flex flex-shrink-0 justify-center">
-              <div className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full" style={{ backgroundColor: '#FDD87F' }}></div>
+              <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
+                <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#FDD87F' }}></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Image
+                    src="/images/hotel-booking-cuate.png"
+                    alt="Hotel Booking - Illustration by Storyset"
+                    width={280}
+                    height={280}
+                    className="object-contain relative z-10"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
