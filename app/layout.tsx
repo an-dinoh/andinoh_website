@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Andinoh — Modern Hotel Management System | Smart Operations for Hotels, Resorts & Guests",
+  title: "Andinoh",
   description:
     "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation. Built for hotels, resorts, guest houses, and serviced apartments.",
   keywords: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://andinoh.com",
-    title: "Andinoh — Modern Hotel Management System | Smart Operations for Hotels, Resorts & Guests",
+    title: "Andinoh",
     description:
       "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation.",
     siteName: "Andinoh",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andinoh — Modern Hotel Management System | Smart Operations for Hotels, Resorts & Guests",
+    title: "Andinoh",
     description:
       "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation.",
     images: ["/twitter-image.png"],
