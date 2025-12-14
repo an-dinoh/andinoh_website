@@ -11,6 +11,7 @@ export default function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   // Email validation regex
   const isValidEmail = (email: string) => {
@@ -38,15 +39,18 @@ export default function WaitlistForm() {
 
       if (response.ok) {
         setResponseMessage(data.message);
+        setIsError(false);
         setSubmitted(true);
         setName("");
         setEmail("");
       } else {
         setResponseMessage(data.error || "Something went wrong");
+        setIsError(true);
         setSubmitted(true);
       }
     } catch (error) {
       setResponseMessage("Failed to join waitlist. Please try again.");
+      setIsError(true);
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -55,21 +59,30 @@ export default function WaitlistForm() {
     setTimeout(() => {
       setSubmitted(false);
       setResponseMessage("");
+      setIsError(false);
     }, 5000);
   };
 
   return (
     <>
-      {/* Success Modal */}
+      {/* Success/Error Modal */}
       {submitted && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/50 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 animate-slideDown">
             <div className="text-center">
-              <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-3 sm:mb-4">
-                <span className="text-3xl sm:text-4xl animate-bounce">🎉</span>
+              <div
+                className="mx-auto w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-3 sm:mb-4"
+                style={{ backgroundColor: isError ? '#FEE2E2' : '#DCFCE7' }}
+              >
+                <span className="text-3xl sm:text-4xl animate-bounce">
+                  {isError ? '❌' : '🎉'}
+                </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-2" style={{ color: primaryColor }}>
-                {responseMessage.includes("already") ? "Already Registered!" : "You're on the list!"}
+              <h3 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-2" style={{ color: isError ? '#DC2626' : primaryColor }}>
+                {isError
+                  ? "Oops! Something went wrong"
+                  : (responseMessage.includes("already") ? "Already Registered!" : "You're on the list!")
+                }
               </h3>
               <p className="text-sm sm:text-base text-gray-600 mb-5 sm:mb-6">
                 {responseMessage}
@@ -77,7 +90,7 @@ export default function WaitlistForm() {
               <button
                 onClick={() => setSubmitted(false)}
                 className="px-5 py-2.5 sm:px-6 sm:py-3 text-white rounded-2xl sm:rounded-3xl font-medium transition-colors text-sm sm:text-base"
-                style={{ backgroundColor: primaryColor }}
+                style={{ backgroundColor: isError ? '#DC2626' : primaryColor }}
               >
                 Got it!
               </button>

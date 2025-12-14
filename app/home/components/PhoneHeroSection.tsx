@@ -44,7 +44,7 @@ export default function PhoneHeroSection() {
                 flex items-center justify-center gap-2
                 hover:border-[0.5px] border-[#D2D2D2]
                 bg-[#1A1A1A]
-                px-3 py-2.5
+                px-2.5 py-2
                 rounded-xl
                 transition-colors
                 min-h-[42px]
@@ -69,7 +69,7 @@ export default function PhoneHeroSection() {
                 flex items-center justify-center gap-2
                 hover:border-[0.5px] border-[#D2D2D2]
                 bg-[#1A1A1A]
-                px-3 py-2.5
+                px-2.5 py-2
                 rounded-xl
                 transition-colors
                 min-h-[42px]
@@ -122,7 +122,7 @@ export default function PhoneHeroSection() {
                   flex items-center justify-start gap-3 md:gap-4
                   hover:border-[0.5px] border-[#D2D2D2]
                   bg-[#1A1A1A]
-                  px-4 md:px-4 lg:px-5 py-3 md:py-4 lg:py-4
+                  px-3 md:px-3 lg:px-4 py-3 md:py-3.5 lg:py-3.5
                   h-auto
                   rounded-2xl
                   transition-colors
@@ -131,8 +131,8 @@ export default function PhoneHeroSection() {
                 <Image
                   src="/icons/google-play.svg"
                   alt="Google Play"
-                  width={18}
-                  height={18}
+                  width={14}
+                  height={14}
                   className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6"
                 />
                 <div className="text-left">
@@ -146,7 +146,7 @@ export default function PhoneHeroSection() {
                   flex items-center justify-start gap-3 md:gap-4
                   hover:border-[0.5px] border-[#D2D2D2]
                   bg-[#1A1A1A]
-                  px-4 md:px-5 lg:px-5 py-3 md:py-4 lg:py-4
+                  px-3 md:px-3 lg:px-4 py-3 md:py-3.5 lg:py-3.5
                   h-auto
                   rounded-2xl
                   transition-colors
@@ -155,8 +155,8 @@ export default function PhoneHeroSection() {
                 <Image
                   src="/icons/apple.svg"
                   alt="App Store"
-                  width={18}
-                  height={18}
+                  width={14}
+                  height={14}
                   className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6"
                 />
                 <div className="text-left">

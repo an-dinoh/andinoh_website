@@ -95,7 +95,7 @@ export default function Footer() {
                   height={16}
                   className="brightness-0 invert"
                 />
-                Sun-Sun: 8:00 AM-9:00 PM
+                Available 24/7
               </li>
               <li className="flex items-center gap-2">
                 <Image
@@ -122,7 +122,29 @@ export default function Footer() {
                   height={16}
                   className="brightness-0 invert"
                 />
-                (+234) 818 2367 679
+                <a
+                  href="https://wa.me/447400730594"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
+                  +44 7400730594 (WhatsApp)
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Image
+                  src="/icons/call.svg"
+                  alt="Phone"
+                  width={16}
+                  height={16}
+                  className="brightness-0 invert"
+                />
+                <a
+                  href="tel:+2347079726698"
+                  className="hover:text-[#E3F2FD] transition-colors"
+                >
+                  +234 7079726698
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Image
@@ -249,6 +271,21 @@ export default function Footer() {
               <Image
                 src="/icons/instagram.svg"
                 alt="Instagram"
+                width={16}
+                height={16}
+                className="brightness-0 invert h-full w-full object-contain"
+              />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@andinoh0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
+            >
+              <Image
+                src="/icons/tiktok.svg"
+                alt="TikTok"
                 width={16}
                 height={16}
                 className="brightness-0 invert h-full w-full object-contain"
