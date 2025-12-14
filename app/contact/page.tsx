@@ -69,7 +69,7 @@ export default function Contact() {
                     Email Support
                   </h3>
                   <p className="text-sm text-gray-500 mb-3 leading-relaxed">
-                    Available Monday to Saturday, 9 AM – 5 PM
+                    Available 24/7
                   </p>
                   <a href="mailto:support@andinoh.com" className="text-sm font-medium hover:underline" style={{ color: primaryColor }}>
                     support@andinoh.com
@@ -83,14 +83,14 @@ export default function Contact() {
                   Phone Support
                 </h3>
                 <p className="text-sm text-gray-500 mb-3 leading-relaxed">
-                  Available Monday to Saturday, 9 AM – 5 PM
+                  Available 24/7
                 </p>
                 <div className="space-y-2">
-                  <a href="tel:+2348182367679" className="block text-sm font-medium hover:underline" style={{ color: primaryColor }}>
-                    (+234) 818 2367 679
+                  <a href="https://wa.me/447400730594" target="_blank" rel="noopener noreferrer" className="block text-sm font-medium hover:underline" style={{ color: primaryColor }}>
+                    +44 7400730594 (WhatsApp only)
                   </a>
-                  <a href="tel:+2347097865346" className="block text-sm font-medium hover:underline" style={{ color: primaryColor }}>
-                    (+234) 709 7865 346
+                  <a href="tel:+2347079726698" className="block text-sm font-medium hover:underline" style={{ color: primaryColor }}>
+                    +234 7079726698
                   </a>
                 </div>
               </div>
@@ -116,15 +116,21 @@ export default function Contact() {
                 <p className="text-sm text-gray-500 mb-3 leading-relaxed">
                   Connect with us on social platforms
                 </p>
-                <div className="flex gap-3">
-                  <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; e.currentTarget.style.color = 'white'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = `${primaryColor}20`; e.currentTarget.style.color = primaryColor; }}>
-                    <span className="font-medium">𝕏</span>
+                <div className="flex gap-3 flex-wrap">
+                  <a href="https://x.com/Andinoh_" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors group" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = 'brightness(0) invert(1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`; }}>
+                    <Image src="/icons/twitter.svg" alt="X/Twitter" width={12} height={12} className="transition-all object-contain" style={{ filter: `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`, width: '12px', height: '12px' }} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; e.currentTarget.style.color = 'white'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = `${primaryColor}20`; e.currentTarget.style.color = primaryColor; }}>
-                    <span className="font-medium">in</span>
+                  <a href="https://www.linkedin.com/company/109459638/admin/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors group" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = 'brightness(0) invert(1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`; }}>
+                    <Image src="/icons/linkedin.svg" alt="LinkedIn" width={12} height={12} className="transition-all object-contain" style={{ filter: `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`, width: '12px', height: '12px' }} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; e.currentTarget.style.color = 'white'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = `${primaryColor}20`; e.currentTarget.style.color = primaryColor; }}>
-                    <span className="font-medium">f</span>
+                  <a href="https://www.facebook.com/people/Andinoh/61582401149207/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors group" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = 'brightness(0) invert(1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`; }}>
+                    <Image src="/icons/facebook.svg" alt="Facebook" width={12} height={12} className="transition-all object-contain" style={{ filter: `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`, width: '12px', height: '12px' }} />
+                  </a>
+                  <a href="https://www.instagram.com/andinoh_/?hl=en" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors group" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = 'brightness(0) invert(1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`; }}>
+                    <Image src="/icons/instagram.svg" alt="Instagram" width={12} height={12} className="transition-all object-contain" style={{ filter: `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`, width: '12px', height: '12px' }} />
+                  </a>
+                  <a href="https://www.tiktok.com/@andinoh0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-colors group" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryColor; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = 'brightness(0) invert(1)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; const img = e.currentTarget.querySelector('img'); if (img) img.style.filter = `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`; }}>
+                    <Image src="/icons/tiktok.svg" alt="TikTok" width={12} height={12} className="transition-all object-contain" style={{ filter: `brightness(0) saturate(100%) invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg)`, width: '12px', height: '12px' }} />
                   </a>
                 </div>
               </div>
