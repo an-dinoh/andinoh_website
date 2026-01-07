@@ -38,12 +38,21 @@ export default function LargeHeroSection() {
             <FiCircle className="w-2 h-2 fill-current" />
           </span>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight" style={{ color: primaryColor }}>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium mb-4 md:mb-6 lg:mb-8 leading-tight" style={{ color: primaryColor }}>
           Connecting Africa's Hospitality Ecosystem
         </h1>
         <p className="text-sm md:text-base lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
           Seamless access to hotels, flights, events, and authentic local experiences.
         </p>
+
+        {/* Button - Under the text */}
+        <div className="hidden lg:flex">
+          <Link href="/#waitlist" onClick={scrollToWaitlist}>
+            <button className="px-6 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">
+              JOIN THE WAIT LIST
+            </button>
+          </Link>
+        </div>
       </div>
 
       {/* Globe */}
@@ -51,15 +60,6 @@ export default function LargeHeroSection() {
         <div className="w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[550px] xl:h-[550px] lg:-mr-20">
           <AnimatedGlobe />
         </div>
-      </div>
-
-      {/* Button - Only visible on desktop, in text content */}
-      <div className="hidden lg:flex absolute bottom-32 left-0 px-app">
-        <Link href="/#waitlist" onClick={scrollToWaitlist}>
-          <button className="px-6 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">
-            JOIN THE WAIT LIST
-          </button>
-        </Link>
       </div>
     </section>
   );
