@@ -30,7 +30,7 @@ export default function PhoneHeroSection() {
           ✦ Hotel Search
         </span>
 
-        <h1 className="text-xl font-medium leading-tight landscape:max-md:text-lg landscape:max-md:leading-tight">
+        <h1 className="text-lg sm:text-xl font-medium leading-tight landscape:max-md:text-lg landscape:max-md:leading-tight">
           Modern Hotel Management{" "}
           <span className="portrait:inline landscape:max-md:block">
             Made Simple
@@ -110,7 +110,7 @@ export default function PhoneHeroSection() {
             ✦ Hotel Search
           </span>
 
-          <h1 className="text-2xl md:text-2xl lg:text-3xl font-medium mb-4 md:mb-5 leading-tight">
+          <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium mb-4 md:mb-5 leading-tight">
             Modern Hotel Management
             <br /> Made Simple
           </h1>

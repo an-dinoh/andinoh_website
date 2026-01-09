@@ -67,10 +67,10 @@ export default function HeroSection() {
 
       {/* Headline & Subheadline */}
       <div className="text-center mb-6 md:mb-10 landscape:max-md:mb-4">
-       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-3 md:mb-6 landscape:max-md:text-xl landscape:max-md:mb-2" style={{ color: primaryColor }}>
+       <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium mb-3 md:mb-6 landscape:max-md:text-xl landscape:max-md:mb-2" style={{ color: primaryColor }}>
           Be the First to Explore Andinoh
         </h1>
-        <p className="text-xs sm:text-sm md:text-base text-gray-600 font-regular leading-relaxed drop-shadow-sm max-w-xl mx-auto px-2 landscape:max-md:text-xs landscape:max-md:mb-2">
+        <p className="text-xs sm:text-sm md:text-base lg:text-base text-gray-600 font-regular leading-relaxed drop-shadow-sm max-w-xl mx-auto px-2 landscape:max-md:text-xs landscape:max-md:mb-2">
        Be among the first to discover Africa's hotels, flights, events, and local experiences.   </p>
       </div>
 

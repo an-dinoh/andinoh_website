@@ -86,7 +86,7 @@ export default function FeaturesSection() {
         {getColorName()}
         </button> */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
             Why Choose
             <br />
             Andinoh

@@ -22,10 +22,10 @@ export default function OfferSection({
 
   const contentSection = (
     <div className="w-full lg:flex-1 text-center lg:text-left mb-8 lg:mb-0">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
         {title}
       </h2>
-      <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+      <p className="text-sm sm:text-base md:text-base text-gray-600 leading-relaxed">
         {subtitle}
       </p>
     </div>

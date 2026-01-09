@@ -133,7 +133,7 @@ export default function WaitlistForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
+          className="px-3 py-2 min-[480px]:px-4 min-[480px]:py-2.5 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-[11px] min-[480px]:text-xs sm:text-sm md:text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
           style={{
             '--tw-ring-color': primaryColor
           } as React.CSSProperties}
@@ -148,7 +148,7 @@ export default function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="px-4 py-3 sm:px-6 sm:py-4 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
+          className="px-3 py-2 min-[480px]:px-4 min-[480px]:py-2.5 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-2xl md:rounded-3xl bg-gray-50 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all font-regular text-gray-900 text-[11px] min-[480px]:text-xs sm:text-sm md:text-sm landscape:max-md:px-4 landscape:max-md:py-2.5 landscape:max-md:text-sm landscape:max-md:rounded-xl"
           style={{
             '--tw-ring-color': primaryColor
           } as React.CSSProperties}
@@ -160,7 +160,7 @@ export default function WaitlistForm() {
         <button
           type="submit"
           disabled={loading || !isFormValid}
-          className="px-6 py-3 sm:px-8 sm:py-4 md:px-8 md:py-4 bg-[#FBB81F] text-white font-medium rounded-2xl md:rounded-3xl hover:bg-[#E09A00] active:bg-[#D08A00] focus:outline-none focus:ring-0 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm md:text-sm landscape:max-md:px-6 landscape:max-md:py-2.5 landscape:max-md:text-xs landscape:max-md:rounded-xl"
+          className="px-4 py-2 min-[480px]:px-5 min-[480px]:py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-[#FBB81F] text-white font-medium rounded-2xl md:rounded-3xl hover:bg-[#E09A00] active:bg-[#D08A00] focus:outline-none focus:ring-0 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[11px] min-[480px]:text-xs sm:text-sm md:text-sm landscape:max-md:px-6 landscape:max-md:py-2.5 landscape:max-md:text-xs landscape:max-md:rounded-xl"
         >
           {loading
             ? "Joining..."

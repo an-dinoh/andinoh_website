@@ -29,7 +29,7 @@ export default function Home() {
         {/* Coming Soon Section */}
         <section className="w-full bg-gray-100 py-50">
           <div className="text-center">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4" style={{ color: primaryColor }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-4" style={{ color: primaryColor }}>
               Coming Soon..
             </h2>
           </div>
