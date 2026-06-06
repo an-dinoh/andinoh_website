@@ -39,10 +39,10 @@ export default function LargeHeroSection() {
           </span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium mb-4 md:mb-6 lg:mb-8 leading-tight" style={{ color: primaryColor }}>
-          Connecting Africa's Hospitality Ecosystem
+          {"Connecting Africa's Hospitality Ecosystem"}
         </h1>
         <p className="text-sm md:text-base lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
-          Seamless access to hotels, flights, events, and authentic local experiences.
+          Seamless booking for guests, and smart property management for hotel owners.
         </p>
 
         {/* Button - Under the text */}

@@ -71,7 +71,8 @@ export default function HeroSection() {
           Be the First to Explore Andinoh
         </h1>
         <p className="text-xs sm:text-sm md:text-base text-gray-600 font-regular leading-relaxed drop-shadow-sm max-w-xl mx-auto px-2 landscape:max-md:text-xs landscape:max-md:mb-2">
-       Be among the first to discover Africa's hotels, flights, events, and local experiences.   </p>
+          {"Be among the first to experience Africa's premier hotel booking and management platform."}
+        </p>
       </div>
 
       {/* Hero content card */}

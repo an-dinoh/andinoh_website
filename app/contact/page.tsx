@@ -22,12 +22,12 @@ export default function Contact() {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight" style={{ color: primaryColor }}>
-              We'd Love to
+              {"We'd Love to"}
               <br />
               Hear From You
             </h1>
             <p className="text-sm md:text-lg lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
-              Have questions about Andinoh? Want to partner with us?<br />Our team is ready to help you discover the future of African travel.
+              Have questions about Andinoh? Want to partner with us?<br />Our team is ready to help you discover the future of hotel booking and management.
             </p>
           </div>
 
@@ -145,7 +145,7 @@ export default function Contact() {
               Ready to Get Started?
             </h2>
             <p className="text-sm md:text-base text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join our waitlist and be among the first to experience seamless African travel booking
+              Join our waitlist and be among the first to experience seamless hotel booking and management.
             </p>
             <Link href="/#waitlist">
               <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">

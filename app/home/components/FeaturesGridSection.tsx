@@ -18,7 +18,7 @@ import {
   FiMail,
   FiMessageCircle,
 } from "react-icons/fi";
-import { MdHotel, MdFlight, MdEvent, MdLocalOffer } from "react-icons/md";
+import { MdHotel, MdLocalOffer } from "react-icons/md";
 import { useTheme } from "@/app/context/ThemeContext";
 
 const features = [
@@ -43,7 +43,7 @@ const features = [
   { icon: FiUsers, name: "24/7 Support", size: "small" },
 
   // Row 3
-  { icon: FiMapPin, name: "Local Experiences", size: "small" },
+  { icon: FiMapPin, name: "Local Stays", size: "small" },
   { icon: FiTrendingUp, name: "Best Prices", size: "small" },
   { icon: FiDollarSign, name: "Multi-Currency", size: "small" },
   { icon: FiAward, name: "Trusted Partners", size: "small" },
@@ -53,20 +53,20 @@ const features = [
   { icon: MdLocalOffer, name: "Special Deals", size: "small" },
 
   // Row 4 - Contains large boxes
-  { icon: FiCalendar, name: "Easy Planning", size: "small" },
-  { icon: FiSearch, name: "Discover", size: "small" },
+  { icon: FiCalendar, name: "Easy Booking", size: "small" },
+  { icon: FiSearch, name: "Discover Stays", size: "small" },
   { icon: MdHotel, name: "Hotels & Stays", size: "large" },
-  { icon: MdFlight, name: "Flight Booking", size: "large" },
-  { icon: FiMapPin, name: "Destinations", size: "small" },
+  { icon: FiTrendingUp, name: "Property Management", size: "large" },
+  { icon: FiMapPin, name: "Room Types", size: "small" },
   { icon: FiShield, name: "Secure Payment", size: "small" },
 
   // Row 5
   { icon: FiUsers, name: "Group Bookings", size: "small" },
   { icon: FiStar, name: "Top Rated", size: "small" },
-  { icon: MdEvent, name: "Events & Venues", size: "large" },
-  { icon: FiMap, name: "Local Tours", size: "large" },
+  { icon: FiUsers, name: "Staff Workflows", size: "large" },
+  { icon: FiDollarSign, name: "Revenue Analytics", size: "large" },
   { icon: FiCreditCard, name: "Flexible Payment", size: "small" },
-  { icon: FiGlobe, name: "Authentic Africa", size: "small" },
+  { icon: FiGlobe, name: "Authentic Stays", size: "small" },
 
   // Row 6
   { icon: FiSmartphone, name: "Mobile App", size: "small" },
@@ -103,10 +103,10 @@ export default function FeaturesGridSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-app">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
-            Your gateway to authentic African travel.
+            {"Connecting Africa's Hospitality Ecosystem."}
           </h2>
           <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-            One platform for hotels, flights, events, and authentic African experiences.
+            One platform for guest bookings and hotel management operations.
           </p>
         </div>
       </div>

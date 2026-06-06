@@ -15,29 +15,29 @@ const features: Feature[] = [
     icon: FiClock,
     title: "Save Time & Money",
     description:
-      "Compare hundreds of options in seconds and get the best deals on hotels, flights, and experiences",
+      "Compare various properties in seconds and get the best deals on hotels and stays",
   },
   {
     icon: FiMapPin,
-    title: "Discover Hidden Gems",
-    description: "Find authentic local stays and experiences beyond the usual tourist spots",
+    title: "Discover Unique Stays",
+    description: "Find authentic local hotels and guesthouses beyond the usual travel guides",
   },
   {
     icon: FiStar,
     title: "Book with Confidence",
     description:
-      "Real reviews, verified listings, and secure payments ensure worry-free travel",
+      "Real reviews, verified hotel listings, and secure payments ensure worry-free stays",
   },
   {
     icon: FiHeart,
-    title: "Travel Worry-Free",
-    description: "24/7 support, instant confirmations, and flexible payment options for peace of mind",
+    title: "Stay Worry-Free",
+    description: "24/7 support, instant confirmations, and flexible payment options for total peace of mind",
   },
   {
     icon: FiDollarSign,
-    title: "Experience Real Africa",
+    title: "African Hospitality",
     description:
-      "Connect with local hosts, authentic culture, and unforgettable moments across the continent",
+      "Experience authentic African hospitality, warm welcomes, and premium guest service across the continent",
   },
 ];
 

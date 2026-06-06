@@ -25,7 +25,7 @@ export default function About() {
              About Andinoh
             </h1>
             <p className="text-sm md:text-base lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
-              We're building Africa's most trusted platform for hotels, flights, events, and authentic local experiences, empowering travelers and local businesses across the continent.
+              {"We're building Africa's most trusted platform for hotel bookings and management, empowering guests and hotel owners across the continent."}
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function About() {
                 Our Vision
               </h2>
               <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                To become Africa's most trusted and comprehensive hotel, event, and flight booking platform by connecting the world to the continent's authentic destinations while empowering local travel businesses to thrive in the digital economy.
+                {"To become Africa's most trusted hotel booking and property management platform, connecting guests to authentic stays while empowering hotel owners to thrive in the digital economy."}
               </p>
             </div>
             <div className="hidden lg:flex flex-1"></div>
@@ -80,7 +80,7 @@ export default function About() {
                 Our Mission
               </h2>
               <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                To simplify and enhance travel experiences across Africa by providing a seamless, mobile-first platform that integrates accommodations, flights, events, and authentic cultural experiences, supported by localized payment solutions and verified, reliable services.
+                To simplify and enhance hospitality across Africa by providing a seamless, mobile-first platform that integrates guest hotel bookings and smart property management, supported by localized payment solutions and verified, reliable services.
               </p>
             </div>
             <div className="hidden lg:flex flex-1"></div>
@@ -106,7 +106,7 @@ export default function About() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight px-4" style={{ color: primaryColor }}>
-                Why We're Different
+                {"Why We're Different"}
               </h2>
               <p className="text-sm md:text-base text-gray-600 font-regular px-4">
                 Built for Africa, by Africans
@@ -132,10 +132,10 @@ export default function About() {
               </div>
               <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
                 <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
-                  Authentic Experiences
+                  Verified Listings
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  Curated local tours and cultural experiences that showcase the real Africa beyond tourist spots
+                  We verify accommodations to ensure that what guests see online is exactly what they experience in reality
                 </p>
               </div>
             </div>

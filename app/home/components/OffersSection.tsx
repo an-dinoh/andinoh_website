@@ -12,22 +12,13 @@ export default function OffersSection() {
           image="/images/search-engines-cuate.png"
         />
       </div>
-      <div className="mb-32 md:mb-40">
-        <OfferSection
-          startAlign="right"
-          title="Flight Booking Made Easy"
-          subtitle="Compare and book flights from major airlines and local carriers. Get the best deals for your African travel adventures in just a few clicks."
-          circleColor="#FDD87F"
-          image="/images/flight-booking-pana.png"
-        />
-      </div>
       <div>
         <OfferSection
-          startAlign="left"
-          title="Events & Experiences"
-          subtitle="Book event venues, schedule conferences, and discover authentic local tours. Experience Africa's culture, cuisine, and unforgettable moments."
-          circleColor="#80D4FF"
-          image="/images/carnival-cuate.png"
+          startAlign="right"
+          title="Streamlined Hotel Management"
+          subtitle="Empower your hotel business with automated booking, guest relations, staff management, and real-time revenue analytics. Built to scale your hospitality operations."
+          circleColor="#FDD87F"
+          image="/images/hotel-booking-cuate.png"
         />
       </div>
     </section>

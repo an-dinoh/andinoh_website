@@ -25,8 +25,9 @@ export async function addToWaitlist(email: string, userType: 'customer' | 'hotel
       RETURNING id, email, user_type, created_at
     `;
     return { success: true, data: result[0] };
-  } catch (error: any) {
-    if (error.code === '23505') { // Unique violation
+  } catch (error: unknown) {
+    const dbError = error as { code?: string };
+    if (dbError && dbError.code === '23505') { // Unique violation
       return { success: false, error: 'Email already registered' };
     }
     throw error;
