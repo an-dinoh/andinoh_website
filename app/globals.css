@@ -1,49 +1,221 @@
 @import "tailwindcss";
 
+/* dark: follows the site theme switch (data-theme), not only the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Andinoh tokens, copied from andinoh_hotel_webapp (docs/design/README.md there is the source of truth).
+ * Brand blue #0F75BD and gold #FBB81F on a quiet grey canvas; white panels with hairline borders.
+ * Dark mode redefines the same roles under :root[data-theme="dark"]; keep these blocks in step with the apps.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F4F6F9;
+  --foreground: #101828;
+
   --primary: #0F75BD;
-  --primary-hover: #0050C8;
+  --primary-hover: #0B5F9A;
+  --primary-dark: #0A3F66;
+  --primary-50: #EEF6FC;
+  --primary-100: #D7E9F7;
+  --secondary: #FBB81F;
+  --secondary-50: #FFF8E6;
+  --accent: #02A5E6;
 
-  /* Horizontal Padding */
-  --padding-x-mobile: 2.5rem;    /* 40px */
-  --padding-x-medium: 3rem;      /* 48px */
-  --padding-x-large: 10rem;      /* 160px */
+  --ink: #101828;
+  --ink-2: #344054;
+  --muted: #667085;
+  --subtle: #98A2B3;
+  --line: #E6EAF0;
+  --line-strong: #D0D5DD;
+  --surface: #FFFFFF;
+  --surface-2: #F9FAFB;
+  /* A selected segment sits above its track. */
+  --raised: #FFFFFF;
+
+  --success: #12805C;
+  --success-50: #ECFDF3;
+  --warning: #B54708;
+  --warning-50: #FFFAEB;
+  --danger: #D92D20;
+  --danger-50: #FEF3F2;
+  --info: #175CD3;
+  --info-50: #EFF8FF;
+  --violet: #6941C6;
+  --violet-50: #F4F3FF;
+
+  /* Pill rings and callout borders, callout text, gold text. */
+  --success-ring: #ABEFC6;
+  --warning-ring: #FEDF89;
+  --danger-ring: #FECDCA;
+  --info-ring: #B2DDFF;
+  --violet-ring: #D9D6FE;
+  --gold-ring: #FDE68A;
+  --success-fg: #085D3A;
+  --warning-fg: #93370D;
+  --danger-fg: #912018;
+  --info-fg: #1849A9;
+  --gold-fg: #7A4D0B;
+  --gold-text: #B7791F;
+
+  /* Solid buttons and badges keep white text readable in both themes. */
+  --danger-solid: #D92D20;
+  --danger-solid-hover: #B42318;
+  --success-solid: #12805C;
+  --success-solid-hover: #0E6B4D;
+  --gold-hover: #F2A900;
+
+  /* Dark text on gold and amber, in both themes. */
+  --on-gold: #101828;
+  /* Bright amber for calendar bars and pending dots. */
+  --amber: #FDB022;
+  --warning-dot: #F79009;
+  /* Hover on success tints; the orange tile (expenses). */
+  --success-100: #DCFAE6;
+  --orange: #C4320A;
+  --orange-50: #FFF4ED;
+  /* Chart chrome. */
+  --chart-grid: #EEF1F5;
+  --chart-axis: #D0D5DD;
+  --chart-guide: #98A2B3;
+
+  --shimmer-a: #F2F4F7;
+  --shimmer-b: #E9ECF1;
+  --scrim: rgb(16 24 40 / 0.4);
+  color-scheme: light;
 }
 
-/* Global utility classes that use the primary color */
-.text-primary {
-  color: var(--primary) !important;
+/* Dark mode: the same roles on a deep canvas; ThemeProvider sets <html data-theme="dark">. */
+:root[data-theme="dark"] {
+  --background: #0C111D;
+  --foreground: #F5F5F6;
+
+  --primary: #2589D2;
+  --primary-hover: #3B9BE0;
+  --primary-dark: #0A3F66;
+  --primary-50: #0F2A40;
+  --primary-100: #15405F;
+  --secondary: #FBB81F;
+  --secondary-50: #2A2210;
+  --accent: #33B8EE;
+
+  --ink: #F5F5F6;
+  --ink-2: #CECFD2;
+  --muted: #94969C;
+  --subtle: #61656C;
+  --line: #262B36;
+  --line-strong: #373D4A;
+  --surface: #161B26;
+  --surface-2: #1C2230;
+  --raised: #2C3445;
+
+  --success: #47CD89;
+  --success-50: #0B2A1D;
+  --warning: #FDB022;
+  --warning-50: #2E2008;
+  --danger: #F97066;
+  --danger-50: #2D1514;
+  --info: #53B1FD;
+  --info-50: #0E2440;
+  --violet: #9B8AFB;
+  --violet-50: #1E1A3A;
+
+  --success-ring: #0C5133;
+  --warning-ring: #7A3E08;
+  --danger-ring: #7A1E18;
+  --info-ring: #164A8C;
+  --violet-ring: #3E2C8A;
+  --gold-ring: #6B4A0B;
+  --success-fg: #ABEFC6;
+  --warning-fg: #FEDF89;
+  --danger-fg: #FECDCA;
+  --info-fg: #B2DDFF;
+  --gold-fg: #FDE68A;
+  --gold-text: #FAC54B;
+
+  --danger-solid: #D92D20;
+  --danger-solid-hover: #F04438;
+  --success-solid: #12805C;
+  --success-solid-hover: #17996D;
+
+  --on-gold: #101828;
+  --amber: #FDB022;
+  --warning-dot: #FDB022;
+  --success-100: #10392A;
+  --orange: #F38744;
+  --orange-50: #2E1A0E;
+  --chart-grid: #232937;
+  --chart-axis: #373D4A;
+  --chart-guide: #61656C;
+
+  --shimmer-a: #1C2230;
+  --shimmer-b: #252C3B;
+  --scrim: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
 }
 
-.bg-primary {
-  background-color: var(--primary) !important;
-}
-
-.border-primary {
-  border-color: var(--primary) !important;
-}
-
-.hover\:bg-primary:hover {
-  background-color: var(--primary) !important;
-}
-
-.hover\:text-primary:hover {
-  color: var(--primary) !important;
-}
-
-.hover\:border-primary:hover {
-  border-color: var(--primary) !important;
-}
+/* Logos: the colour one in light mode, the white one in dark mode. */
+.logo-dark { display: none; }
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: inline-block; }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-secondary: var(--secondary);
+  --color-secondary-50: var(--secondary-50);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-raised: var(--raised);
+  --color-success: var(--success);
+  --color-success-50: var(--success-50);
+  --color-warning: var(--warning);
+  --color-warning-50: var(--warning-50);
+  --color-danger: var(--danger);
+  --color-danger-50: var(--danger-50);
+  --color-info: var(--info);
+  --color-info-50: var(--info-50);
+  --color-violet: var(--violet);
+  --color-violet-50: var(--violet-50);
+  --color-success-ring: var(--success-ring);
+  --color-warning-ring: var(--warning-ring);
+  --color-danger-ring: var(--danger-ring);
+  --color-info-ring: var(--info-ring);
+  --color-violet-ring: var(--violet-ring);
+  --color-gold-ring: var(--gold-ring);
+  --color-success-fg: var(--success-fg);
+  --color-warning-fg: var(--warning-fg);
+  --color-danger-fg: var(--danger-fg);
+  --color-info-fg: var(--info-fg);
+  --color-gold-fg: var(--gold-fg);
+  --color-gold-text: var(--gold-text);
+  --color-danger-solid: var(--danger-solid);
+  --color-danger-solid-hover: var(--danger-solid-hover);
+  --color-success-solid: var(--success-solid);
+  --color-success-solid-hover: var(--success-solid-hover);
+  --color-gold-hover: var(--gold-hover);
+  --color-scrim: var(--scrim);
+  --color-on-gold: var(--on-gold);
+  --color-amber: var(--amber);
+  --color-warning-dot: var(--warning-dot);
+  --color-success-100: var(--success-100);
+  --color-orange: var(--orange);
+  --color-orange-50: var(--orange-50);
+  --font-rational: var(--font-rational);
+  --font-sans: var(--font-rational), ui-sans-serif, system-ui, sans-serif;
+  /* Rational Display: large marketing headlines only. */
+  --font-display: var(--font-rational-display), var(--font-rational), ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -52,174 +224,97 @@
 
 html {
   scroll-behavior: smooth;
+  /* Anchor jumps clear the fixed header. */
+  scroll-padding-top: 88px;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden !important;
-  width: 100%;
-}
-
-/* Maintain portrait-like view on mobile landscape */
-@media only screen and (max-width: 926px) and (orientation: landscape) {
-  html,
-  body {
-    min-height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Prevent viewport scaling on orientation change */
-  html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-html,
-body {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Additional mobile-specific scrollbar hiding */
-@media (max-width: 768px) {
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  *::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  * {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-rational), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Hide scrollbar for Chrome, Safari and Edge */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Figures line up in prices and counts. */
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Hide scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
+/* The page column: 16px gutter on phones, 24px ≥ sm, 32px ≥ lg. */
+.container-site {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
 }
-
-@keyframes slideIn {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 1.5rem;
-    opacity: 1;
-  }
+@media (min-width: 640px) {
+  .container-site { padding-inline: 24px; }
 }
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Global Padding Utilities */
-.px-app {
-  padding-left: var(--padding-x-mobile);
-  padding-right: var(--padding-x-mobile);
-}
-
-@media (min-width: 768px) {
-  .px-app {
-    padding-left: var(--padding-x-medium);
-    padding-right: var(--padding-x-medium);
-  }
-}
-
 @media (min-width: 1024px) {
-  .px-app {
-    padding-left: var(--padding-x-large);
-    padding-right: var(--padding-x-large);
-  }
+  .container-site { padding-inline: 32px; }
 }
 
-.pl-app {
-  padding-left: var(--padding-x-mobile);
+/* 16px inputs stop iOS zooming in on focus (instead of blocking zoom for everyone). */
+@media (max-width: 640px) {
+  input, select, textarea { font-size: 16px; }
 }
 
-@media (min-width: 768px) {
-  .pl-app {
-    padding-left: var(--padding-x-medium);
-  }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 6px;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
-@media (min-width: 1024px) {
-  .pl-app {
-    padding-left: var(--padding-x-large);
-  }
+@keyframes pop-in {
+  from { transform: translateY(6px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes rise-in {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-pop { animation: pop-in 160ms ease-out; }
+.animate-rise { animation: rise-in 420ms ease-out both; }
+
+/* Expanding card body: animates height with grid rows, no measuring. */
+.expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease-out;
+}
+.expand[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.expand > * {
+  overflow: hidden;
 }
 
-.mx-app {
-  margin-left: var(--padding-x-mobile);
-  margin-right: var(--padding-x-mobile);
+/* Placeholder for photos that haven't been added yet. */
+.photo-slot {
+  background-color: var(--primary-50);
+  background-image:
+    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--primary) 10%, transparent) 0, transparent 45%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--secondary) 14%, transparent) 0, transparent 40%);
 }
 
-@media (min-width: 768px) {
-  .mx-app {
-    margin-left: var(--padding-x-medium);
-    margin-right: var(--padding-x-medium);
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-pop, .animate-rise, .animate-pulse, .animate-spin { animation: none; }
+  .expand { transition: none; }
 }
 
-@media (min-width: 1024px) {
-  .mx-app {
-    margin-left: var(--padding-x-large);
-    margin-right: var(--padding-x-large);
-  }
-}
-
-/* Prevent mobile zoom on input focus */
-input, select, textarea {
-  font-size: 16px;
-}
-@supports (-webkit-touch-callout: none) {
-  input, select, textarea {
-    font-size: 16px;
-  }
-}
-
-/* Smaller placeholder text */
-input::placeholder, select::placeholder, textarea::placeholder {
-  font-size: 14px;
-}

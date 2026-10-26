@@ -1,75 +1,61 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co",
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder-key"
-);
-
-export async function POST(req: Request) {
-  try {
-    const { name, email, user_type } = await req.json();
-
-    // ---- Input Validation ----
-    if (!email || typeof email !== "string") {
-      return NextResponse.json(
-        { error: "A valid email is required" },
-        { status: 400 }
-      );
-    }
-
-    if (name && typeof name !== "string") {
-      return NextResponse.json(
-        { error: "Invalid name" },
-        { status: 400 }
-      );
-    }
-
-    if (user_type && !["customer", "hotel"].includes(user_type)) {
-      return NextResponse.json(
-        { error: "Invalid user type" },
-        { status: 400 }
-      );
-    }
-
-    // ---- Attempt Insert ----
-    const { error } = await supabase
-      .from("waitlist")
-      .insert({ name: name || null, email, user_type: user_type || null })
-      .single();
-
-    // ---- Handle Duplicate Email ----
-    if (error && error.code === "23505") {
-      return NextResponse.json(
-        { message: "You are already on the waitlist" },
-        { status: 200 }
-      );
-    }
-
-    // ---- Other Supabase Errors ----
-    if (error) {
-      return NextResponse.json(
-        { error: "Something went wrong. Please try again later." },
-        { status: 500 }
-      );
-    }
-
-    // ---- Success ----
-    return NextResponse.json(
-      { message: "Welcome aboard! You've been successfully added to the waitlist. We'll notify you as soon as we launch!" },
-      { status: 201 }
-    );
-  } catch (e) {
-    return NextResponse.json(
-      { error: "Invalid request payload." },
-      { status: 400 }
-    );
-  }
+// The waitlist table only needs insert access for the anon key (enable RLS with an insert-only policy).
+let supabase: SupabaseClient | null = null;
+function getSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+  supabase ??= createClient(url, key);
+  return supabase;
 }
 
-export async function GET() {
-  return NextResponse.json(
-    { message: 'Waitlist API - Use POST to submit' },
-    { status: 200 }
-  );
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const USER_TYPES = ["customer", "hotel"] as const;
+
+export async function POST(req: Request) {
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  // Honeypot: people never see this field, so anything in it is a bot. Pretend it worked.
+  if (typeof body.website === "string" && body.website.trim() !== "") {
+    return NextResponse.json({ message: "You’re on the list.", already: false }, { status: 201 });
+  }
+
+  const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  const userType = body.user_type;
+
+  if (!email || email.length > 254 || !EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
+  }
+  if (name.length > 120) {
+    return NextResponse.json({ error: "That name is too long." }, { status: 400 });
+  }
+  if (!USER_TYPES.includes(userType as (typeof USER_TYPES)[number])) {
+    return NextResponse.json({ error: "Choose guest or hotel partner." }, { status: 400 });
+  }
+
+  const db = getSupabase();
+  if (!db) {
+    console.error("[waitlist] NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not set");
+    return NextResponse.json({ error: "The waitlist is unavailable right now. Please try again later." }, { status: 503 });
+  }
+
+  const { error } = await db.from("waitlist").insert({ name: name || null, email, user_type: userType });
+
+  if (error?.code === "23505") {
+    return NextResponse.json({ message: "You’re already on the waitlist.", already: true }, { status: 200 });
+  }
+  if (error) {
+    console.error("[waitlist] insert failed", error.code, error.message);
+    return NextResponse.json({ error: "Something went wrong on our side. Please try again in a moment." }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: "You’re on the list.", already: false }, { status: 201 });
 }

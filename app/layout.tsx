@@ -1,99 +1,93 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider, THEME_BOOT_SCRIPT } from "./context/ThemeContext";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Rational Text for everything; Rational Display for large headlines (as in the hotel and admin apps).
+const rational = localFont({
+  src: [
+    { path: "../public/font/rational/RationalText-Book.ttf", weight: "400", style: "normal" },
+    { path: "../public/font/rational/RationalText-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../public/font/rational/RationalText-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../public/font/rational/RationalText-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-rational",
 });
 
-export const metadata: Metadata = {
-  title: "Andinoh",
-  description:
-    "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation. Built for hotels, resorts, guest houses, and serviced apartments.",
-  keywords: [
-    "hotel management system",
-    "hotel software",
-    "property management system",
-    "booking management",
-    "hospitality software",
-    "hotel automation",
-    "PMS software",
-    "hotel operations",
-    "resort management software",
-    "guest booking platform",
-    "hotel customer portal",
+const rationalDisplay = localFont({
+  src: [
+    { path: "../public/font/rational/RationalDisplay-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../public/font/rational/RationalDisplay-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../public/font/rational/RationalDisplay-Bold.ttf", weight: "700", style: "normal" },
   ],
-  authors: [{ name: "Andinoh" }],
-  creator: "Andinoh",
-  publisher: "Andinoh",
+  variable: "--font-rational-display",
+});
+
+const description =
+  "Book hotels you can trust. Every hotel on Andinoh is visited and checked by an independent Andinoh inspector before you can book it.";
+
+export const metadata: Metadata = {
   metadataBase: new URL("https://andinoh.com"),
-  alternates: {
-    canonical: "/",
+  title: {
+    default: "Andinoh: book a trusted hotel stay",
+    template: "%s · Andinoh",
   },
+  description,
+  keywords: [
+    "hotel booking Nigeria",
+    "verified hotels",
+    "trusted hotels Lagos",
+    "hotel management software",
+    "hotel PMS Africa",
+    "pay at hotel",
+  ],
+  applicationName: "Andinoh",
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_NG",
     url: "https://andinoh.com",
-    title: "Andinoh",
-    description:
-      "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation.",
     siteName: "Andinoh",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Andinoh - Modern Hotel Management System",
-      },
-    ],
+    title: "Andinoh: book a trusted hotel stay",
+    description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andinoh",
-    description:
-      "Andinoh is a modern hotel management system designed for both hotel staff and customers. It streamlines bookings, guest management, payments, customer self-service, staff workflows, and operational automation.",
-    images: ["/twitter-image.png"],
+    title: "Andinoh: book a trusted hotel stay",
+    description,
     creator: "@andinoh",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   icons: {
-    icon: [
-      { url: "/logos/ANDINOH-FAV.jpg" },
-    ],
+    icon: [{ url: "/logos/favicon.ico" }],
     apple: [{ url: "/logos/ANDINOH-FAV.jpg" }],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F4F6F9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0C111D" },
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="bg-white overflow-x-hidden">
+    // data-theme is set by the boot script before React hydrates, so the server's markup differs on purpose.
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="/logos/favicon.ico" />
-        <link rel="shortcut icon" href="/logos/favicon.ico" />
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>
-      <body className={`${poppins.className} antialiased bg-white overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${rational.variable} ${rationalDisplay.variable} antialiased`}>
         <ThemeProvider>
+          <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:text-ink focus:ring-2 focus:ring-primary/30">
+            Skip to content
+          </a>
           <Header />
-          {children}
+          <main id="main">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

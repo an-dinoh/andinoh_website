@@ -1,309 +1,100 @@
-"use client";
-
-import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "@/app/context/ThemeContext";
+import Link from "next/link";
+import { Call, Clock, Location, Mail } from "@/app/components/icons";
+import { CONTACT, SOCIALS } from "@/app/content/site";
+import Logo from "./Logo";
+
+const COLUMNS = [
+  {
+    title: "Andinoh",
+    links: [
+      { href: "/#why", label: "Why Andinoh" },
+      { href: "/#vetting", label: "How we vet hotels" },
+      { href: "/about", label: "About us" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "For hotels",
+    links: [
+      { href: "/hotels", label: "Hotel software" },
+      { href: "/hotels#verification", label: "Getting verified" },
+      { href: "/waitlist?type=hotel", label: "Become a partner" },
+    ],
+  },
+];
 
 export default function Footer() {
-  const { primaryColor } = useTheme();
-
-  // Create a darker version of the primary color for the gradient
-  const darkerColor =
-    primaryColor === "#0F75BD"
-      ? "#0A5A94"
-      : primaryColor === "#0050C8"
-      ? "#003A8C"
-      : "#001D4A";
-
   return (
-    <footer
-      className="text-white py-12 w-full"
-      style={{
-        background: `linear-gradient(to top, ${darkerColor}, ${primaryColor})`,
-      }}
-    >
-      <div className="w-full max-w-[1400px] mx-auto pt-16 px-app">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 flex-wrap justify-between">
-          {/* Logo and Description */}
-          <div className="flex-shrink-0 w-full md:w-64">
-            <div className="mb-6">
-              <Image
-                src="/logos/ANDINOH BLACK.svg"
-                alt="Andinoh"
-                width={150}
-                height={70}
-              />
-            </div>
-            <p className="text-xs text-[#E3F2FD] leading-relaxed">
-              Modern hotel management system designed for both hotel staff and
-              customers. Streamlining bookings, guest management, and
-              operational workflows.
+    <footer className="bg-gradient-to-b from-[#0A3F66] to-[#071F33] text-white">
+      <div className="container-site py-14 sm:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+          <div className="flex flex-col gap-4">
+            <Logo inverse className="h-8 w-auto self-start" />
+            <p className="max-w-xs text-sm leading-relaxed text-white/70">
+              Trusted hotel stays, and the software hotels run on. Every hotel is checked in person before guests can book it.
+            </p>
+            <p className="inline-flex items-center gap-2 self-start rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90">
+              <Clock className="h-4 w-4" />
+              The Andinoh app is coming to iPhone and Android
             </p>
           </div>
 
-          {/* Spacer */}
-          <div className="hidden lg:flex flex-1"></div>
-
-          {/* About Company */}
-          <div className="w-full sm:w-auto">
-            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">About Company</h3>
-            <ul className="space-y-6 text-xs">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  Cookies Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Get in Touch */}
-          <div className="w-full sm:w-auto">
-            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">Get in Touch</h3>
-            <ul className="space-y-6 text-xs">
-              <li className="flex items-center gap-2">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="Time"
-                  width={16}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-                Available 24/7
-              </li>
-              <li className="flex items-center gap-2">
-                <Image
-                  src="/icons/sms.svg"
-                  alt="Email"
-                  width={16}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=support@andinoh.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  support@andinoh.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Image
-                  src="/icons/call.svg"
-                  alt="Phone"
-                  width={16}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-                <a
-                  href="https://wa.me/447400730594"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  +44 7400730594 (WhatsApp)
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Image
-                  src="/icons/call.svg"
-                  alt="Phone"
-                  width={16}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-                <a
-                  href="tel:+2347079726698"
-                  className="hover:text-[#E3F2FD] transition-colors"
-                >
-                  +234 7079726698
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Image
-                  src="/icons/location.svg"
-                  alt="Location"
-                  width={16}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-                Lagos, Nigeria
-              </li>
-            </ul>
-          </div>
-
-          {/* Download App */}
-          <div className="w-full sm:w-auto">
-            <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">Download App</h3>
-            <div className="space-y-6">
-              <button
-                className="
-                      flex items-center gap-3 
-                      hover:border-[0.5px] border-[#D2D2D2]
-                      bg-[#1A1A1A] 
-                      px-5 py-3.5 
-                      h-auto md:h-12 
-                      rounded-2xl 
-                      transition-colors
-                    "
-              >
-                <Image
-                  src="/icons/google-play.svg"
-                  alt="Google Play"
-                  width={16}
-                  height={16}
-                  className=""
-                />
-                <div className="text-left">
-                  <div className="text-xs font-semibold">Google Play</div>
-                </div>
-              </button>
-              <button
-                className="
-                    flex items-center gap-3 
-                    hover:border-[0.5px] border-[#D2D2D2]
-                    bg-[#1A1A1A] 
-                    px-5 py-3.5 
-                    h-auto md:h-12 
-                    rounded-2xl 
-                    transition-colors
-                  "
-              >
-                {" "}
-                <Image
-                  src="/icons/apple.svg"
-                  alt="App Store"
-                  width={16}
-                  height={16}
-                  className=""
-                />
-                <div className="text-left">
-                  <div className="text-xs font-semibold">App Store</div>
-                </div>
-              </button>
+          {COLUMNS.map((col) => (
+            <div key={col.title}>
+              <h2 className="text-sm font-semibold">{col.title}</h2>
+              <ul className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="transition-colors hover:text-white">{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+
+          <div>
+            <h2 className="text-sm font-semibold">Get in touch</h2>
+            <ul className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+              <li>
+                <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                  <Mail className="h-4 w-4 shrink-0" /> {CONTACT.email}
+                </a>
+              </li>
+              <li>
+                <a href={CONTACT.whatsapp.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                  <Call className="h-4 w-4 shrink-0" /> <span className="tabular">{CONTACT.whatsapp.label}</span> (WhatsApp)
+                </a>
+              </li>
+              <li>
+                <a href={CONTACT.phone.href} className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                  <Call className="h-4 w-4 shrink-0" /> <span className="tabular">{CONTACT.phone.label}</span>
+                </a>
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <Location className="h-4 w-4 shrink-0" /> {CONTACT.city}
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="w-full h-px bg-[#E8E8E8] mt-20"></div>
-
-        {/* Social Icons and Copyright */}
-        <div className="mt-4 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-6 items-center">
-            <a
-              href="https://www.linkedin.com/company/109459638/admin/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
-            >
-              <Image
-                src="/icons/linkedin.svg"
-                alt="LinkedIn"
-                width={16}
-                height={16}
-                className="brightness-0 invert h-full w-full object-contain"
-              />
-            </a>
-
-            <a
-              href="https://www.facebook.com/people/Andinoh/61582401149207/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
-            >
-              <Image
-                src="/icons/facebook.svg"
-                alt="Facebook"
-                width={16}
-                height={16}
-                className="brightness-0 invert h-full w-full object-contain"
-              />
-            </a>
-
-            <a
-              href="https://x.com/Andinoh_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
-            >
-              <Image
-                src="/icons/twitter.svg"
-                alt="Twitter/X"
-                width={16}
-                height={16}
-                className="brightness-0 invert h-full w-full object-contain"
-              />
-            </a>
-
-            <a
-              href="https://www.instagram.com/andinoh_/?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
-            >
-              <Image
-                src="/icons/instagram.svg"
-                alt="Instagram"
-                width={16}
-                height={16}
-                className="brightness-0 invert h-full w-full object-contain"
-              />
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@andinoh0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity h-4 w-4 flex items-center justify-center"
-            >
-              <Image
-                src="/icons/tiktok.svg"
-                alt="TikTok"
-                width={16}
-                height={16}
-                className="brightness-0 invert h-full w-full object-contain"
-              />
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-[#E3F2FD]">© 2025</span>
-            <Image
-              src="/logos/ANDINOH.svg"
-              alt="Andinoh"
-              width={68}
-              height={20}
-              className="brightness-0 invert"
-            />
-            <span className="text-xs text-[#E3F2FD]"> All rights reserved</span>
-          </div>
+        <div className="mt-12 flex flex-col-reverse items-start justify-between gap-4 border-t border-white/15 pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-white/60">© {new Date().getFullYear()} Andinoh. All rights reserved.</p>
+          <ul className="flex items-center gap-2">
+            {SOCIALS.map((s) => (
+              <li key={s.name}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Andinoh on ${s.name}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+                >
+                  <Image src={s.icon} alt="" width={16} height={16} className="h-4 w-4 brightness-0 invert" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

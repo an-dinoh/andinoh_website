@@ -1,144 +1,111 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "@/app/components/icons";
+import { Button } from "@/app/components/ui";
 import { useTheme } from "@/app/context/ThemeContext";
+import Logo from "./Logo";
+
+const NAV = [
+  { href: "/#why", label: "Why Andinoh" },
+  { href: "/#vetting", label: "How we vet hotels" },
+  { href: "/hotels", label: "For hotels" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+function ThemeToggle() {
+  const { theme, toggle } = useTheme();
+  const dark = theme === "dark";
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      className="flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+    >
+      {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+    </button>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { primaryColor } = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const scrollToWaitlist = (e: React.MouseEvent) => {
-    if (pathname === "/") {
-      e.preventDefault();
-      const waitlistSection = document.getElementById("waitlist");
-      if (waitlistSection) {
-        const elementPosition = waitlistSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - 148;
+  // Close the menu after navigating, and on Escape.
+  useEffect(() => { setOpen(false); }, [pathname]); // eslint-disable-line react-hooks/set-state-in-effect
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    }
-  };
+  const isActive = (href: string) => !href.includes("#") && pathname === href;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white h-20 md:h-22 border-b border-[#D2D2D2]">
-      <nav className="container mx-auto flex items-center justify-between px-4 md:px-6 h-full">
-        <Link href="/" className="flex items-center">
-          <Image src="/logos/ANDINOH.svg" alt="Andinoh" width={100} height={35} priority className="md:w-[120px] md:h-[40px]" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-surface/90 backdrop-blur">
+      <nav aria-label="Main" className="container-site flex h-[72px] items-center justify-between gap-6">
+        <Link href="/" className="flex shrink-0 items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+          <Logo className="h-7 w-auto" />
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-[#424242]">
-          <li>
-            <Link
-              href="/"
-              className="transition-colors relative inline-block pb-2"
-              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
-            >
-              Home
-              {pathname === "/" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
-              )}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="transition-colors relative inline-block pb-2"
-              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
-            >
-              About
-              {pathname === "/about" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
-              )}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="transition-colors relative inline-block pb-2"
-              onMouseEnter={(e) => e.currentTarget.style.color = primaryColor}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#424242'}
-            >
-              Contact
-              {pathname === "/contact" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 animate-[slideIn_0.3s_ease-in-out]" style={{ backgroundColor: primaryColor }}></span>
-              )}
-            </Link>
-          </li>
+        <ul className="hidden items-center gap-1 lg:flex">
+          {NAV.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`rounded-xl px-3 py-2 text-sm font-medium transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                  isActive(item.href) ? "text-primary" : "text-ink-2"
+                }`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {/* Desktop Join Button */}
-        <div className="hidden md:flex items-center gap-4">
-          <Link href={pathname === "/" ? "/#waitlist" : "/waitlist"} onClick={scrollToWaitlist}>
-            <button className="px-5 py-3 text-xs font-semibold text-white rounded-[18px] transition-colors" style={{ backgroundColor: primaryColor }}>
-              JOIN THE WAIT LIST
-            </button>
-          </Link>
-        </div>
-
-        {/* Mobile: Join Button + Menu Button */}
-        <div className="md:hidden flex items-center gap-2">
-          <Link href={pathname === "/" ? "/#waitlist" : "/waitlist"} onClick={scrollToWaitlist}>
-            <button className="px-3 py-2.5 text-[10px] font-semibold text-white rounded-2xl transition-colors whitespace-nowrap" style={{ backgroundColor: primaryColor }}>
-              JOIN WAITLIST
-            </button>
-          </Link>
+        <div className="flex items-center gap-1 sm:gap-2">
+          <ThemeToggle />
+          <div className="hidden sm:block">
+            <Button href="/waitlist" size="md">Join the waitlist</Button>
+          </div>
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex flex-col gap-1.5 w-7 h-7 items-center justify-center"
-            aria-label="Toggle menu"
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 lg:hidden"
           >
-            <span className={`w-6 h-0.5 bg-[#424242] transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-[#424242] transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-[#424242] transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-[#D2D2D2] shadow-lg">
-          <div className="container mx-auto px-4 py-6">
-            <ul className="flex flex-col gap-4 text-sm font-regular text-[#424242]">
-              <li>
+      {open && (
+        <div id="mobile-menu" className="animate-pop border-t border-line bg-surface lg:hidden">
+          <ul className="container-site flex flex-col gap-1 py-4">
+            {NAV.map((item) => (
+              <li key={item.href}>
                 <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block hover:text-[#0F75BD] transition-colors ${pathname === "/" ? "text-[#0F75BD] font-semibold" : ""}`}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={`block rounded-xl px-3 py-3 text-[15px] font-medium hover:bg-surface-2 ${isActive(item.href) ? "text-primary" : "text-ink-2"}`}
                 >
-                  Home
+                  {item.label}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block hover:text-[#0F75BD] transition-colors ${pathname === "/about" ? "text-[#0F75BD] font-semibold" : ""}`}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block hover:text-[#0F75BD] transition-colors ${pathname === "/contact" ? "text-[#0F75BD] font-semibold" : ""}`}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+            ))}
+            <li className="pt-2">
+              <Button href="/waitlist" size="lg" fullWidth>Join the waitlist</Button>
+            </li>
+          </ul>
         </div>
       )}
     </header>

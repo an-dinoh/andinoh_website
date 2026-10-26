@@ -1,164 +1,90 @@
-"use client";
+import type { Metadata } from "next";
+import { ArrowRight, Buildings, ClipboardTick, ShieldCheck, User, type Icon } from "@/app/components/icons";
+import { Button, IconTile, Photo, Pill, SectionHeading } from "@/app/components/ui";
+import { PHOTOS } from "@/app/content/site";
 
-import { FiCircle } from "react-icons/fi";
-import PageTransition from "../components/PageTransition";
-import Link from "next/link";
-import Image from "next/image";
-import { useTheme } from "@/app/context/ThemeContext";
+export const metadata: Metadata = {
+  title: "About",
+  description: "Andinoh is building Africa’s most trusted platform for hotel bookings and hotel management, starting in Nigeria.",
+  alternates: { canonical: "/about" },
+};
 
-export default function About() {
-  const { primaryColor } = useTheme();
+const APPS: { icon: Icon; name: string; who: string; body: string }[] = [
+  { icon: User, name: "Andinoh app", who: "For guests", body: "Find verified hotels, book and pay, chat with the hotel and review your stay." },
+  { icon: Buildings, name: "Andinoh for hotels", who: "For hotel teams", body: "Front desk, rooms, housekeeping, staff, payouts and accounting in one place." },
+  { icon: ClipboardTick, name: "Andinoh inspector", who: "For field agents", body: "Visit hotels, work through the checklist, and file reports with photos." },
+  { icon: ShieldCheck, name: "Andinoh review team", who: "Behind the scenes", body: "Checks documents, reviews every inspection report and keeps standards up." },
+];
 
+export default function AboutPage() {
   return (
-    <PageTransition>
-      <div className="min-h-screen bg-white overflow-x-hidden">
-        {/* Hero Section */}
-        <section className="min-h-[85vh] bg-white flex flex-col lg:flex-row items-center px-app lg:pl-app lg:pr-4 pt-28 md:pt-32 gap-8">
-          <div className="max-w-4xl text-center lg:text-left w-full lg:w-auto">
-            <div className="inline-block relative mb-4 md:mb-6">
-              <span className="inline-flex items-center gap-1.5 text-xs md:text-sm px-4.5 py-1.5 rounded-full font-regular border-1" style={{ backgroundColor: `${primaryColor}20`, color: primaryColor, borderColor: primaryColor }}>
-                Our Andinoh
-                <FiCircle className="w-2 h-2 fill-current" />
-              </span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 md:mb-8 leading-tight" style={{ color: primaryColor }}>
-             About Andinoh
+    <>
+      <section className="relative overflow-hidden pt-[72px]">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-primary-50 to-transparent" />
+        <div className="container-site relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:gap-16">
+          <div className="animate-rise flex flex-col items-start gap-6">
+            <Pill tone="primary">About Andinoh</Pill>
+            <h1 className="font-display text-[38px] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[52px]">
+              Trust is the product.
             </h1>
-            <p className="text-sm md:text-base lg:text-lg font-regular text-gray-500 max-w-3xl leading-relaxed mb-6 md:mb-8">
-              {"We're building Africa's most trusted platform for hotel bookings and management, empowering guests and hotel owners across the continent."}
+            <p className="max-w-xl text-[17px] leading-relaxed text-muted sm:text-lg">
+              We’re building Africa’s most trusted platform for hotel bookings and hotel management, starting in Nigeria. Guests get
+              hotels they can rely on. Hotels get the tools, and the guests, to grow.
             </p>
           </div>
+          <Photo slot={PHOTOS.about} priority className="aspect-[3/2] w-full rounded-3xl border border-line" />
+        </div>
+      </section>
 
-          <div className="flex lg:flex flex-1 justify-center lg:justify-end items-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
-              <Image
-                src="/images/face-cuate.png"
-                alt="About Andinoh"
-                width={400}
-                height={400}
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Vision & Mission Section */}
-        <section className="bg-white py-16 md:py-20">
-          {/* Vision */}
-          <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 px-app mb-32 md:mb-40">
-            <div className="flex-1 text-center lg:text-left w-full lg:w-auto">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
-                Our Vision
-              </h2>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                {"To become Africa's most trusted hotel booking and property management platform, connecting guests to authentic stays while empowering hotel owners to thrive in the digital economy."}
-              </p>
-            </div>
-            <div className="hidden lg:flex flex-1"></div>
-
-            
-            <div className="flex lg:flex flex-shrink-0 justify-center">
-              <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
-                <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#80D4FF' }}></div>
-                <div className="absolute -inset-2 flex items-center justify-center">
-                  <Image
-                    src="/images/online-article-cuate.png"
-                    alt="Hotel Booking - Illustration by Storyset"
-                    width={280}
-                    height={280}
-                    className="object-contain relative z-10"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mission */}
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 px-app">
-            <div className="flex-1 text-center lg:text-left w-full lg:w-auto">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight" style={{ color: primaryColor }}>
-                Our Mission
-              </h2>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                To simplify and enhance hospitality across Africa by providing a seamless, mobile-first platform that integrates guest hotel bookings and smart property management, supported by localized payment solutions and verified, reliable services.
-              </p>
-            </div>
-            <div className="hidden lg:flex flex-1"></div>
-            <div className="flex lg:flex flex-shrink-0 justify-center">
-              <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
-                <div className="absolute inset-0 rounded-full opacity-30" style={{ backgroundColor: '#FDD87F' }}></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Image
-                    src="/images/hotel-booking-cuate.png"
-                    alt="Hotel Booking - Illustration by Storyset"
-                    width={280}
-                    height={280}
-                    className="object-contain relative z-10"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why We're Different */}
-        <section className="py-16 md:py-20 px-app mt-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 leading-tight px-4" style={{ color: primaryColor }}>
-                {"Why We're Different"}
-              </h2>
-              <p className="text-sm md:text-base text-gray-600 font-regular px-4">
-                Built for Africa, by Africans
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
-                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
-                  Africa-First Approach
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Comprehensive coverage including rural and underserved destinations that global platforms overlook
-                </p>
-              </div>
-              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
-                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
-                  Localized Payments
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Seamless integration with popular African mobile money services and secure international payment options for convenient transactions
-                </p>
-              </div>
-              <div className="p-6 rounded-3xl bg-white border border-gray-200 transition-colors" onMouseEnter={(e) => e.currentTarget.style.borderColor = primaryColor} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#E5E7EB'}>
-                <h3 className="text-base font-medium mb-3" style={{ color: primaryColor }}>
-                  Verified Listings
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  We verify accommodations to ensure that what guests see online is exactly what they experience in reality
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 px-app mt-20 mb-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-6 md:mb-8 px-4" style={{ color: primaryColor }}>
-              Join Us on This Journey
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              Be among the first to experience the future of African travel when we launch
+      <section className="py-16 sm:py-24">
+        <div className="container-site grid gap-4 md:grid-cols-2 md:gap-6">
+          <article className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <p className="text-[13px] font-medium text-primary">Our vision</p>
+            <p className="font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
+              To become Africa’s most trusted hotel booking and property management platform, connecting guests to authentic stays while
+              helping hotel owners thrive in the digital economy.
             </p>
-            <Link href="/#waitlist">
-              <button className="px-5.5 py-3.5 text-sm font-medium text-white bg-[#FBB81F] rounded-[18px] hover:bg-[#E09A00] transition-colors">
-                Join the Waitlist
-              </button>
-            </Link>
+          </article>
+          <article className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <p className="text-[13px] font-medium text-primary">Our mission</p>
+            <p className="font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
+              To make hotel stays across Africa simple and safe, with a mobile-first platform that joins guest bookings and hotel
+              management, local payments, and hotels we’ve checked ourselves.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="platform-title" className="border-y border-line bg-surface py-16 sm:py-24">
+        <div className="container-site flex flex-col gap-10">
+          <SectionHeading
+            id="platform-title"
+            eyebrow="One platform"
+            title="Four apps, one standard."
+            lead="Guests, hotels, inspectors and our review team all work on the same platform, so a verified badge means the same thing everywhere."
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {APPS.map((a) => (
+              <article key={a.name} className="flex flex-col gap-4 rounded-2xl border border-line bg-background p-5">
+                <IconTile icon={a.icon} />
+                <div className="flex flex-col gap-1">
+                  <p className="text-xs font-medium text-muted">{a.who}</p>
+                  <h3 className="text-[15px] font-semibold text-ink">{a.name}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{a.body}</p>
+                </div>
+              </article>
+            ))}
           </div>
-        </section>
-      </div>
-    </PageTransition>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <div className="container-site flex flex-col items-center gap-5 text-center">
+          <h2 className="font-display text-[28px] font-semibold tracking-tight text-ink sm:text-4xl">Join us on the journey.</h2>
+          <p className="max-w-lg text-[17px] text-muted">Be among the first to book a trusted hotel stay when we launch.</p>
+          <Button href="/waitlist" size="lg" iconRight={ArrowRight}>Join the waitlist</Button>
+        </div>
+      </section>
+    </>
   );
 }
