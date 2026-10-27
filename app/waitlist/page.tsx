@@ -28,7 +28,7 @@ export default async function WaitlistPage({ searchParams }: { searchParams: Pro
           <span aria-hidden className="h-2 w-2 rounded-full bg-gold" />
           Coming soon
         </p>
-        <h1 className="text-balance font-display text-[clamp(3rem,7vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <h1 className="hero-in text-balance font-display text-[clamp(3rem,7vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
           Be first through <span className="text-accent">the door.</span>
         </h1>
         <p className="mt-6 max-w-[460px] text-[17px] leading-normal text-sub sm:mt-7 sm:text-[19px]">

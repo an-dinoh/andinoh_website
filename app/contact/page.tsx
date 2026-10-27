@@ -21,7 +21,7 @@ export default function ContactPage() {
     <>
       <section className="container-site pb-16 pt-16 sm:pb-24 sm:pt-24 lg:pb-[120px] lg:pt-32">
         <Eyebrow>Contact</Eyebrow>
-        <h1 className="font-display text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
+        <h1 className="hero-in font-display text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
           We’d love to <br />
           <Faint>hear from you.</Faint>
         </h1>

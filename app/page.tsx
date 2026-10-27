@@ -1,7 +1,7 @@
 import CloudImage, { HeroPicture } from "./components/CloudImage";
 import Globe from "./components/globe/Globe";
 import LaunchProgress from "./components/LaunchProgress";
-import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title } from "./components/site";
+import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title, heroDelay, reveal } from "./components/site";
 import WaitlistForm from "./components/WaitlistForm";
 import { PHOTOS, WAITLIST_OFFER } from "./content/site";
 import WhyRows from "./home/WhyRows";
@@ -22,22 +22,22 @@ const GALLERY = [
 export default function Home() {
   return (
     <>
-      {/* Hero: the globe rises behind the headline and sinks behind the photo. */}
+      {/* Hero: the globe rises behind the headline and sinks behind the photo. Pieces enter in sequence. */}
       <section className="container-site flex flex-col items-center pt-16 text-center sm:pt-24 lg:pt-32">
         <div className="relative z-10 flex w-full flex-col items-center">
-          <p className="mb-5 inline-flex items-center gap-2.5 text-[13px] text-sub sm:mb-7 sm:text-[15px]">
+          <p className="hero-in mb-5 inline-flex items-center gap-2.5 text-[13px] text-sub sm:mb-7 sm:text-[15px]" style={heroDelay(0)}>
             <span aria-hidden className="h-2 w-2 rounded-full bg-gold" />
             Coming soon · {WAITLIST_OFFER.short}
           </p>
           <h1 className="font-display text-[clamp(3.25rem,8.6vw,7rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
-            Book a trusted <br className="hidden sm:block" />
-            <span className="text-accent">hotel stay.</span>
+            <span className="hero-in inline-block" style={heroDelay(1)}>Book a trusted</span> <br className="hidden sm:block" />
+            <span className="hero-in inline-block text-accent" style={heroDelay(2)}>hotel stay.</span>
           </h1>
           {/* A soft halo in the page colour keeps the line readable over the globe's dots. */}
-          <p className="mt-6 max-w-[560px] text-[17px] leading-normal text-sub [text-shadow:0_0_14px_var(--bg),0_0_6px_var(--bg),0_0_2px_var(--bg)] sm:mt-9 sm:text-[21px]">
+          <p className="hero-in mt-6 max-w-[560px] text-[17px] leading-normal text-sub [text-shadow:0_0_14px_var(--bg),0_0_6px_var(--bg),0_0_2px_var(--bg)] sm:mt-9 sm:text-[21px]" style={heroDelay(3)}>
             Every hotel on Andinoh is inspected in person before you can book it.
           </p>
-          <div className="mt-8 flex w-full flex-col items-center gap-5 sm:mt-11 sm:w-auto sm:flex-row sm:gap-7">
+          <div className="hero-in mt-8 flex w-full flex-col items-center gap-5 sm:mt-11 sm:w-auto sm:flex-row sm:gap-7" style={heroDelay(4)}>
             <PillLink href="/#waitlist" className="w-full sm:w-auto">Join the waitlist</PillLink>
             <ArrowLink href="/#vetting" tone="ink">How we vet hotels</ArrowLink>
           </div>
@@ -45,7 +45,9 @@ export default function Home() {
 
         <div className="relative mt-14 w-full sm:mt-20 lg:mt-24">
           <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 z-0 w-[clamp(540px,96vw,1180px)] -translate-x-1/2 -translate-y-1/2">
-            <Globe view="rise" className="w-full" />
+            <div className="globe-in">
+              <Globe view="rise" className="w-full" />
+            </div>
           </div>
           <div className="relative z-10 h-[440px] overflow-hidden rounded-3xl sm:h-[520px] sm:rounded-[32px] lg:h-[680px]">
             <HeroPicture desktop={PHOTOS.poolDeck} mobile={PHOTOS.roomPortrait} alt="A calm, sunlit hotel stay" className="object-[center_70%] sm:object-[center_60%]" />
@@ -124,12 +126,14 @@ export default function Home() {
       {/* Waitlist */}
       <section id="waitlist" className="border-t border-hair py-24 sm:py-36 lg:py-44">
         <div className="container-site flex flex-col items-center text-center">
-          <h2 className="font-display text-[46px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
+          <h2 {...reveal()} className="font-display text-[46px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
             Be first through <br className="hidden sm:block" />
             the door.
           </h2>
           <p className="mt-5 text-base text-sub sm:mt-7 sm:text-[19px]">Join the waitlist and get {WAITLIST_OFFER.short}.</p>
-          <LaunchProgress className="mt-9 max-w-[420px] sm:mt-12" />
+          <div className="mt-9 w-full max-w-[420px] sm:mt-12">
+            <LaunchProgress />
+          </div>
           <div className="mt-10 w-full sm:mt-14">
             <WaitlistForm variant="inline" />
           </div>

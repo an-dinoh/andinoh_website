@@ -12,7 +12,8 @@ export const THEME_KEY = "andinoh-site:theme";
  * Runs in <head> before the first paint so a saved dark theme never flashes white.
  * Kept as a string because it runs before React loads.
  */
-export const THEME_BOOT_SCRIPT = `(function(){try{var p=localStorage.getItem('${THEME_KEY}');var d=p==='dark'||((!p||p==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();`;
+// It also marks <html class="js">, so scroll animations only hide content when JavaScript is running.
+export const THEME_BOOT_SCRIPT = `(function(){document.documentElement.classList.add('js');try{var p=localStorage.getItem('${THEME_KEY}');var d=p==='dark'||((!p||p==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();`;
 
 interface ThemeContextType {
   /** What's showing (the device's choice when preference is "system"). */

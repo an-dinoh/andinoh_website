@@ -4,6 +4,14 @@ import Link from "next/link";
 
 const focus = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
+type Delay = React.CSSProperties & { "--d"?: string };
+
+/** Rise in on scroll (see RevealObserver). Spread onto an element; `i` staggers siblings. */
+export const reveal = (i = 0) => ({ "data-reveal": "", style: { "--d": `${i * 90}ms` } as Delay });
+
+/** Hero entrance on load: add the "hero-in" class and this style; `i` is the piece's place in the sequence. */
+export const heroDelay = (i = 0): Delay => ({ "--d": `${i * 110}ms` });
+
 /** The one solid action on a page. */
 export function PillLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
   return (
@@ -38,11 +46,15 @@ export function ArrowLink({ href, children, tone = "accent", arrow = "→", clas
   );
 }
 
+/** Small blue label above a title. */
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="mb-4 text-[15px] font-medium text-accent">{children}</p>;
 }
 
-/** Section title in Rational Display. Wrap the second half in <Faint> for the two-tone look. */
+/**
+ * Section title in Rational Display; one of the few things that rises in on scroll (kept sparing on
+ * purpose). Wrap the second half in <Faint> for the two-tone look.
+ */
 export function Title({ children, className = "", as: Tag = "h2", id }: {
   children: React.ReactNode;
   className?: string;
@@ -50,7 +62,7 @@ export function Title({ children, className = "", as: Tag = "h2", id }: {
   id?: string;
 }) {
   return (
-    <Tag id={id} className={`text-balance font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-[52px] lg:text-[60px] ${className}`}>
+    <Tag id={id} {...reveal()} className={`text-balance font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-[52px] lg:text-[60px] ${className}`}>
       {children}
     </Tag>
   );
@@ -79,7 +91,7 @@ export function Steps({ items }: { items: { title: string; body: string }[] }) {
 export function Statement({ children }: { children: React.ReactNode }) {
   return (
     <section className="container-site py-28 text-center sm:py-40 lg:py-48">
-      <p className="mx-auto max-w-[940px] text-balance font-display text-[30px] font-medium leading-[1.18] tracking-[-0.025em] sm:text-[42px] lg:text-[52px]">
+      <p {...reveal()} className="mx-auto max-w-[940px] text-balance font-display text-[30px] font-medium leading-[1.18] tracking-[-0.025em] sm:text-[42px] lg:text-[52px]">
         {children}
       </p>
     </section>

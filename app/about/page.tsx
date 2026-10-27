@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CloudImage from "@/app/components/CloudImage";
-import { ArrowLink, Eyebrow, Faint, Title } from "@/app/components/site";
+import { ArrowLink, Eyebrow, Faint, Title, heroDelay, reveal } from "@/app/components/site";
 import { PHOTOS } from "@/app/content/site";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function AboutPage() {
     <>
       <section className="container-site flex flex-col items-center pt-16 text-center sm:pt-24 lg:pt-32">
         <Eyebrow>About Andinoh</Eyebrow>
-        <h1 className="font-display text-[clamp(3.25rem,8vw,6.5rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
+        <h1 className="hero-in font-display text-[clamp(3.25rem,8vw,6.5rem)] font-semibold leading-[0.96] tracking-[-0.045em]" style={heroDelay(0)}>
           Trust is <br />
           <span className="text-accent">the product.</span>
         </h1>
@@ -73,7 +73,7 @@ export default function AboutPage() {
       </section>
 
       <section className="container-site flex flex-col items-center py-28 text-center sm:py-40 lg:py-48">
-        <h2 className="font-display text-[42px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
+        <h2 {...reveal()} className="font-display text-[42px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
           Built in Lagos. <br />
           <Faint>For hotels across Africa.</Faint>
         </h2>

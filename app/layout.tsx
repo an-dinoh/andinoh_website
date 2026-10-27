@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import RevealObserver from "./components/RevealObserver";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "./context/ThemeContext";
 
 // Rational Text for everything; Rational Display for large headlines (as in the hotel and admin apps).
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <RevealObserver />
         </ThemeProvider>
       </body>
     </html>

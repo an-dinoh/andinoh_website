@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CloudImage from "@/app/components/CloudImage";
-import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title } from "@/app/components/site";
+import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title, heroDelay, reveal } from "@/app/components/site";
 import { PHOTOS } from "@/app/content/site";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default function HotelsPage() {
     <>
       <section className="container-site flex flex-col items-center pt-16 text-center sm:pt-24 lg:pt-32">
         <Eyebrow>For hotels</Eyebrow>
-        <h1 className="max-w-[1080px] font-display text-[clamp(2.75rem,7.4vw,6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <h1 className="hero-in max-w-[1080px] font-display text-[clamp(2.75rem,7.4vw,6rem)] font-semibold leading-[0.98] tracking-[-0.045em]" style={heroDelay(0)}>
           The hotel software <br className="hidden sm:block" />
           that comes <span className="text-accent">with guests.</span>
         </h1>
@@ -90,7 +90,7 @@ export default function HotelsPage() {
       </section>
 
       <section className="container-site flex flex-col items-center py-28 text-center sm:py-40 lg:py-48">
-        <h2 className="font-display text-[46px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
+        <h2 {...reveal()} className="font-display text-[46px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
           Be live on <br className="hidden sm:block" />
           launch day.
         </h2>
