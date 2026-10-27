@@ -81,7 +81,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>
-      <body className={`${rational.variable} ${rationalDisplay.variable} antialiased`}>
+      {/* Extensions such as Grammarly add attributes to <body> before React loads; ignore them. */}
+      <body className={`${rational.variable} ${rationalDisplay.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
           <div id="top" />
           <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-bg focus:px-4 focus:py-2 focus:text-sm focus:text-ink focus:ring-2 focus:ring-brand/40">
