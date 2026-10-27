@@ -23,30 +23,46 @@ export const SOCIALS = {
   tiktok: "https://www.tiktok.com/@andinoh0",
 };
 
+/** The backend's Cloudinary account; the website's photos live in its andinoh/website folder. */
+export const CLOUDINARY_CLOUD = "dciywfclz";
+
 export interface Photo {
+  /** Cloudinary path after /upload/ (version and public id). Loaded first, resized and in the best format. */
+  cloud: string;
+  /** Local copy in public/, used if Cloudinary can't be reached. */
   src: string;
+  /** Key into PHOTO_BLUR. */
+  name: string;
   alt: string;
 }
 
+const photo = (name: string, version: number, alt: string): Photo => ({
+  cloud: `v${version}/andinoh/website/${name}.jpg`,
+  src: `/images/photos/${name}.jpg`,
+  name,
+  alt,
+});
+
 /**
- * Photos in public/images/photos. They are Unsplash stock (Unsplash License; no attribution required,
- * credited here anyway), not Andinoh-inspected hotels: swap in photos of vetted hotels when you have them.
+ * Photos: Unsplash stock (Unsplash License; no attribution required, credited here anyway), not
+ * Andinoh-inspected hotels; swap in photos of vetted hotels when you have them. To change one, upload it to
+ * Cloudinary as andinoh/website/<name>, put the new version here, and replace the local copy and its blur.
  */
 export const PHOTOS = {
   // Bilderboken
-  poolDeck: { src: "/images/photos/pool-deck.jpg", alt: "Sunloungers beside a hotel pool at sunset" },
+  poolDeck: photo("pool-deck", 1793117228, "Sunloungers beside a hotel pool at sunset"),
   // Linus Mimietz
-  roomPortrait: { src: "/images/photos/room-portrait.jpg", alt: "A calm hotel room with soft lighting" },
+  roomPortrait: photo("room-portrait", 1793117237, "A calm hotel room with soft lighting"),
   // Oswald Elsaboath
-  frontDesk: { src: "/images/photos/front-desk.jpg", alt: "Hotel reception desk with staff" },
+  frontDesk: photo("front-desk", 1793117251, "Hotel reception desk with staff"),
   // Chastity Cortijo
-  roomBlue: { src: "/images/photos/room-blue.jpg", alt: "Hotel bedroom with a blue headboard" },
+  roomBlue: photo("room-blue", 1793117252, "Hotel bedroom with a blue headboard"),
   // Frames For Your Heart
-  lobby: { src: "/images/photos/lobby.jpg", alt: "Modern hotel lobby with wood-slat walls" },
+  lobby: photo("lobby", 1793117254, "Modern hotel lobby with wood-slat walls"),
   // The Anam
-  poolPalms: { src: "/images/photos/pool-palms.jpg", alt: "Lounge chairs by a palm-lined pool at dusk" },
+  poolPalms: photo("pool-palms", 1793117255, "Lounge chairs by a palm-lined pool at dusk"),
   // Francesca Saraco
-  building: { src: "/images/photos/hotel-building.jpg", alt: "A white hotel building with balconies and palm trees" },
+  building: photo("hotel-building", 1793117256, "A white hotel building with balconies and palm trees"),
   // visualsofdana
-  gardenRoom: { src: "/images/photos/garden-room.jpg", alt: "A hotel bedroom with a garden view" },
+  gardenRoom: photo("garden-room", 1793117257, "A hotel bedroom with a garden view"),
 } satisfies Record<string, Photo>;

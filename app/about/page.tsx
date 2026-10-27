@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import CloudImage from "@/app/components/CloudImage";
 import { ArrowLink, Eyebrow, Faint, Title } from "@/app/components/site";
 import { PHOTOS } from "@/app/content/site";
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
           hotels they can rely on. Hotels get the tools, and the guests, to grow.
         </p>
         <div className="relative mt-14 h-[320px] w-full overflow-hidden rounded-3xl sm:mt-20 sm:h-[480px] sm:rounded-[32px] lg:mt-[88px] lg:h-[620px]">
-          <Image src={PHOTOS.building.src} alt={PHOTOS.building.alt} fill priority sizes="(min-width: 1200px) 1136px, 100vw" className="object-cover" />
+          <CloudImage photo={PHOTOS.building} priority sizes="(min-width: 1200px) 1136px, 100vw" />
         </div>
       </section>
 

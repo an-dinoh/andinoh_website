@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import CloudImage from "@/app/components/CloudImage";
 import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title } from "@/app/components/site";
 import { PHOTOS } from "@/app/content/site";
 
@@ -45,7 +45,7 @@ export default function HotelsPage() {
           <ArrowLink href="#verification" tone="ink" arrow="↓">How verification works</ArrowLink>
         </div>
         <div className="relative mt-14 h-[300px] w-full overflow-hidden rounded-3xl sm:mt-20 sm:h-[480px] sm:rounded-[32px] lg:mt-[88px] lg:h-[620px]">
-          <Image src={PHOTOS.frontDesk.src} alt={PHOTOS.frontDesk.alt} fill priority sizes="(min-width: 1200px) 1136px, 100vw" className="object-cover" />
+          <CloudImage photo={PHOTOS.frontDesk} priority sizes="(min-width: 1200px) 1136px, 100vw" />
         </div>
       </section>
 
@@ -84,7 +84,7 @@ export default function HotelsPage() {
       <section className="container-site grid gap-4 pt-28 sm:grid-cols-2 sm:gap-6 sm:pt-40 lg:pt-48">
         {[PHOTOS.lobby, PHOTOS.roomBlue].map((p) => (
           <div key={p.src} className="relative h-[280px] overflow-hidden rounded-[20px] sm:h-[400px] sm:rounded-[28px] lg:h-[520px]">
-            <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1200px) 556px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+            <CloudImage photo={p} sizes="(min-width: 1200px) 556px, (min-width: 640px) 50vw, 100vw" />
           </div>
         ))}
       </section>

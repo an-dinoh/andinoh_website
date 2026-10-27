@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import CloudImage from "@/app/components/CloudImage";
 import LaunchProgress from "@/app/components/LaunchProgress";
 import WaitlistForm from "@/app/components/WaitlistForm";
 import { PHOTOS, WAITLIST_OFFER } from "@/app/content/site";
@@ -40,7 +40,7 @@ export default async function WaitlistPage({ searchParams }: { searchParams: Pro
       {/* Photo with the form over it on desktop; on phones the form overlaps the photo's lower edge. */}
       <div className="lg:relative lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:h-[780px] lg:self-center lg:overflow-hidden lg:rounded-[32px]">
         <div className="relative h-[260px] overflow-hidden rounded-3xl sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto lg:rounded-none">
-          <Image src={PHOTOS.gardenRoom.src} alt={PHOTOS.gardenRoom.alt} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+          <CloudImage photo={PHOTOS.gardenRoom} priority sizes="(min-width: 1024px) 560px, 100vw" />
         </div>
         <div className="relative -mt-14 mx-2.5 rounded-3xl border border-line bg-card p-5 backdrop-blur-xl sm:-mt-24 sm:mx-8 sm:p-7 lg:absolute lg:inset-x-6 lg:bottom-6 lg:m-0 lg:border-0">
           <WaitlistForm variant="card" defaultType={defaultType} />

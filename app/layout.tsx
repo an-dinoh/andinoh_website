@@ -6,23 +6,24 @@ import Footer from "./components/Footer";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "./context/ThemeContext";
 
 // Rational Text for everything; Rational Display for large headlines (as in the hotel and admin apps).
+// Only the weights the site uses, as WOFF2 (about 40 KB each instead of 130 KB as TTF).
 const rational = localFont({
   src: [
-    { path: "../public/font/rational/RationalText-Book.ttf", weight: "400", style: "normal" },
-    { path: "../public/font/rational/RationalText-Medium.ttf", weight: "500", style: "normal" },
-    { path: "../public/font/rational/RationalText-SemiBold.ttf", weight: "600", style: "normal" },
-    { path: "../public/font/rational/RationalText-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../public/font/rational/RationalText-Book.woff2", weight: "400", style: "normal" },
+    { path: "../public/font/rational/RationalText-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../public/font/rational/RationalText-SemiBold.woff2", weight: "600", style: "normal" },
   ],
   variable: "--font-rational",
+  display: "swap",
 });
 
 const rationalDisplay = localFont({
   src: [
-    { path: "../public/font/rational/RationalDisplay-Medium.ttf", weight: "500", style: "normal" },
-    { path: "../public/font/rational/RationalDisplay-SemiBold.ttf", weight: "600", style: "normal" },
-    { path: "../public/font/rational/RationalDisplay-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../public/font/rational/RationalDisplay-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../public/font/rational/RationalDisplay-SemiBold.woff2", weight: "600", style: "normal" },
   ],
   variable: "--font-rational-display",
+  display: "swap",
 });
 
 const description =
@@ -80,6 +81,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+        {/* Photos come from Cloudinary: open the connection before the first image is requested. */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
       {/* Extensions such as Grammarly add attributes to <body> before React loads; ignore them. */}
       <body className={`${rational.variable} ${rationalDisplay.variable} antialiased`} suppressHydrationWarning>

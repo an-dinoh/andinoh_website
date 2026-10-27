@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CloudImage, { HeroPicture } from "./components/CloudImage";
 import Globe from "./components/globe/Globe";
 import LaunchProgress from "./components/LaunchProgress";
 import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title } from "./components/site";
@@ -48,8 +48,7 @@ export default function Home() {
             <Globe view="rise" className="w-full" />
           </div>
           <div className="relative z-10 h-[440px] overflow-hidden rounded-3xl sm:h-[520px] sm:rounded-[32px] lg:h-[680px]">
-            <Image src={PHOTOS.poolDeck.src} alt={PHOTOS.poolDeck.alt} fill priority sizes="(min-width: 1200px) 1136px, 100vw" className="hidden object-cover object-[center_60%] sm:block" />
-            <Image src={PHOTOS.roomPortrait.src} alt={PHOTOS.roomPortrait.alt} fill priority sizes="100vw" className="object-cover object-[center_70%] sm:hidden" />
+            <HeroPicture desktop={PHOTOS.poolDeck} mobile={PHOTOS.roomPortrait} alt="A calm, sunlit hotel stay" className="object-[center_70%] sm:object-[center_60%]" />
           </div>
         </div>
       </section>
@@ -95,7 +94,7 @@ export default function Home() {
             <li key={g.label} className="w-[78%] shrink-0 snap-start sm:w-auto">
               <figure>
                 <div className="relative h-[360px] overflow-hidden rounded-[20px] sm:h-[320px] sm:rounded-3xl lg:h-[480px]">
-                  <Image src={g.photo.src} alt={g.photo.alt} fill sizes="(min-width: 1200px) 380px, (min-width: 640px) 33vw, 78vw" className="object-cover" />
+                  <CloudImage photo={g.photo} sizes="(min-width: 1200px) 380px, (min-width: 640px) 33vw, 78vw" />
                 </div>
                 <figcaption className="mt-3 text-sm text-muted sm:mt-4 sm:text-[15px]">{g.label}</figcaption>
               </figure>
@@ -118,7 +117,7 @@ export default function Home() {
           <ArrowLink href="/hotels">Andinoh for hotels</ArrowLink>
         </div>
         <div className="relative h-[260px] overflow-hidden rounded-[20px] sm:h-[420px] sm:rounded-[28px] lg:h-[520px]">
-          <Image src={PHOTOS.frontDesk.src} alt={PHOTOS.frontDesk.alt} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+          <CloudImage photo={PHOTOS.frontDesk} sizes="(min-width: 1024px) 560px, 100vw" />
         </div>
       </section>
 
