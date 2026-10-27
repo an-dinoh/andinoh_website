@@ -6,8 +6,8 @@
 export const LAUNCH_PROGRESS = 60;
 
 export const WAITLIST_OFFER = {
-  headline: "10% off your first 2 bookings",
-  terms: "For guests who join the waitlist before launch. Applies to your first two Andinoh bookings.",
+  short: "10% off your first 2 bookings",
+  terms: "For guests who join the waitlist before launch.",
 };
 
 export const CONTACT = {
@@ -17,36 +17,36 @@ export const CONTACT = {
   city: "Lagos, Nigeria",
 };
 
-export const SOCIALS = [
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/109459638/", icon: "/icons/linkedin.svg" },
-  { name: "Instagram", href: "https://www.instagram.com/andinoh_/", icon: "/icons/instagram.svg" },
-  { name: "TikTok", href: "https://www.tiktok.com/@andinoh0", icon: "/icons/tiktok.svg" },
-];
+export const SOCIALS = {
+  instagram: "https://www.instagram.com/andinoh_/",
+  linkedin: "https://www.linkedin.com/company/109459638/",
+  tiktok: "https://www.tiktok.com/@andinoh0",
+};
 
-export interface PhotoSlot {
-  /** Path under /public, e.g. "/images/hotels/lobby.jpg". Leave null to show the placeholder. */
-  src: string | null;
+export interface Photo {
+  src: string;
   alt: string;
-  /** What photo belongs here; shown on the placeholder until one is added. */
-  hint: string;
 }
 
 /**
- * Photo slots. Drop files in public/images/hotels/ (JPG or WebP, about 2000px on the long side) and set
- * `src`. Only use photos of hotels Andinoh has vetted, with the hotel's permission.
+ * Photos in public/images/photos. They are Unsplash stock (Unsplash License; no attribution required,
+ * credited here anyway), not Andinoh-inspected hotels: swap in photos of vetted hotels when you have them.
  */
 export const PHOTOS = {
-  hero: { src: null, alt: "A vetted Andinoh hotel", hint: "Hero: a bright room or lobby, portrait 4:5" },
-  heroDetail: { src: null, alt: "Hotel room detail", hint: "Room detail, square" },
-  inspection: { src: null, alt: "An Andinoh inspector on a hotel visit", hint: "Inspector on a visit, landscape 4:3" },
-  gallery: [
-    { src: null, alt: "Hotel room", hint: "Guest room" },
-    { src: null, alt: "Hotel lobby", hint: "Lobby or reception" },
-    { src: null, alt: "Hotel exterior", hint: "Exterior or pool" },
-    { src: null, alt: "Hotel restaurant", hint: "Restaurant or lounge" },
-    { src: null, alt: "Hotel bathroom", hint: "Bathroom" },
-  ],
-  hotelsHero: { src: null, alt: "Hotel front desk team", hint: "Front desk team at work, landscape 4:3" },
-  hotelsApp: { src: null, alt: "The Andinoh hotel app on a laptop", hint: "Screenshot of the hotel app dashboard, 16:10" },
-  about: { src: null, alt: "The Andinoh team", hint: "Team or founders, landscape 3:2" },
-} satisfies Record<string, PhotoSlot | PhotoSlot[]>;
+  // Bilderboken
+  poolDeck: { src: "/images/photos/pool-deck.jpg", alt: "Sunloungers beside a hotel pool at sunset" },
+  // Linus Mimietz
+  roomPortrait: { src: "/images/photos/room-portrait.jpg", alt: "A calm hotel room with soft lighting" },
+  // Oswald Elsaboath
+  frontDesk: { src: "/images/photos/front-desk.jpg", alt: "Hotel reception desk with staff" },
+  // Chastity Cortijo
+  roomBlue: { src: "/images/photos/room-blue.jpg", alt: "Hotel bedroom with a blue headboard" },
+  // Frames For Your Heart
+  lobby: { src: "/images/photos/lobby.jpg", alt: "Modern hotel lobby with wood-slat walls" },
+  // The Anam
+  poolPalms: { src: "/images/photos/pool-palms.jpg", alt: "Lounge chairs by a palm-lined pool at dusk" },
+  // Francesca Saraco
+  building: { src: "/images/photos/hotel-building.jpg", alt: "A white hotel building with balconies and palm trees" },
+  // visualsofdana
+  gardenRoom: { src: "/images/photos/garden-room.jpg", alt: "A hotel bedroom with a garden view" },
+} satisfies Record<string, Photo>;

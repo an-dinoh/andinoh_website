@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import {
-  ArrowRight, Broom, Calculator, Calendar, CalendarEdit, Chart, CheckCircle, Discount, Document, Messages, People, Shop,
-  Timer, Verify, WalletMoney, type Icon,
-} from "@/app/components/icons";
-import { Button, IconTile, Photo, Pill, SectionHeading } from "@/app/components/ui";
+import Image from "next/image";
+import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title } from "@/app/components/site";
 import { PHOTOS } from "@/app/content/site";
 
 export const metadata: Metadata = {
@@ -13,111 +10,94 @@ export const metadata: Metadata = {
   alternates: { canonical: "/hotels" },
 };
 
-const FEATURES: { icon: Icon; title: string; body: string }[] = [
-  { icon: Calendar, title: "Front desk", body: "Andinoh bookings and walk-ins in one list. Check guests in and out, take payments, handle group bookings." },
-  { icon: CalendarEdit, title: "Rooms and prices", body: "Room types, every physical room, and seasonal prices that apply themselves." },
-  { icon: Broom, title: "Housekeeping board", body: "See which rooms are clean, dirty or being cleaned, and assign tasks to staff." },
-  { icon: People, title: "Staff and rota", body: "Invite staff with the right permissions, plan the rota and track clock-ins." },
-  { icon: WalletMoney, title: "Wallet and payouts", body: "Online payments land in your Andinoh wallet. Withdraw to your bank account." },
-  { icon: Calculator, title: "Accounting", body: "Profit and loss, expenses, receivables and daily cash-up, kept as proper double-entry books." },
-  { icon: Messages, title: "Guest chat", body: "Talk to guests before and during their stay, from the same app." },
-  { icon: Chart, title: "Reports and analytics", body: "Occupancy, revenue and reviews on one dashboard." },
-  { icon: Discount, title: "Discounts", body: "Run offers that show up for guests when they search." },
+const FEATURES = [
+  { title: "Front desk", body: "Andinoh bookings and walk-ins in one list. Check guests in and out." },
+  { title: "Rooms and prices", body: "Room types, every room, and seasonal prices that apply themselves." },
+  { title: "Housekeeping", body: "See which rooms are clean or dirty, and assign the work." },
+  { title: "Staff and rota", body: "Invite staff with the right access, plan shifts, track clock-ins." },
+  { title: "Wallet and payouts", body: "Online payments land in your wallet. Withdraw to your bank." },
+  { title: "Accounting", body: "Profit and loss, expenses and daily cash-up, kept properly." },
+  { title: "Guest chat", body: "Talk to guests before and during their stay." },
+  { title: "Reports", body: "Occupancy, revenue and reviews on one dashboard." },
 ];
 
 const STEPS = [
-  { icon: Shop, title: "Create your hotel", body: "Add your details, photos, facilities, policies and rooms." },
-  { icon: Document, title: "Send your documents", body: "Business registration, licence and tax details. Andinoh checks them." },
-  { icon: Timer, title: "Host your inspection", body: "An independent Andinoh inspector visits and goes through the checklist." },
-  { icon: Verify, title: "Go live, verified", body: "Guests can book you, and you carry the Andinoh verified badge." },
+  { title: "Create your hotel", body: "Add your details, photos, facilities and rooms." },
+  { title: "Send your documents", body: "Registration, licence and tax details, checked by Andinoh." },
+  { title: "Host your inspection", body: "An independent inspector visits with the checklist." },
+  { title: "Go live, verified", body: "Guests can book you, with the Andinoh verified badge." },
 ];
 
 export default function HotelsPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-[72px]">
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-primary-50 to-transparent" />
-        <div className="container-site relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:gap-16">
-          <div className="animate-rise flex flex-col items-start gap-6">
-            <Pill tone="primary">For hotel owners and managers</Pill>
-            <h1 className="font-display text-[38px] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[52px]">
-              The hotel software that comes with guests.
-            </h1>
-            <p className="max-w-xl text-[17px] leading-relaxed text-muted sm:text-lg">
-              Get verified by Andinoh, take bookings from guests who want a hotel they can trust, and run the whole property from one app.
-            </p>
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Button href="/waitlist?type=hotel" size="lg" iconRight={ArrowRight}>Join as a hotel partner</Button>
-              <Button href="#verification" size="lg" variant="outline">How verification works</Button>
-            </div>
-          </div>
-          <Photo slot={PHOTOS.hotelsHero} priority className="aspect-[4/3] w-full rounded-3xl border border-line" />
+      <section className="container-site flex flex-col items-center pt-16 text-center sm:pt-24 lg:pt-32">
+        <Eyebrow>For hotels</Eyebrow>
+        <h1 className="max-w-[1080px] font-display text-[clamp(2.75rem,7.4vw,6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+          The hotel software <br className="hidden sm:block" />
+          that comes <span className="text-accent">with guests.</span>
+        </h1>
+        <p className="mt-6 max-w-[620px] text-[17px] leading-normal text-sub sm:mt-8 sm:text-[21px]">
+          Get verified by Andinoh, take bookings from guests who want a hotel they can trust, and run your property from one app.
+        </p>
+        <div className="mt-8 flex w-full flex-col items-center gap-5 sm:mt-10 sm:w-auto sm:flex-row sm:gap-7">
+          <PillLink href="/waitlist?type=hotel" className="w-full sm:w-auto">Become a partner</PillLink>
+          <ArrowLink href="#verification" tone="ink" arrow="↓">How verification works</ArrowLink>
+        </div>
+        <div className="relative mt-14 h-[300px] w-full overflow-hidden rounded-3xl sm:mt-20 sm:h-[480px] sm:rounded-[32px] lg:mt-[88px] lg:h-[620px]">
+          <Image src={PHOTOS.frontDesk.src} alt={PHOTOS.frontDesk.alt} fill priority sizes="(min-width: 1200px) 1136px, 100vw" className="object-cover" />
         </div>
       </section>
 
-      <section aria-labelledby="features-title" className="py-16 sm:py-24">
-        <div className="container-site flex flex-col gap-10">
-          <SectionHeading
-            id="features-title"
-            eyebrow="The Andinoh hotel app"
-            title="Everything the front desk and the back office need."
-            lead="Built for hotels in Nigeria: prices in naira, cash and transfers at the desk, and staff who work in shifts."
-          />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f) => (
-              <article key={f.title} className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5">
-                <IconTile icon={f.icon} />
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="text-[15px] font-semibold text-ink">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted">{f.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <Photo slot={PHOTOS.hotelsApp} className="aspect-[16/9] w-full rounded-3xl border border-line" />
-        </div>
+      <Statement>
+        Guests come to Andinoh for trust. <Faint>Verification is how good hotels stand out.</Faint>
+      </Statement>
+
+      <section className="container-site pb-28 sm:pb-40 lg:pb-48">
+        <Eyebrow>The Andinoh hotel app</Eyebrow>
+        <Title className="max-w-[760px]">
+          The front desk and the back office, <Faint>in one place.</Faint>
+        </Title>
+        <ul className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 lg:mt-[72px] lg:grid-cols-4 lg:gap-y-14">
+          {FEATURES.map((f) => (
+            <li key={f.title} className="border-t border-line pt-5 sm:pt-6">
+              <p className="mb-2 text-lg font-medium sm:text-[19px]">{f.title}</p>
+              <p className="text-[15px] leading-relaxed text-muted">{f.body}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section id="verification" aria-labelledby="verification-title" className="border-y border-line bg-surface py-16 sm:py-24">
-        <div className="container-site flex flex-col gap-10">
-          <SectionHeading
-            id="verification-title"
-            eyebrow="Getting verified"
-            title="Four steps to your verified badge."
-            lead="Verification is what guests come to Andinoh for. It’s also how good hotels stand out from the rest."
-          />
-          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((s, i) => (
-              <li key={s.title} className="flex flex-col gap-4 rounded-2xl border border-line bg-background p-5">
-                <div className="flex items-center justify-between">
-                  <IconTile icon={s.icon} tone={i === STEPS.length - 1 ? "success" : "primary"} />
-                  <span className="tabular text-xs font-medium text-subtle">Step {i + 1}</span>
-                </div>
-                <h3 className="text-[15px] font-semibold text-ink">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-muted">{s.body}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="flex items-start gap-3 rounded-2xl border border-info-ring bg-info-50 p-4">
-            <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-info" />
-            <p className="text-sm leading-relaxed text-info-fg">
-              If something doesn’t pass, you’ll see exactly what to fix and by when. Send photos of the fix, and the inspector confirms it on a follow-up visit.
-              Verified hotels are re-inspected once a year.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-24">
+      <section id="verification" className="bg-soft py-24 sm:py-32 lg:py-40">
         <div className="container-site">
-          <div className="flex flex-col items-start gap-6 rounded-3xl bg-gradient-to-br from-[#0A3F66] to-[#071F33] p-6 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
-            <div className="flex max-w-xl flex-col gap-2">
-              <h2 className="font-display text-[28px] font-semibold leading-tight tracking-tight text-white sm:text-[34px]">Be live on launch day.</h2>
-              <p className="text-[17px] text-white/75">Partners on the waitlist are first in line for inspections.</p>
-            </div>
-            <Button href="/waitlist?type=hotel" variant="light" size="lg" iconRight={ArrowRight}>Join as a hotel partner</Button>
+          <Title className="max-w-[760px]">Four steps to your verified badge.</Title>
+          <div className="mt-12 sm:mt-16 lg:mt-[88px]">
+            <Steps items={STEPS} />
           </div>
+          <p className="mt-12 max-w-[720px] text-base leading-relaxed text-sub sm:mt-16 sm:text-[17px]">
+            If something doesn’t pass, you’ll see exactly what to fix and by when. The inspector confirms the fix on a follow-up
+            visit. Verified hotels are re-inspected once a year.
+          </p>
         </div>
+      </section>
+
+      <section className="container-site grid gap-4 pt-28 sm:grid-cols-2 sm:gap-6 sm:pt-40 lg:pt-48">
+        {[PHOTOS.lobby, PHOTOS.roomBlue].map((p) => (
+          <div key={p.src} className="relative h-[280px] overflow-hidden rounded-[20px] sm:h-[400px] sm:rounded-[28px] lg:h-[520px]">
+            <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1200px) 556px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+          </div>
+        ))}
+      </section>
+
+      <section className="container-site flex flex-col items-center py-28 text-center sm:py-40 lg:py-48">
+        <h2 className="font-display text-[46px] font-semibold leading-none tracking-[-0.045em] sm:text-[64px] lg:text-[80px]">
+          Be live on <br className="hidden sm:block" />
+          launch day.
+        </h2>
+        <p className="mb-8 mt-5 max-w-[520px] text-base text-sub sm:mt-7 sm:text-[19px]">
+          Join as a partner and we’ll be in touch about getting your hotel verified.
+        </p>
+        <ArrowLink href="/waitlist?type=hotel">Join as a hotel partner</ArrowLink>
       </section>
     </>
   );

@@ -15,12 +15,14 @@ export const THEME_KEY = "andinoh-site:theme";
 export const THEME_BOOT_SCRIPT = `(function(){try{var p=localStorage.getItem('${THEME_KEY}');var d=p==='dark'||((!p||p==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();`;
 
 interface ThemeContextType {
+  /** What's showing (the device's choice when preference is "system"). */
   theme: Theme;
-  /** Light ↔ dark, from whatever is showing now. */
-  toggle: () => void;
+  /** What the visitor chose; "system" (the default) follows the device. */
+  preference: ThemePreference;
+  setPreference: (p: ThemePreference) => void;
 }
 
-const ThemeContext = createContext<ThemeContextType>({ theme: "light", toggle: () => {} });
+const ThemeContext = createContext<ThemeContextType>({ theme: "light", preference: "system", setPreference: () => {} });
 
 function readPreference(): ThemePreference {
   try {
@@ -56,13 +58,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (ready) document.documentElement.setAttribute("data-theme", theme);
   }, [ready, theme]);
 
-  const toggle = useCallback(() => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setPref(next);
-    try { localStorage.setItem(THEME_KEY, next); } catch { /* private mode */ }
-  }, [theme]);
+  const setPreference = useCallback((p: ThemePreference) => {
+    setPref(p);
+    try {
+      if (p === "system") localStorage.removeItem(THEME_KEY);
+      else localStorage.setItem(THEME_KEY, p);
+    } catch { /* private mode */ }
+  }, []);
 
-  return <ThemeContext.Provider value={{ theme, toggle }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ theme, preference, setPreference }}>{children}</ThemeContext.Provider>;
 }
 
 export const useTheme = () => useContext(ThemeContext);

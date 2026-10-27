@@ -1,101 +1,130 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Call, Clock, Location, Mail } from "@/app/components/icons";
 import { CONTACT, SOCIALS } from "@/app/content/site";
 import Logo from "./Logo";
+import ThemeSwitch from "./ThemeSwitch";
+
+const ring = "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40";
+const linkCls = `w-fit text-[15px] text-ink transition-opacity hover:opacity-70 ${ring}`;
 
 const COLUMNS = [
   {
-    title: "Andinoh",
+    title: "Explore",
     links: [
       { href: "/#why", label: "Why Andinoh" },
-      { href: "/#vetting", label: "How we vet hotels" },
-      { href: "/about", label: "About us" },
-      { href: "/contact", label: "Contact" },
+      { href: "/#vetting", label: "How we vet" },
+      { href: "/hotels", label: "For hotels" },
+      { href: "/waitlist", label: "Waitlist" },
     ],
   },
   {
-    title: "For hotels",
+    title: "Company",
     links: [
-      { href: "/hotels", label: "Hotel software" },
-      { href: "/hotels#verification", label: "Getting verified" },
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
       { href: "/waitlist?type=hotel", label: "Become a partner" },
     ],
   },
 ];
 
+const ICON = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+
+const SOCIAL_LINKS = [
+  {
+    name: "Instagram",
+    href: SOCIALS.instagram,
+    icon: (
+      <svg {...ICON}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg>
+    ),
+  },
+  {
+    name: "LinkedIn",
+    href: SOCIALS.linkedin,
+    icon: (
+      <svg {...ICON}><rect x="3" y="3" width="18" height="18" rx="4" /><path d="M8 10.5v6M8 7.5v.01M12 16.5v-6M12 13.5a2.5 2.5 0 0 1 5 0v3" /></svg>
+    ),
+  },
+  {
+    name: "TikTok",
+    href: SOCIALS.tiktok,
+    icon: (
+      <svg {...ICON}><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" /><path d="M14 3c.5 2.6 2.4 4.4 5 4.6" /></svg>
+    ),
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#0A3F66] to-[#071F33] text-white">
-      <div className="container-site py-14 sm:py-16">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
-          <div className="flex flex-col gap-4">
-            <Logo inverse className="h-8 w-auto self-start" />
-            <p className="max-w-xs text-sm leading-relaxed text-white/70">
-              Trusted hotel stays, and the software hotels run on. Every hotel is checked in person before guests can book it.
-            </p>
-            <p className="inline-flex items-center gap-2 self-start rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90">
-              <Clock className="h-4 w-4" />
-              The Andinoh app is coming to iPhone and Android
-            </p>
-          </div>
+    <footer className="px-2.5 pb-2.5 sm:px-4 sm:pb-4">
+      <div className="relative overflow-hidden rounded-[28px] bg-soft sm:rounded-[36px]">
+        {/* Soft brand glow in the corner. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 -top-32 h-[360px] w-[360px] rounded-full sm:-right-40 sm:-top-48 sm:h-[640px] sm:w-[640px]"
+          style={{ background: "radial-gradient(closest-side, var(--foot-glow), transparent)" }}
+        />
 
-          {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <h2 className="text-sm font-semibold">{col.title}</h2>
-              <ul className="mt-4 flex flex-col gap-3 text-sm text-white/70">
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="transition-colors hover:text-white">{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
+        <div className="relative mx-auto max-w-[1200px] px-[22px] pt-14 sm:px-10 sm:pt-20 lg:px-12 lg:pt-[104px]">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+            <div className="flex flex-col items-start gap-5 sm:gap-7 md:col-span-2 lg:col-span-5">
+              <Logo className="h-6 w-auto sm:h-7" />
+              <p className="font-display text-[30px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]">
+                Hotels you can trust,
+                <br />
+                <span className="text-faint">checked in person.</span>
+              </p>
             </div>
-          ))}
 
-          <div>
-            <h2 className="text-sm font-semibold">Get in touch</h2>
-            <ul className="mt-4 flex flex-col gap-3 text-sm text-white/70">
-              <li>
-                <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <Mail className="h-4 w-4 shrink-0" /> {CONTACT.email}
-                </a>
-              </li>
-              <li>
-                <a href={CONTACT.whatsapp.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <Call className="h-4 w-4 shrink-0" /> <span className="tabular">{CONTACT.whatsapp.label}</span> (WhatsApp)
-                </a>
-              </li>
-              <li>
-                <a href={CONTACT.phone.href} className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <Call className="h-4 w-4 shrink-0" /> <span className="tabular">{CONTACT.phone.label}</span>
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <Location className="h-4 w-4 shrink-0" /> {CONTACT.city}
-              </li>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:col-span-2 md:grid-cols-[1fr_1fr_1.35fr] lg:col-span-7 lg:col-start-6 lg:gap-8">
+              {COLUMNS.map((col) => (
+                <div key={col.title} className="flex flex-col gap-3.5">
+                  <h2 className="mb-1 text-[13px] font-normal text-muted">{col.title}</h2>
+                  {col.links.map((l) => (
+                    <Link key={l.href} href={l.href} className={linkCls}>{l.label}</Link>
+                  ))}
+                </div>
+              ))}
+              <div className="col-span-2 flex flex-col gap-3.5 md:col-span-1">
+                <h2 className="mb-1 text-[13px] font-normal text-muted">Get in touch</h2>
+                <a href={`mailto:${CONTACT.email}`} className={`${linkCls} break-words`}>{CONTACT.email}</a>
+                <a href={CONTACT.whatsapp.href} target="_blank" rel="noopener noreferrer" className={linkCls}>WhatsApp</a>
+                <a href={CONTACT.phone.href} className={`${linkCls} tabular`}>{CONTACT.phone.label}</a>
+                <span className="text-[15px] text-sub">{CONTACT.city}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 flex flex-col gap-5 border-t border-line py-6 text-sm text-muted sm:mt-[88px] sm:flex-row sm:items-center sm:justify-between">
+            <span>© {new Date().getFullYear()} Andinoh. All rights reserved.</span>
+            <ul className="flex items-center gap-2.5">
+              {SOCIAL_LINKS.map((s) => (
+                <li key={s.name}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Andinoh on ${s.name}`}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-bg text-ink transition-colors hover:border-ink/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+                  >
+                    {s.icon}
+                  </a>
+                </li>
+              ))}
             </ul>
+            <div className="flex items-center gap-6">
+              <ThemeSwitch />
+              <a href="#top" className={`hidden w-fit text-muted transition-opacity hover:opacity-70 lg:inline ${ring}`}>Back to top ↑</a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col-reverse items-start justify-between gap-4 border-t border-white/15 pt-6 sm:flex-row sm:items-center">
-          <p className="text-xs text-white/60">© {new Date().getFullYear()} Andinoh. All rights reserved.</p>
-          <ul className="flex items-center gap-2">
-            {SOCIALS.map((s) => (
-              <li key={s.name}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Andinoh on ${s.name}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
-                >
-                  <Image src={s.icon} alt="" width={16} height={16} className="h-4 w-4 brightness-0 invert" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* The giant wordmark, cut by the bottom edge. */}
+        <p
+          aria-hidden
+          className="relative mt-1 mb-[-0.24em] select-none whitespace-nowrap text-center font-display font-semibold leading-none tracking-[-0.06em] text-wordmark"
+          style={{ fontSize: "clamp(96px, 23vw, 330px)" }}
+        >
+          Andinoh
+        </p>
       </div>
     </footer>
   );

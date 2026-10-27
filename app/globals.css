@@ -4,152 +4,76 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Andinoh tokens, copied from andinoh_hotel_webapp (docs/design/README.md there is the source of truth).
- * Brand blue #0F75BD and gold #FBB81F on a quiet grey canvas; white panels with hairline borders.
- * Dark mode redefines the same roles under :root[data-theme="dark"]; keep these blocks in step with the apps.
+ * Andinoh website tokens. Brand blue #0F75BD and gold #FBB81F from the apps (andinoh_hotel_webapp
+ * docs/design/README.md), on a white, airy page instead of the apps' grey canvas.
+ * Dark mode redefines the same roles under :root[data-theme="dark"]; components only use the roles.
  */
 :root {
-  --background: #F4F6F9;
-  --foreground: #101828;
+  --bg: #FFFFFF;
+  --ink: #0B0F19;
+  --body: #374151;
+  --sub: #4B5563;
+  --muted: #6B7280;
+  /* Large display text only (3:1 at 24px and up). */
+  --faint: #8A919C;
+  --line: #E5E7EB;
+  --hair: #F0F1F3;
+  --soft: #F7F8FA;
+  --header: rgb(255 255 255 / 0.82);
+  --card: rgb(255 255 255 / 0.92);
 
-  --primary: #0F75BD;
-  --primary-hover: #0B5F9A;
-  --primary-dark: #0A3F66;
-  --primary-50: #EEF6FC;
-  --primary-100: #D7E9F7;
-  --secondary: #FBB81F;
-  --secondary-50: #FFF8E6;
-  --accent: #02A5E6;
+  --brand: #0F75BD;
+  --brand-hover: #0B5F9A;
+  --accent: #0F75BD;
+  --gold: #FBB81F;
 
-  --ink: #101828;
-  --ink-2: #344054;
-  --muted: #667085;
-  --subtle: #98A2B3;
-  --line: #E6EAF0;
-  --line-strong: #D0D5DD;
-  --surface: #FFFFFF;
-  --surface-2: #F9FAFB;
-  /* A selected segment sits above its track. */
-  --raised: #FFFFFF;
+  --seg-track: #F3F4F6;
+  --seg-on: #FFFFFF;
+  --seg-on-ink: #0B0F19;
+  --input-border: #D1D5DB;
+  --input-bg: #FFFFFF;
+  --track: #EEF0F3;
+  --wordmark: #E6E9EF;
+  --foot-glow: rgb(15 117 189 / 0.10);
 
+  --danger: #B42318;
+  --danger-bg: #FEF3F2;
   --success: #12805C;
-  --success-50: #ECFDF3;
-  --warning: #B54708;
-  --warning-50: #FFFAEB;
-  --danger: #D92D20;
-  --danger-50: #FEF3F2;
-  --info: #175CD3;
-  --info-50: #EFF8FF;
-  --violet: #6941C6;
-  --violet-50: #F4F3FF;
-
-  /* Pill rings and callout borders, callout text, gold text. */
-  --success-ring: #ABEFC6;
-  --warning-ring: #FEDF89;
-  --danger-ring: #FECDCA;
-  --info-ring: #B2DDFF;
-  --violet-ring: #D9D6FE;
-  --gold-ring: #FDE68A;
-  --success-fg: #085D3A;
-  --warning-fg: #93370D;
-  --danger-fg: #912018;
-  --info-fg: #1849A9;
-  --gold-fg: #7A4D0B;
-  --gold-text: #B7791F;
-
-  /* Solid buttons and badges keep white text readable in both themes. */
-  --danger-solid: #D92D20;
-  --danger-solid-hover: #B42318;
-  --success-solid: #12805C;
-  --success-solid-hover: #0E6B4D;
-  --gold-hover: #F2A900;
-
-  /* Dark text on gold and amber, in both themes. */
-  --on-gold: #101828;
-  /* Bright amber for calendar bars and pending dots. */
-  --amber: #FDB022;
-  --warning-dot: #F79009;
-  /* Hover on success tints; the orange tile (expenses). */
-  --success-100: #DCFAE6;
-  --orange: #C4320A;
-  --orange-50: #FFF4ED;
-  /* Chart chrome. */
-  --chart-grid: #EEF1F5;
-  --chart-axis: #D0D5DD;
-  --chart-guide: #98A2B3;
-
-  --shimmer-a: #F2F4F7;
-  --shimmer-b: #E9ECF1;
-  --scrim: rgb(16 24 40 / 0.4);
+  --success-bg: #ECFDF3;
   color-scheme: light;
 }
 
-/* Dark mode: the same roles on a deep canvas; ThemeProvider sets <html data-theme="dark">. */
 :root[data-theme="dark"] {
-  --background: #0C111D;
-  --foreground: #F5F5F6;
+  --bg: #0A0D14;
+  --ink: #F5F6F8;
+  --body: #D1D5DC;
+  --sub: #B4BAC5;
+  --muted: #9AA1AD;
+  --faint: #6B7280;
+  --line: #232835;
+  --hair: #1A1E28;
+  --soft: #10141C;
+  --header: rgb(10 13 20 / 0.78);
+  --card: rgb(16 20 28 / 0.9);
 
-  --primary: #2589D2;
-  --primary-hover: #3B9BE0;
-  --primary-dark: #0A3F66;
-  --primary-50: #0F2A40;
-  --primary-100: #15405F;
-  --secondary: #FBB81F;
-  --secondary-50: #2A2210;
-  --accent: #33B8EE;
+  --brand: #0F75BD;
+  --brand-hover: #1A82CC;
+  --accent: #4BA3E3;
+  --gold: #FBB81F;
 
-  --ink: #F5F5F6;
-  --ink-2: #CECFD2;
-  --muted: #94969C;
-  --subtle: #61656C;
-  --line: #262B36;
-  --line-strong: #373D4A;
-  --surface: #161B26;
-  --surface-2: #1C2230;
-  --raised: #2C3445;
+  --seg-track: #1A1E28;
+  --seg-on: #2C3445;
+  --seg-on-ink: #F5F6F8;
+  --input-border: #343B4A;
+  --input-bg: #10141C;
+  --track: #232835;
+  --wordmark: #171C27;
+  --foot-glow: rgb(75 163 227 / 0.16);
 
-  --success: #47CD89;
-  --success-50: #0B2A1D;
-  --warning: #FDB022;
-  --warning-50: #2E2008;
   --danger: #F97066;
-  --danger-50: #2D1514;
-  --info: #53B1FD;
-  --info-50: #0E2440;
-  --violet: #9B8AFB;
-  --violet-50: #1E1A3A;
-
-  --success-ring: #0C5133;
-  --warning-ring: #7A3E08;
-  --danger-ring: #7A1E18;
-  --info-ring: #164A8C;
-  --violet-ring: #3E2C8A;
-  --gold-ring: #6B4A0B;
-  --success-fg: #ABEFC6;
-  --warning-fg: #FEDF89;
-  --danger-fg: #FECDCA;
-  --info-fg: #B2DDFF;
-  --gold-fg: #FDE68A;
-  --gold-text: #FAC54B;
-
-  --danger-solid: #D92D20;
-  --danger-solid-hover: #F04438;
-  --success-solid: #12805C;
-  --success-solid-hover: #17996D;
-
-  --on-gold: #101828;
-  --amber: #FDB022;
-  --warning-dot: #FDB022;
-  --success-100: #10392A;
-  --orange: #F38744;
-  --orange-50: #2E1A0E;
-  --chart-grid: #232937;
-  --chart-axis: #373D4A;
-  --chart-guide: #61656C;
-
-  --shimmer-a: #1C2230;
-  --shimmer-b: #252C3B;
-  --scrim: rgb(0 0 0 / 0.6);
+  --danger-bg: #2D1514;
+  --success: #47CD89;
+  --success-bg: #0B2A1D;
   color-scheme: dark;
 }
 
@@ -159,62 +83,34 @@
 :root[data-theme="dark"] .logo-dark { display: inline-block; }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-50: var(--primary-50);
-  --color-primary-100: var(--primary-100);
-  --color-secondary: var(--secondary);
-  --color-secondary-50: var(--secondary-50);
-  --color-accent: var(--accent);
+  --color-bg: var(--bg);
   --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
+  --color-body: var(--body);
+  --color-sub: var(--sub);
   --color-muted: var(--muted);
-  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-raised: var(--raised);
-  --color-success: var(--success);
-  --color-success-50: var(--success-50);
-  --color-warning: var(--warning);
-  --color-warning-50: var(--warning-50);
+  --color-hair: var(--hair);
+  --color-soft: var(--soft);
+  --color-header: var(--header);
+  --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-seg-track: var(--seg-track);
+  --color-seg-on: var(--seg-on);
+  --color-seg-on-ink: var(--seg-on-ink);
+  --color-input-border: var(--input-border);
+  --color-input-bg: var(--input-bg);
+  --color-track: var(--track);
+  --color-wordmark: var(--wordmark);
   --color-danger: var(--danger);
-  --color-danger-50: var(--danger-50);
-  --color-info: var(--info);
-  --color-info-50: var(--info-50);
-  --color-violet: var(--violet);
-  --color-violet-50: var(--violet-50);
-  --color-success-ring: var(--success-ring);
-  --color-warning-ring: var(--warning-ring);
-  --color-danger-ring: var(--danger-ring);
-  --color-info-ring: var(--info-ring);
-  --color-violet-ring: var(--violet-ring);
-  --color-gold-ring: var(--gold-ring);
-  --color-success-fg: var(--success-fg);
-  --color-warning-fg: var(--warning-fg);
-  --color-danger-fg: var(--danger-fg);
-  --color-info-fg: var(--info-fg);
-  --color-gold-fg: var(--gold-fg);
-  --color-gold-text: var(--gold-text);
-  --color-danger-solid: var(--danger-solid);
-  --color-danger-solid-hover: var(--danger-solid-hover);
-  --color-success-solid: var(--success-solid);
-  --color-success-solid-hover: var(--success-solid-hover);
-  --color-gold-hover: var(--gold-hover);
-  --color-scrim: var(--scrim);
-  --color-on-gold: var(--on-gold);
-  --color-amber: var(--amber);
-  --color-warning-dot: var(--warning-dot);
-  --color-success-100: var(--success-100);
-  --color-orange: var(--orange);
-  --color-orange-50: var(--orange-50);
-  --font-rational: var(--font-rational);
+  --color-danger-bg: var(--danger-bg);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
   --font-sans: var(--font-rational), ui-sans-serif, system-ui, sans-serif;
-  /* Rational Display: large marketing headlines only. */
+  /* Rational Display: headlines. */
   --font-display: var(--font-rational-display), var(--font-rational), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -224,33 +120,34 @@
 
 html {
   scroll-behavior: smooth;
-  /* Anchor jumps clear the fixed header. */
+  /* Anchor jumps clear the sticky header. */
   scroll-padding-top: 88px;
 }
 
+/* clip, not hidden: hidden would make body a scroll container and break the sticky header. */
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-rational), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Figures line up in prices and counts. */
 .tabular {
   font-variant-numeric: tabular-nums;
 }
 
-/* The page column: 16px gutter on phones, 24px ≥ sm, 32px ≥ lg. */
+/* The page column: 20px gutter on phones, 24px ≥ sm, 32px ≥ lg; 1200px wide at most. */
 .container-site {
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 16px;
+  padding-inline: 20px;
 }
 @media (min-width: 640px) {
   .container-site { padding-inline: 24px; }
@@ -260,42 +157,23 @@ body {
 }
 
 /* 16px inputs stop iOS zooming in on focus (instead of blocking zoom for everyone). */
-@media (max-width: 640px) {
-  input, select, textarea { font-size: 16px; }
-}
+input, select, textarea { font-size: 16px; }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
-  border-radius: 6px;
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
-}
+/* Horizontal photo strip on phones. */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 @keyframes pop-in {
   from { transform: translateY(6px) scale(0.98); opacity: 0; }
   to { transform: translateY(0) scale(1); opacity: 1; }
 }
-@keyframes rise-in {
-  from { transform: translateY(12px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
 .animate-pop { animation: pop-in 160ms ease-out; }
-.animate-rise { animation: rise-in 420ms ease-out both; }
 
-/* Expanding card body: animates height with grid rows, no measuring. */
+/* Expanding row body: animates height with grid rows, no measuring. */
 .expand {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 200ms ease-out;
+  transition: grid-template-rows 220ms ease-out;
 }
 .expand[data-open="true"] {
   grid-template-rows: 1fr;
@@ -304,17 +182,8 @@ body {
   overflow: hidden;
 }
 
-/* Placeholder for photos that haven't been added yet. */
-.photo-slot {
-  background-color: var(--primary-50);
-  background-image:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--primary) 10%, transparent) 0, transparent 45%),
-    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--secondary) 14%, transparent) 0, transparent 40%);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-pop, .animate-rise, .animate-pulse, .animate-spin { animation: none; }
+  .animate-pop, .animate-spin { animation: none; }
   .expand { transition: none; }
 }
-

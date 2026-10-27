@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ArrowRight, Buildings, Call, ClipboardTick, Location, Mail, Message } from "@/app/components/icons";
-import { Button, IconTile, Pill } from "@/app/components/ui";
-import { CONTACT, SOCIALS } from "@/app/content/site";
+import { ArrowLink, Eyebrow, Faint } from "@/app/components/site";
+import { CONTACT } from "@/app/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,94 +8,74 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-const linkClass = "text-[15px] font-medium text-primary hover:underline";
+const ROWS = [
+  { label: "Email", value: CONTACT.email, action: "Write to us", href: `mailto:${CONTACT.email}` },
+  { label: "WhatsApp", value: CONTACT.whatsapp.label, action: "Message us", href: CONTACT.whatsapp.href },
+  { label: "Phone", value: CONTACT.phone.label, action: "Call us", href: CONTACT.phone.href },
+];
+
+const rowGrid = "grid gap-1.5 border-t border-line py-7 sm:grid-cols-12 sm:items-baseline sm:gap-8 sm:py-9";
 
 export default function ContactPage() {
   return (
-    <section className="pt-[72px]">
-      <div className="container-site flex flex-col gap-12 py-14 sm:py-20">
-        <div className="animate-rise flex max-w-2xl flex-col items-start gap-5">
-          <Pill tone="primary">Get in touch</Pill>
-          <h1 className="font-display text-[38px] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[52px]">
-            We’d love to hear from you.
-          </h1>
-          <p className="text-[17px] leading-relaxed text-muted sm:text-lg">
-            Questions about Andinoh, partnering as a hotel, or inspecting hotels with us? Reach us any of these ways.
-          </p>
-        </div>
+    <>
+      <section className="container-site pb-16 pt-16 sm:pb-24 sm:pt-24 lg:pb-[120px] lg:pt-32">
+        <Eyebrow>Contact</Eyebrow>
+        <h1 className="font-display text-[clamp(3rem,8vw,6.5rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
+          We’d love to <br />
+          <Faint>hear from you.</Faint>
+        </h1>
+        <p className="mt-6 max-w-[560px] text-[17px] leading-normal text-sub sm:mt-8 sm:text-[21px]">
+          Questions about Andinoh, partnering as a hotel, or inspecting hotels with us? Reach us any of these ways.
+        </p>
+      </section>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5">
-            <IconTile icon={Mail} />
-            <div className="flex flex-col gap-1">
-              <h2 className="text-[15px] font-semibold text-ink">Email</h2>
-              <a href={`mailto:${CONTACT.email}`} className={linkClass}>{CONTACT.email}</a>
-            </div>
-          </article>
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5">
-            <IconTile icon={Message} tone="success" />
-            <div className="flex flex-col gap-1">
-              <h2 className="text-[15px] font-semibold text-ink">WhatsApp</h2>
-              <a href={CONTACT.whatsapp.href} target="_blank" rel="noopener noreferrer" className={`${linkClass} tabular`}>{CONTACT.whatsapp.label}</a>
-              <p className="text-xs text-muted">Messages only</p>
-            </div>
-          </article>
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5">
-            <IconTile icon={Call} />
-            <div className="flex flex-col gap-1">
-              <h2 className="text-[15px] font-semibold text-ink">Phone</h2>
-              <a href={CONTACT.phone.href} className={`${linkClass} tabular`}>{CONTACT.phone.label}</a>
-            </div>
-          </article>
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5">
-            <IconTile icon={Location} tone="gold" />
-            <div className="flex flex-col gap-1">
-              <h2 className="text-[15px] font-semibold text-ink">Based in</h2>
-              <p className="text-[15px] font-medium text-ink-2">{CONTACT.city}</p>
-            </div>
-          </article>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          <article className="flex flex-col items-start gap-4 rounded-2xl border border-line bg-surface p-6">
-            <IconTile icon={Buildings} />
-            <div className="flex flex-col gap-1.5">
-              <h2 className="text-lg font-semibold text-ink">Run a hotel?</h2>
-              <p className="text-sm leading-relaxed text-muted">Join as a partner and we’ll help you set up and book your inspection before launch.</p>
-            </div>
-            <Button href="/waitlist?type=hotel" variant="secondary" iconRight={ArrowRight}>Join as a hotel partner</Button>
-          </article>
-          <article className="flex flex-col items-start gap-4 rounded-2xl border border-line bg-surface p-6">
-            <IconTile icon={ClipboardTick} tone="success" />
-            <div className="flex flex-col gap-1.5">
-              <h2 className="text-lg font-semibold text-ink">Want to inspect hotels?</h2>
-              <p className="text-sm leading-relaxed text-muted">
-                Andinoh inspectors are independent field agents who visit hotels in their state. You can’t work for a hotel and inspect for us.
-              </p>
-            </div>
-            <Button href={`mailto:${CONTACT.email}?subject=Becoming%20an%20Andinoh%20inspector`} variant="outline" icon={Mail}>Email us</Button>
-          </article>
-        </div>
-
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted">Follow Andinoh as we get ready to launch.</p>
-          <ul className="flex gap-2">
-            {SOCIALS.map((s) => (
-              <li key={s.name}>
+      <section className="container-site pb-24 sm:pb-32 lg:pb-40">
+        <ul className="border-b border-line">
+          {ROWS.map((r) => {
+            const external = r.href.startsWith("http");
+            return (
+              <li key={r.label}>
                 <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-medium text-ink-2 transition-colors hover:bg-surface-2"
+                  href={r.href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={`${rowGrid} group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40`}
                 >
-                  <Image src={s.icon} alt="" width={16} height={16} className="h-4 w-4 opacity-70 brightness-0 dark:invert" />
-                  {s.name}
+                  <span className="text-[15px] text-muted sm:col-span-3">{r.label}</span>
+                  <span className="tabular break-words font-display text-[26px] font-medium tracking-[-0.02em] sm:col-span-6 sm:text-[30px] lg:col-span-7 lg:text-[34px]">
+                    {r.value}
+                  </span>
+                  <span className="mt-1 text-[15px] text-accent transition-opacity group-hover:opacity-75 sm:col-span-3 sm:mt-0 sm:text-right lg:col-span-2">
+                    {r.action} <span aria-hidden>→</span>
+                  </span>
                 </a>
               </li>
-            ))}
-          </ul>
+            );
+          })}
+          <li className={rowGrid}>
+            <span className="text-[15px] text-muted sm:col-span-3">Based in</span>
+            <span className="font-display text-[26px] font-medium tracking-[-0.02em] sm:col-span-9 sm:text-[30px] lg:text-[34px]">{CONTACT.city}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section className="container-site grid gap-4 pb-28 sm:pb-40 md:grid-cols-2 md:gap-6 lg:pb-48">
+        <div className="rounded-3xl bg-soft p-7 sm:rounded-[28px] sm:p-10">
+          <h2 className="mb-3 font-display text-[26px] font-medium tracking-[-0.02em] sm:text-[30px]">Run a hotel?</h2>
+          <p className="mb-6 text-base leading-relaxed text-sub sm:text-[17px]">
+            Join as a partner and we’ll help you get set up and verified.
+          </p>
+          <ArrowLink href="/hotels">Andinoh for hotels</ArrowLink>
         </div>
-      </div>
-    </section>
+        <div className="rounded-3xl bg-soft p-7 sm:rounded-[28px] sm:p-10">
+          <h2 className="mb-3 font-display text-[26px] font-medium tracking-[-0.02em] sm:text-[30px]">Want to inspect hotels?</h2>
+          <p className="mb-6 text-base leading-relaxed text-sub sm:text-[17px]">
+            Andinoh inspectors are independent field agents who visit hotels in their state. You can’t work for a hotel and inspect
+            for us.
+          </p>
+          <ArrowLink href={`mailto:${CONTACT.email}?subject=Becoming%20an%20Andinoh%20inspector`}>Email us</ArrowLink>
+        </div>
+      </section>
+    </>
   );
 }
