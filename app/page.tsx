@@ -1,6 +1,7 @@
 import CloudImage, { HeroPicture } from "./components/CloudImage";
 import Globe from "./components/globe/Globe";
 import LaunchProgress from "./components/LaunchProgress";
+import QuietBoundary from "./components/QuietBoundary";
 import { ArrowLink, Eyebrow, Faint, PillLink, Statement, Steps, Title, heroDelay, reveal } from "./components/site";
 import WaitlistForm from "./components/WaitlistForm";
 import { PHOTOS, WAITLIST_OFFER } from "./content/site";
@@ -46,7 +47,9 @@ export default function Home() {
         <div className="relative mt-14 w-full sm:mt-20 lg:mt-24">
           <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 z-0 w-[clamp(540px,96vw,1180px)] -translate-x-1/2 -translate-y-1/2">
             <div className="globe-in">
-              <Globe view="rise" className="w-full" />
+              <QuietBoundary name="globe">
+                <Globe view="rise" className="w-full" />
+              </QuietBoundary>
             </div>
           </div>
           <div className="relative z-10 h-[440px] overflow-hidden rounded-3xl sm:h-[520px] sm:rounded-[32px] lg:h-[680px]">

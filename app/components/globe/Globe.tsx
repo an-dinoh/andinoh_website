@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { AFRICA, WORLD } from "./world";
 
@@ -66,15 +66,17 @@ const ARCS = ROUTES.map(([from, to], i) => {
 export default function Globe({ view = "rise", className = "" }: { view?: "rise" | "corner"; className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
     let raf = 0;
     let visible = true;
+    let stopped = false;
     const dark = theme === "dark";
     const blue = dark ? "75,163,227" : "15,117,189";
     const slate = dark ? "148,163,184" : "100,116,139";
@@ -186,28 +188,45 @@ export default function Globe({ view = "rise", className = "" }: { view?: "rise"
       }
     };
 
+    // The globe is decoration: if drawing ever fails, stop and hide it rather than throw on every frame.
+    const safeDraw = (t: number) => {
+      if (stopped) return;
+      try {
+        draw(t);
+      } catch (err) {
+        stopped = true;
+        cancelAnimationFrame(raf);
+        console.error("[globe] drawing failed; hiding the globe", err);
+        setFailed(true);
+      }
+    };
+
     const loop = (t: number) => {
-      draw(t);
-      if (visible) raf = requestAnimationFrame(loop);
+      safeDraw(t);
+      if (visible && !stopped) raf = requestAnimationFrame(loop);
     };
 
     if (reduce) {
-      draw(0);
-      const onResize = () => draw(0);
+      safeDraw(0);
+      const onResize = () => safeDraw(0);
       window.addEventListener("resize", onResize);
-      return () => window.removeEventListener("resize", onResize);
+      return () => { stopped = true; window.removeEventListener("resize", onResize); };
     }
 
-    // Only animate while on screen.
-    const io = new IntersectionObserver(([entry]) => {
-      const was = visible;
-      visible = entry.isIntersecting;
-      if (visible && !was) raf = requestAnimationFrame(loop);
-    });
-    io.observe(canvas);
+    // Only animate while on screen (older browsers without IntersectionObserver just keep animating).
+    let io: IntersectionObserver | undefined;
+    if ("IntersectionObserver" in window) {
+      io = new IntersectionObserver(([entry]) => {
+        const was = visible;
+        visible = entry.isIntersecting;
+        if (visible && !was && !stopped) raf = requestAnimationFrame(loop);
+      });
+      io.observe(canvas);
+    }
     raf = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(raf); io.disconnect(); };
+    return () => { stopped = true; cancelAnimationFrame(raf); io?.disconnect(); };
   }, [view, theme]);
 
+  if (failed) return null;
   return <canvas ref={ref} aria-hidden="true" className={`block aspect-square ${className}`} />;
 }
